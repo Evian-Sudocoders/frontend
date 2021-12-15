@@ -47,7 +47,7 @@
   font-size: 2rem !important;
   color: white;
   padding: 1.5rem;
-  transition: all 0.2s ease;
+  transition: box-shadow 0.2s ease;
 }
 
 .ButtonStyle1:hover {

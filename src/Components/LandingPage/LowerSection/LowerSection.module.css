@@ -42,8 +42,14 @@
   font-size: 1.8rem;
   line-height: 27px;
   text-align: center;
-  color: #20d7ff;
+  color: #20d7ff !important;
+  transition: box-shadow 0.2s ease;
 }
+
+.ButtonStyle:hover {
+  box-shadow: 5px 10px 17px rgba(5, 48, 101, 0.347);
+}
+
 .Ev2 {
   position: absolute;
   top: calc(100% - 40rem + 1.2rem);
