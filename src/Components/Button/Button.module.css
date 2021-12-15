@@ -1,0 +1,21 @@
+.Button {
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 1rem 0;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  transition: color 0.15s ease-out, background-color 0.15s ease-out;
+  color: var(--main-color);
+}
+
+.Hoverable {
+  border: 2px solid var(--main-color);
+}
+
+.Hoverable:hover {
+  background-color: var(--main-color);
+  color: white;
+}
