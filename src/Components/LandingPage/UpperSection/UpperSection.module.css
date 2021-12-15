@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 .LogoWrapper {
   position: absolute;
@@ -81,6 +81,7 @@
 }
   .RightContainer {
     margin-left: 5rem;
+    margin-bottom: 15rem;
   }
   .Ev1 {
     width: 53rem;
@@ -132,7 +133,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 15rem;
+        margin-top: 12rem;
       }
       .LeftContainer{
         width: 25rem;
@@ -140,7 +141,8 @@
         text-align: center;
     }
       .RightContainer {
-        margin-top: 8rem;
+        margin-top: 6rem;
+        margin-bottom: 5rem;
         align-items: center;
         width: 25rem;
       }
