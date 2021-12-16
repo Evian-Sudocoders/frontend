@@ -29,9 +29,7 @@
   margin-bottom: 6rem;
 }
 .ButtonStyle {
-  padding: 1rem 2rem;
-  width: 16rem;
-  height: 4.7rem;
+  padding: 1.2rem 3rem;
   background: linear-gradient(
     81.71deg,
     #ffffff -3.64%,
@@ -47,7 +45,7 @@
 }
 
 .ButtonStyle:hover {
-  box-shadow: 5px 10px 17px rgba(5, 48, 101, 0.347);
+  box-shadow: 5px 10px 17px rgba(5, 48, 101, 0.2);
 }
 
 .Ev2 {
@@ -98,51 +96,51 @@
 }
 
 @media only screen and (max-width: 580px) {
-    .Heading {
-      width: 35rem;
-      font-weight: 500;
-      font-size: 2.5rem;
-      text-align: center;
-      color: #ffffff;
-      margin-bottom: 6rem;
-    }
-    .Ev2 {
-      height: 20rem;
-      top: calc(100% - 20rem + 0.52rem);
-    }
-    .Ev3 {
-      position: absolute;
-      height: 3rem;
-      top: calc(100% - 3rem + 0.03rem);
-    }
-    .Ev4 {
-      height: 8rem;
-      top: calc(100% - 6rem);
-      right: 3.8rem;
-    }
+  .Heading {
+    width: 35rem;
+    font-weight: 500;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 6rem;
   }
+  .Ev2 {
+    height: 20rem;
+    top: calc(100% - 20rem + 0.52rem);
+  }
+  .Ev3 {
+    position: absolute;
+    height: 3rem;
+    top: calc(100% - 3rem + 0.03rem);
+  }
+  .Ev4 {
+    height: 8rem;
+    top: calc(100% - 6rem);
+    right: 3.8rem;
+  }
+}
 
-  @media only screen and (max-width: 360px) {
-    .Heading {
-      width: 25rem;
-      font-weight: 500;
-      font-size: 1.8rem;
-      text-align: center;
-      color: #ffffff;
-      margin-bottom: 6rem;
-    }
-    .Ev2 {
-      height: 16rem;
-      top: calc(100% - 16rem + 0.5rem);
-    }
-    .Ev3 {
-      position: absolute;
-      height: 2rem;
-      top: calc(100% - 2rem + 0.03rem);
-    }
-    .Ev4 {
-      height: 5rem;
-      top: calc(100% - 3.8rem);
-      right: 2.8rem;
-    }
+@media only screen and (max-width: 360px) {
+  .Heading {
+    width: 25rem;
+    font-weight: 500;
+    font-size: 1.8rem;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 6rem;
   }
+  .Ev2 {
+    height: 16rem;
+    top: calc(100% - 16rem + 0.5rem);
+  }
+  .Ev3 {
+    position: absolute;
+    height: 2rem;
+    top: calc(100% - 2rem + 0.03rem);
+  }
+  .Ev4 {
+    height: 5rem;
+    top: calc(100% - 3.8rem);
+    right: 2.8rem;
+  }
+}

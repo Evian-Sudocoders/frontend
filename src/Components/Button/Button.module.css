@@ -1,5 +1,34 @@
 .Button {
   width: 100%;
+  display: inline;
+  white-space: nowrap;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 1.4rem 3rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  color: var(--black);
+  border-radius: 999px;
+  background: var(--main-color);
+}
+
+.Hoverable {
+  color: var(--white);
+}
+
+.Hoverable:hover {
+  box-shadow: 5px 9px 13px rgba(175, 175, 175, 0.5);
+}
+
+/* .Hoverable:hover {
+  background-color: var(--main-color);
+  color: white;
+}  */
+
+/* .Button {
+  width: 100%;
   outline: none;
   border: none;
   background-color: transparent;
@@ -9,6 +38,7 @@
   border-radius: 0.4rem;
   transition: color 0.15s ease-out, background-color 0.15s ease-out;
   color: var(--main-color);
+  border-radius: 999px;
 }
 
 .Hoverable {
@@ -18,4 +48,4 @@
 .Hoverable:hover {
   background-color: var(--main-color);
   color: white;
-}
+} */
