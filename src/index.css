@@ -42,6 +42,12 @@ html {
   --black: #222222;
   --sec-black: #444444;
   --ter-black: #888888;
+  --sec-grey: #cccccc;
+  --blue-gradient: linear-gradient(
+    84.96deg,
+    #00c2ff -11.09%,
+    rgba(0, 209, 255, 0.63) 155.85%
+  );
 }
 
 html::-webkit-scrollbar {
