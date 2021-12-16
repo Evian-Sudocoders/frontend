@@ -1,0 +1,71 @@
+.SubWrapper {
+  display: flex;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.Line {
+  width: 0.5px;
+  background-color: var(--ter-black);
+  margin-top: 5rem;
+  height: 80vh;
+}
+
+.SubListWrapper {
+  width: 75rem;
+  padding-right: 5rem;
+}
+
+.AboutWraper {
+  width: 35rem;
+  padding-left: 4rem;
+}
+@media only screen and (max-width: 1190px) {
+  .SubWrapper {
+    justify-content: center;
+  }
+  .SubListWrapper {
+    width: 63%;
+    padding-right: 3rem;
+  }
+  .AboutWraper {
+    width: 29%;
+    padding-left: 2rem;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .SubWrapper {
+    flex-direction: column-reverse;
+    padding-left: 2.5rem;
+  }
+  .Line {
+    display: none;
+  }
+  .SubListWrapper {
+    padding-left: 2rem;
+    width: 90%;
+  }
+  .AboutWraper {
+    width: 40rem;
+  }
+}
+@media only screen and (max-width: 740px) {
+  .SubListWrapper {
+    padding-left: 2rem;
+    width: 95%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .SubWrapper {
+    padding-left: 0rem;
+  }
+  .SubListWrapper {
+    width: 100%;
+    padding-right: 2rem;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .AboutWraper {
+    width: 90%;
+  }
+}
