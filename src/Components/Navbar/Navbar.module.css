@@ -66,6 +66,7 @@
   }
   .SubWrapper {
     padding: 0 2rem 1rem 2rem;
+    padding-bottom: 0;
   }
   .Logo {
     width: 9rem;
