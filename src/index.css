@@ -43,6 +43,15 @@ html {
   --sec-black: #444444;
   --ter-black: #888888;
   --sec-grey: #cccccc;
+  --light-green: #52c62e;
+  --pure-green: #00923f;
+  --save-green: #60b246;
+  --orange-primary: #ff8c0a;
+  --orange-secondary: #ff8e09;
+  --orange-tertiary: #ffd098;
+  --aqua: #54b7ff;
+  --dark-aqua: rgba(177, 220, 252, 0.54);
+  --dark-green: rgba(51, 214, 0, 0.34);
   --blue-gradient: linear-gradient(
     84.96deg,
     #00c2ff -11.09%,
