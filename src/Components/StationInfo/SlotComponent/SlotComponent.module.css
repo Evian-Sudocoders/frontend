@@ -1,0 +1,21 @@
+.Wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid var(--sec-grey);
+  border-radius: 0.2rem;
+  align-items: center;
+  padding: 1rem;
+  padding-left: 2.5rem;
+  margin-bottom: 1rem;
+}
+.LeftWrapper {
+  font-size: var(--font-18);
+  font-weight: 500;
+}
+.ChargingPower {
+  font-weight: 800;
+}
+.ChargingPrice {
+  padding: 0.85rem 2rem;
+}
