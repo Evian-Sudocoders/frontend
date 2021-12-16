@@ -7,13 +7,15 @@ import UpperSection from "./Components/LandingPage/UpperSection/UpperSection";
 
 import Home from "./Containers/Home";
 import LandingPage from "./Components/LandingPage/LandingPage";
+import Navbar from "./Components/Navbar";
 
 const App = () => {
   return (
     <>
       <Switch>
         <Route exact path="/">
-          <LandingPage />
+          {/* <LandingPage /> */}
+          <Navbar />
         </Route>
       </Switch>
     </>
