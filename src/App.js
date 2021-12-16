@@ -3,6 +3,7 @@ import "./App.css";
 
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "./Containers/LandingPage";
+import Profile from "./Containers/Profile/Profile";
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path={["/signin", "/signup"]} component={LandingPage} />
+        <Route path="/profile" component={Profile} />
       </Switch>
     </>
   );
