@@ -18,4 +18,16 @@
 }
 .ChargingPrice {
   padding: 0.85rem 2rem;
+  font-size: var(--font-18) !important;
+}
+@media only screen and (max-width: 980px) {
+  .ChargingPower,
+  .ChargingPrice {
+    font-size: var(--font-16) !important;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .Wrapper {
+    padding-left: 1rem;
+  }
 }
