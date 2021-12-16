@@ -43,6 +43,7 @@ html {
   --sec-black: #444444;
   --ter-black: #888888;
   --primary-blue: #0dadf7;
+  --preloader-bg: #4B33D1;
 }
 
 html::-webkit-scrollbar {
