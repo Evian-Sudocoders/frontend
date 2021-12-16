@@ -1,0 +1,290 @@
+.Wrapper {
+  width: 100%;
+  height: fit-content;
+  padding-top: 5.5rem;
+  padding-bottom: 8rem;
+}
+
+.PersonalInfoWrapper {
+  width: 100%;
+  border-bottom: 1px solid var(--ter-black);
+}
+
+.UserProfile {
+  border: none;
+}
+
+.InfoHeader {
+  width: fit-content;
+  font-size: var(--font-17);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Icon {
+  height: 1.7rem;
+  width: 1.7rem;
+  margin-right: 0.8rem;
+}
+.IconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-14);
+  cursor: pointer;
+  margin-left: 1.5rem;
+  user-select: none;
+}
+
+.EditIconWrapper {
+  color: var(--primary-blue);
+}
+
+.SaveIconWrapper {
+  color: var(--ter-black);
+  transition: color 0.1s ease-out;
+}
+
+.SaveIconWrapper svg path {
+  fill: var(--ter-black);
+  transition: fill 0.1s ease-out;
+}
+
+.SaveIconWrapperWithChanges {
+  color: var(--save-green);
+}
+
+.SaveIconWrapperWithChanges svg path {
+  fill: var(--save-green);
+}
+
+.PersonalInfoContent {
+  width: 100%;
+  font-size: var(--font-14);
+  font-weight: 500;
+  padding-bottom: 2rem;
+  padding-top: 1.2rem;
+  display: flex;
+}
+
+.PersonalInfoMobileAndEmail {
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5rem;
+  font-weight: 600;
+}
+
+.PersonalInfoFSSAI {
+  font-weight: 800;
+}
+.PersonalInfoImageWrapper {
+  width: 16rem;
+  height: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.PersonalInfoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.EditImageScrim {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.1s ease-out;
+  cursor: pointer;
+}
+.EditImageScrim svg {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.1s ease-out, transform 0.15s ease-out;
+}
+.EditImageScrim svg path {
+  fill: white;
+}
+.EditImageInput {
+  height: 0;
+  width: 0;
+  opacity: 0;
+  display: none;
+  visibility: hidden;
+}
+.PersonalInfoImageWrapper:hover .EditImageScrim {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.PersonalInfoImageWrapper:hover .EditImageScrim svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.StationInfoWrapper {
+  padding-top: 1.8rem;
+  padding-bottom: 2rem;
+}
+.ChefAddInfo {
+  padding-bottom: 1rem;
+}
+.AddressList {
+  margin-top: 0rem;
+}
+
+.EditableListItem {
+  width: 100%;
+  padding-top: 0.3rem;
+  padding-bottom: 1rem;
+}
+
+.URLInput {
+  color: #00c2ff !important;
+  font-weight: 500;
+}
+
+.HasAddressLine {
+  border-bottom: 1px solid var(--primary-blue);
+}
+
+.AddAddressIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.AddAddressWrapper {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  border: 2px solid var(--primary-blue);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease-out;
+}
+
+.AddAddressWrapper:hover {
+  background-color: var(--primary-blue-input-bg);
+  color: var(--ter-white);
+}
+
+.PricingInfoWrapper {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--ter-black);
+  padding-top: 0.2rem;
+  padding-bottom: 1.5rem;
+}
+.PricingInfoHeader {
+  margin-top: 1.5rem;
+}
+
+.PricingInfoContent {
+  margin-top: 1.5rem;
+}
+
+.PricingInfoItem {
+  margin-top: 0.5rem;
+}
+
+.EditableInfoWrapper {
+  padding-top: 1.9rem;
+}
+
+.EditSaveButtonWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  font-size: var(--font-14);
+  font-weight: 600;
+  width: fit-content;
+}
+
+.EditSaveButton {
+  padding: 0.8rem 2rem;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10em;
+  background: linear-gradient(200.28deg, #09a5ff -9.66%, #3ad7ff 114.23%);
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.LogoutButton {
+  font-size: var(--font-14);
+  width: fit-content;
+  font-weight: 500;
+  background: linear-gradient(240deg, #ff0000 -9.66%, #ffa9a9 114.23%);
+}
+.EditSaveIcon {
+  height: 1.8rem;
+  width: 1.8rem;
+  margin-left: 0.5rem;
+}
+
+.EditButton,
+.LogoutButton {
+  color: white;
+}
+
+.EditButton svg {
+  width: 1.6rem;
+  height: fit-content;
+}
+
+.EditButton svg path {
+  fill: white;
+}
+
+.SaveButton {
+  margin-right: 1.5rem;
+  font-weight: 500;
+  transition: border-color 0.15s ease-out, color 0.15s ease-out;
+  background: linear-gradient(240deg, #22f300 -9.66%, #14ce03 114.23%);
+}
+.SaveButton svg path {
+  fill: white;
+  height: 20rem;
+  transition: fill 0.15s ease-out;
+}
+.SaveButton svg {
+  height: fit-content;
+  width: 1.6rem;
+}
+
+.DiscardButton {
+  cursor: pointer;
+}
+.LogoutButtonUser {
+  margin-top: 0.2rem;
+}
+@media only screen and (max-width: 900px) {
+  .Wrapper {
+    padding-top: 3.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--ter-black);
+  }
+}
+@media only screen and (max-width: 540px) {
+  .Wrapper {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
