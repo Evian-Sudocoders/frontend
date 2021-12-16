@@ -2,7 +2,9 @@ import React from "react";
 import "./App.css";
 
 import { Switch, Route } from "react-router-dom";
+
 import LandingPage from "./Containers/LandingPage";
+import StationInfo from "./Containers/StationInfo";
 
 const App = () => {
   return (
@@ -10,7 +12,9 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <LandingPage />
-          {/* <Navbar /> */}
+        </Route>
+        <Route path="/station">
+          <StationInfo />
         </Route>
       </Switch>
     </>
