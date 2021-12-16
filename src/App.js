@@ -5,7 +5,7 @@ import { Switch, Route } from "react-router-dom";
 
 import LandingPage from "./Containers/LandingPage";
 import StationInfo from "./Containers/StationInfo";
-import UserHome from "./Components/UserHome";
+import HomePage from "./Containers/HomePage";
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path={["/signin", "/signup"]} component={LandingPage} />
-        <Route path="/userhome" component={UserHome} />
+        <Route path="/userhome" component={HomePage} />
         <Route path="/station" component={StationInfo} />
       </Switch>
     </>
