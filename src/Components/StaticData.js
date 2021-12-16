@@ -33,3 +33,10 @@ export const signInData = {
     },
   },
 };
+
+export const AboutSecHeadersData = {
+  personalInfo: "Personal Info",
+  stationInfo: "Station Info",
+  address: "Address",
+  url: "G-Map location URL",
+};
