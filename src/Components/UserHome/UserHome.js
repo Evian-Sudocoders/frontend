@@ -58,10 +58,10 @@ function UserHome() {
         </div>
       </div>
       <div className={styles.Count}>
-        <span className={styles.Value}>25</span>results found
+        <span className={styles.Value}>25</span> results found
       </div>
       <div className={styles.StationWrapper}>
-        <Station wrapperClass={styles.ButtonStyle} />
+        <Station />
         <Station />
         <Station />
       </div>
