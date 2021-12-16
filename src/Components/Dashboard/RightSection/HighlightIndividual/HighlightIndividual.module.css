@@ -1,0 +1,36 @@
+.HighlightIndividualContainer {
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+.HighlightIndividualTitle {
+  font-size: var(--font-18);
+  font-weight: 700;
+  color: var(--white);
+  text-transform: capitalize;
+}
+.HighlightIndividualNumber {
+  font-size: var(--font-22);
+  color: var(--white);
+}
+
+@media screen and (max-width: 1150px) {
+  .HighlightIndividualContainer {
+    height: 100%;
+  }
+  .HighlightIndividualNumber {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .HighlightIndividualTitle {
+    font-size: var(--fontv-35);
+  }
+  .HighlightIndividualNumber {
+    font-size: var(--fontv-4);
+  }
+}

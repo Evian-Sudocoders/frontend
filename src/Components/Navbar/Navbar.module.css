@@ -1,79 +1,79 @@
 .Wrapper {
-    width: 100%;
-    background-color: var(--white);
-    padding: 1.8rem 0rem;
-    box-shadow: 0rem 0.4rem 1.8rem rgba(0, 0, 0, 0.1);
-    position: sticky;
-    z-index: 15;
-    top: 0;
+  width: 100%;
+  background-color: var(--white);
+  padding: 1.8rem 0rem;
+  box-shadow: 0rem 0.4rem 1.8rem rgba(0, 0, 0, 0.1);
+  position: sticky;
+  z-index: 15;
+  top: 0;
+}
+.SubWrapper {
+  width: 100%;
+  max-width: 126rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.LeftWrapper {
+  display: flex;
+  align-items: center;
+}
+.Logo {
+  width: 12rem;
+  margin-right: 3rem;
+  cursor: pointer;
+}
+.UserName {
+  font-weight: 600;
+  font-size: var(--font-15);
+}
+.RightWrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.ProfilePhoto {
+  margin-right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+@media only screen and (max-width: 1350px) {
+  .SubWrapper {
+    padding: 0 4rem;
+  }
+}
+@media only screen and (max-width: 1230px) {
+  .SubWrapper {
+    padding: 0 6rem;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .SubWrapper {
+    padding: 0 4rem;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .SubWrapper {
+    border-bottom: 2px solid var(--grey);
+  }
+}
+@media only screen and (max-width: 450px) {
+  .Wrapper {
+    padding: 1.2rem 0;
   }
   .SubWrapper {
-    width: 100%;
-    max-width: 126rem;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .LeftWrapper {
-    display: flex;
-    align-items: center;
+    padding: 0 2rem 1rem 2rem;
+    padding-bottom: 0;
   }
   .Logo {
-    width: 12rem;
-    margin-right: 3rem;
-    cursor: pointer;
-  }
-  .UserName {
-    font-weight: 600;
-    font-size: var(--font-15);
-  }
-  .RightWrapper {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+    width: 9rem;
   }
   .ProfilePhoto {
-    margin-right: 1.5rem;
-    width: 3rem;
-    height: 3rem;
-    object-fit: cover;
-    border-radius: 50%;
+    width: 2.8rem;
+    height: 2.8rem;
+    margin-right: 1rem;
   }
-  @media only screen and (max-width: 1350px) {
-    .SubWrapper {
-      padding: 0 4rem;
-    }
-  }
-  @media only screen and (max-width: 1230px) {
-    .SubWrapper {
-      padding: 0 6rem;
-    }
-  }
-  @media only screen and (max-width: 1080px) {
-    .SubWrapper {
-      padding: 0 4rem;
-    }
-  }
-  @media only screen and (max-width: 540px) {
-    .SubWrapper {
-      border-bottom: 2px solid var(--grey);
-      padding-bottom: 1.8rem;
-    }
-  }
-  @media only screen and (max-width: 450px) {
-    .Wrapper {
-      padding: 1.2rem 0;
-    }
-    .SubWrapper {
-      padding: 0 2rem 1rem 2rem;
-    }
-    .Logo {
-      width: 9rem;
-    }
-    .ProfilePhoto {
-      width: 2.8rem;
-      height: 2.8rem;
-      margin-right: 1rem;
-    }
-  }
+}

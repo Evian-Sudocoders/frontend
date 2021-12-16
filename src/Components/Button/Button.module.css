@@ -12,6 +12,7 @@
   color: var(--black);
   border-radius: 999px;
   background: var(--main-color);
+  transition: box-shadow 0.15s ease-in-out;
 }
 
 .Hoverable {
@@ -21,31 +22,3 @@
 .Hoverable:hover {
   box-shadow: 5px 9px 13px rgba(175, 175, 175, 0.5);
 }
-
-/* .Hoverable:hover {
-  background-color: var(--main-color);
-  color: white;
-}  */
-
-/* .Button {
-  width: 100%;
-  outline: none;
-  border: none;
-  background-color: transparent;
-  padding: 1rem 0;
-  font-weight: 500;
-  cursor: pointer;
-  border-radius: 0.4rem;
-  transition: color 0.15s ease-out, background-color 0.15s ease-out;
-  color: var(--main-color);
-  border-radius: 999px;
-}
-
-.Hoverable {
-  border: 2px solid var(--main-color);
-}
-
-.Hoverable:hover {
-  background-color: var(--main-color);
-  color: white;
-} */
