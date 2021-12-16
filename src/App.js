@@ -5,17 +5,16 @@ import { Switch, Route } from "react-router-dom";
 
 import LandingPage from "./Containers/LandingPage";
 import StationInfo from "./Containers/StationInfo";
+import UserHome from "./Components/UserHome";
 
 const App = () => {
   return (
     <>
       <Switch>
-        <Route exact path="/">
-          <LandingPage />
-        </Route>
-        <Route path="/station">
-          <StationInfo />
-        </Route>
+        <Route exact path="/" component={LandingPage} />
+        <Route path={["/signin", "/signup"]} component={LandingPage} />
+        <Route path="/userhome" component={UserHome} />
+        <Route path="/station" component={StationInfo} />
       </Switch>
     </>
   );

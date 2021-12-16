@@ -48,6 +48,7 @@ html {
     #00c2ff -11.09%,
     rgba(0, 209, 255, 0.63) 155.85%
   );
+  --primary-blue: #0dadf7;
 }
 
 html::-webkit-scrollbar {
