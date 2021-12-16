@@ -8,10 +8,8 @@ const App = () => {
   return (
     <>
       <Switch>
-        <Route exact path="/">
-          <LandingPage />
-          {/* <Navbar /> */}
-        </Route>
+        <Route exact path="/" component={LandingPage} />
+        <Route path={["/signin", "/signup"]} component={LandingPage} />
       </Switch>
     </>
   );
