@@ -14,3 +14,18 @@
   font-size: var(--font-16);
   margin-bottom: 1.8rem;
 }
+@media only screen and (max-width: 1200px) {
+  .Wrapper {
+    padding: 0 4rem;
+  }
+}
+@media only screen and (max-width: 630px) {
+  .Wrapper {
+    padding: 0 2rem;
+  }
+}
+@media only screen and (max-width: 330px) {
+  .Wrapper {
+    padding: 0 1.5rem;
+  }
+}
