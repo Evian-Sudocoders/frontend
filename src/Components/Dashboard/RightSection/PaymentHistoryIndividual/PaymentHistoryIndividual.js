@@ -1,5 +1,4 @@
-import React from 'react'
-import numberWithCommas from '../helper/convertNumberWithComma';
+import React from 'react';
 
 import styles from './PaymentHistoryIndividual.module.css';
 
