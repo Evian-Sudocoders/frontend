@@ -42,6 +42,7 @@ html {
   --black: #222222;
   --sec-black: #444444;
   --ter-black: #888888;
+  --primary-blue: #0dadf7;
 }
 
 html::-webkit-scrollbar {
