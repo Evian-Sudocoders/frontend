@@ -10,6 +10,7 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <LandingPage />
+          {/* <Navbar /> */}
         </Route>
       </Switch>
     </>
