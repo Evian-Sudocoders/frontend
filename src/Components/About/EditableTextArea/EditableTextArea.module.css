@@ -15,7 +15,7 @@
   color: var(--black);
   font-weight: 500;
   overflow: hidden;
-  font-size: var(--font-14);
+  font-size: var(--font-16);
   font-weight: 600;
   width: 100%;
   transition: background-color 0.15s ease-in-out;
