@@ -33,7 +33,7 @@ function StationInfo() {
         <LowerContainer />
       </div>
       <PopUp
-        ContentComp={<PaymentPopup price={100} />}
+        ContentComp={<PaymentPopup price={15} />}
         isOpen={isPopUpOpen}
         closeFun={() => {
           setIsPopUpOpen(false);
