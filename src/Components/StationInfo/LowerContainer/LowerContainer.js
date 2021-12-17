@@ -4,7 +4,7 @@ import SlotComponent from "../SlotComponent";
 import styles from "./LowerContainer.module.css";
 
 const tempData = [];
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 5; i++) {
   tempData.push({
     SlotNumber: "1",
     ChargingPower: "45",
