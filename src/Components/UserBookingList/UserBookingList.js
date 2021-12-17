@@ -15,7 +15,7 @@ function UserBookingList({
       station: `Lorem Ipsum Electric Vehicle Charging Station`,
       date: new Date(),
       address: `${index} Opp Virwani Ind Est Jay Bharat Indl Est 2nd Flr, 44, Goregaon (east), Surat`,
-      pointNo: Math.floor(Math.random() * 6),
+      pointNo: Math.floor(Math.random() * 6) + 1,
       slots: Array(Math.floor(Math.random() * 6) + 1)
         .fill(Math.floor(Math.random() * 15))
         .map((x, index) => x + index),
