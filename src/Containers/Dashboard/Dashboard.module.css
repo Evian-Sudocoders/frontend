@@ -1,0 +1,73 @@
+.Wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+@media screen and (max-width: 1200px) {
+  .Wrapper {
+    flex-direction: column;
+    width: 80rem;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .RightWrapper {
+    border-top: 1px solid grey;
+    border-left: none !important;
+    width: 100%;
+  }
+  .LeftWrapper {
+    padding: 0;
+    width: 100%;
+    /* background-color: aqua; */
+  }
+  .SelectorWrapper {
+    width: 18rem;
+    margin: 0 auto !important;
+    margin-bottom: 3rem !important;
+  }
+  .HeadingWrapper {
+    margin: 0rem auto !important;
+    margin-bottom: 2rem !important;
+  }
+}
+@media screen and (max-width: 800px) {
+  .Wrapper {
+    flex-direction: column;
+    width: 50rem;
+    margin: 0 auto;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 500px) {
+    .Wrapper {
+      flex-direction: column;
+      width: 100%;
+      margin: 0 auto;
+      align-items: center;
+    }
+  }
+.LeftWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 3rem;
+  padding: 2rem;
+}
+.HeadingWrapper {
+  font-size: var(--font-18);
+  font-weight: 600;
+  margin-left: 3rem;
+  margin-bottom: 3rem;
+}
+.SelectorWrapper {
+  width: 18rem;
+  margin-left: 3rem;
+}
+.RightWrapper {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid grey;
+  padding: 2rem;
+}

@@ -17,13 +17,13 @@ const slotData = [
     SlotStatus: "Success",
   },
   {
-    UserName: "Varsani",
+    UserName: "Aakash",
     SlotVehicleNo: "HR 05 AM 0000",
     SlotTime: "02:00-02:30",
     SlotStatus: "Pending",
   },
   {
-    UserName: "Varsani",
+    UserName: "Harshil",
     SlotVehicleNo: "HR 05 AM 0000",
     SlotTime: "02:00-02:30",
     SlotStatus: "Failed",
