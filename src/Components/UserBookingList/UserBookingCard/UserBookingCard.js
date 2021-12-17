@@ -2,15 +2,11 @@ import React from "react";
 
 import Styles from "./UserBookingCard.module.css";
 import Button from "./../../Button/index";
+import { SlotTimeFun } from "./../../StationInfo/PaymentPopup/helper/SlotTimeFun";
 
 function UserBookingCard({ data }) {
   const parseLable = (label) => {
     return `${label} :`;
-  };
-
-  const formatSlots = (slots) => {
-    let startTime = slots[0];
-    return slots.map((slot) => `${slot}`).join(", ");
   };
 
   const StatusButton = ({ status }) => {
@@ -42,7 +38,11 @@ function UserBookingCard({ data }) {
           </div>
           <div className={Styles.ListInfoItem}>
             <h5 className={Styles.label}>{parseLable("Slot(s) Timing")}</h5>
-            <div className={Styles.value}>{data.slots.join(", ")}</div>
+            <div className={Styles.value}>
+              {SlotTimeFun(data.slots[0]).startTime +
+                "-" +
+                SlotTimeFun(data.slots[data.slots.length - 1]).endTime}
+            </div>
           </div>
           <div className={Styles.ListInfoItem}>
             <h5 className={Styles.label}>{parseLable("Charges")}</h5>

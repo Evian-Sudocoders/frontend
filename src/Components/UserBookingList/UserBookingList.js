@@ -16,7 +16,9 @@ function UserBookingList({
       date: new Date(),
       address: `${index} Opp Virwani Ind Est Jay Bharat Indl Est 2nd Flr, 44, Goregaon (east), Surat`,
       pointNo: Math.floor(Math.random() * 6),
-      slots: [12, 13, 14],
+      slots: Array(Math.floor(Math.random() * 6) + 1)
+        .fill(Math.floor(Math.random() * 15))
+        .map((x, index) => x + index),
       charges: Math.floor(Math.random() * 100),
       status: index < 2 ? "pending" : "success",
     })),
