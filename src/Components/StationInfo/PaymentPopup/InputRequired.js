@@ -1,18 +1,18 @@
 export const inputRequired = [
   {
-    label: "Battery size  ( in kWh ) :",
+    label: "Battery size (in kWh):",
     name: "batterySize",
   },
   {
-    label: "Charging power ( in kW ) :",
+    label: "Charging power (in kW):",
     name: "chargingPower",
   },
   {
-    label: "Starting charge level  ( in % ) :",
+    label: "Starting charge level (in %):",
     name: "startingChargeLevel",
   },
   {
-    label: "Target charge level  ( in % ) :",
+    label: "Target charge level (in %):",
     name: "targetChargeLevel",
   },
 ];
