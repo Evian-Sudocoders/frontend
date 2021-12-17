@@ -1,0 +1,36 @@
+.SlotHistoryIndividualWrapper {
+  display: grid;
+  grid-template-columns: 15fr 20fr 20fr 10fr;
+  margin-bottom: 1rem;
+}
+.SlotUserName {
+  font-size: var(--font-14);
+  font-weight: 600;
+}
+.SlotVehicleNo {
+  font-size: var(--font-14);
+  font-weight: 600;
+}
+.SlotTime {
+  font-size: var(--font-14);
+  font-weight: 600;
+}
+.SlotStatus {
+  font-size: var(--font-14);
+  font-weight: 600;
+}
+
+@media screen and (max-width: 400px) {
+  .SlotUserName {
+    font-size: var(--fontv-35);
+  }
+  .SlotVehicleNo {
+    font-size: var(--fontv-35);
+  }
+  .SlotTime {
+    font-size: var(--fontv-35);
+  }
+  .SlotStatus {
+    font-size: var(--fontv-35);
+  }
+}
