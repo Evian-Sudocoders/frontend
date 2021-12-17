@@ -23,6 +23,10 @@
   justify-content: center;
 }
 
+.PersonalInfoHeader {
+  font-size: var(--font-20);
+}
+
 .Icon {
   height: 1.7rem;
   width: 1.7rem;

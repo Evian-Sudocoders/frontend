@@ -42,6 +42,7 @@ html {
   --black: #222222;
   --sec-black: #444444;
   --ter-black: #888888;
+  --black-opa-35: rgba(0, 0, 0, 0.35);
   --sec-grey: #cccccc;
   --light-green: #52c62e;
   --pure-green: #00923f;
@@ -58,7 +59,17 @@ html {
     rgba(0, 209, 255, 0.63) 155.85%
   );
   --primary-blue: #0dadf7;
-  --preloader-bg: #4B33D1;
+  --preloader-bg: #4b33d1;
+  --footer-bg: radial-gradient(
+    135.03% 1068.6% at -25% 126.74%,
+    #a7e5ff 0%,
+    rgb(174 197 255 / 0%) 100%
+  );
+  --success-gradient: linear-gradient(
+    84.96deg,
+    #2ad100 -11.09%,
+    rgba(0, 255, 25, 0.63) 155.85%
+  );
 }
 
 html::-webkit-scrollbar {

@@ -7,6 +7,7 @@ import SignIn from "./../../Components/SignInUp/SignIn";
 import SignUp from "./../../Components/SignInUp/SignUp";
 import { useSelector } from "react-redux";
 import LandingPageMainSec from "./../../Components/LandingPage/LandingPage";
+import Footer from './../../Components/Footer/Footer';
 
 function LandingPage() {
   const Location = useLocation();
@@ -39,7 +40,7 @@ function LandingPage() {
     <>
       <div>
         <LandingPageMainSec />
-        {/* <Footer /> */}
+        <Footer />
       </div>
       <div
         ref={signInUpWrapperRef}

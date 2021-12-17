@@ -40,3 +40,9 @@ export const AboutSecHeadersData = {
   address: "Address",
   url: "G-Map location URL",
 };
+
+export const contactLinks = {
+  Facebook: "https://www.facebook.com/",
+  Linkedin: "https://www.linkedin.com/",
+  Instagram: "https://www.instagram.com/",
+};

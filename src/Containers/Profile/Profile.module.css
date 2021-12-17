@@ -11,7 +11,7 @@
   height: 80vh;
 }
 
-.SubListWrapper {
+.LeftWrapper {
   width: 75rem;
   padding-right: 5rem;
 }
@@ -24,7 +24,7 @@
   .SubWrapper {
     justify-content: center;
   }
-  .SubListWrapper {
+  .LeftWrapper {
     width: 63%;
     padding-right: 3rem;
   }
@@ -41,7 +41,7 @@
   .Line {
     display: none;
   }
-  .SubListWrapper {
+  .LeftWrapper {
     padding-left: 2rem;
     width: 90%;
   }
@@ -50,7 +50,7 @@
   }
 }
 @media only screen and (max-width: 740px) {
-  .SubListWrapper {
+  .LeftWrapper {
     padding-left: 2rem;
     width: 95%;
   }
@@ -59,7 +59,7 @@
   .SubWrapper {
     padding-left: 0rem;
   }
-  .SubListWrapper {
+  .LeftWrapper {
     width: 100%;
     padding-right: 2rem;
   }
