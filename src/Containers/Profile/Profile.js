@@ -6,8 +6,11 @@ import Navbar from "../../Components/Navbar/Navbar";
 import About from "./../../Components/About";
 import Preloader from "./../../Components/Preloader/Preloader";
 import UserBookingList from "./../../Components/UserBookingList";
+import StationChargingPointsList from "./../../Components/StationChargingPointsList/index";
 
 function Profile() {
+  const [isStation, setIsStation] = useState(false);
+
   const openBookingSlide = (id, index) => {
     console.log(id, index);
     // Open booking slide
@@ -20,11 +23,15 @@ function Profile() {
           <Navbar />
           <div className={Styles.SubWrapper}>
             <div className={Styles.LeftWrapper}>
-              <UserBookingList openBookingSlide={openBookingSlide} />
+              {isStation ? (
+                <StationChargingPointsList />
+              ) : (
+                <UserBookingList openBookingSlide={openBookingSlide} />
+              )}
             </div>
             <div className={Styles.Line} />
             <div className={Styles.AboutWraper}>
-              <About isStation={false} />
+              <About isStation={isStation} />
             </div>
           </div>
         </div>

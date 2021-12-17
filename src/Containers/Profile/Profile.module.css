@@ -6,7 +6,7 @@
 
 .Line {
   width: 0.5px;
-  background-color: var(--ter-black);
+  background-color: var(--sec-grey);
   margin-top: 5rem;
   height: 80vh;
 }
@@ -25,47 +25,57 @@
     justify-content: center;
   }
   .LeftWrapper {
-    width: 63%;
+    width: 63rem;
     padding-right: 3rem;
   }
   .AboutWraper {
-    width: 29%;
+    width: 29rem;
     padding-left: 2rem;
   }
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1050px) {
   .SubWrapper {
     flex-direction: column-reverse;
-    padding-left: 2.5rem;
+    padding-left: 0rem;
+    width: 70rem;
   }
   .Line {
     display: none;
   }
+
   .LeftWrapper {
-    padding-left: 2rem;
-    width: 90%;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    width: 100%;
   }
   .AboutWraper {
-    width: 40rem;
+    width: 100%;
+    padding-left: 0rem;
+    padding-right: 0rem;
   }
 }
 @media only screen and (max-width: 740px) {
+  .SubWrapper {
+    width: 92%;
+  }
   .LeftWrapper {
-    padding-left: 2rem;
-    width: 95%;
+    padding-left: 0rem;
+    width: 100%;
   }
 }
 @media only screen and (max-width: 600px) {
-  .SubWrapper {
-    padding-left: 0rem;
-  }
   .LeftWrapper {
     width: 100%;
-    padding-right: 2rem;
   }
 }
-@media only screen and (max-width: 450px) {
-  .AboutWraper {
-    width: 90%;
+@media only screen and (max-width: 500px) {
+  .SubWrapper {
+    width: 100%;
+    padding: 0 2rem;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .SubWrapper {
+    padding: 0 1.3rem;
   }
 }
