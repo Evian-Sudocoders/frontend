@@ -60,6 +60,7 @@ html {
   );
   --primary-blue: #0dadf7;
   --preloader-bg: #4b33d1;
+  --input-bg-light-blue: #fafcff;
   --footer-bg: radial-gradient(
     135.03% 1068.6% at -25% 126.74%,
     #a7e5ff 0%,
