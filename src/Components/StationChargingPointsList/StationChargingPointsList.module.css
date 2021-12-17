@@ -1,0 +1,124 @@
+.Wrapper {
+  display: flex;
+  padding-top: 5rem;
+  width: 100%;
+  flex-direction: column;
+}
+
+.UpperSection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Title {
+  font-weight: 700;
+  font-size: var(--font-17);
+}
+
+.EditSaveButtonWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  font-size: var(--font-14);
+  font-weight: 600;
+  width: fit-content;
+}
+
+.EditSaveButton {
+  padding: 0.8rem 2rem;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10em;
+  background: linear-gradient(200.28deg, #09a5ff -9.66%, #3ad7ff 114.23%);
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.EditSaveIcon {
+  height: 1.8rem;
+  width: 1.8rem;
+  margin-left: 0.5rem;
+}
+
+.EditButton {
+  color: white;
+}
+
+.EditButton svg {
+  width: 1.6rem;
+  height: fit-content;
+}
+
+.EditButton svg path {
+  fill: white;
+}
+
+.SaveButton {
+  margin-left: 1.5rem;
+  font-weight: 500;
+  transition: border-color 0.15s ease-out, color 0.15s ease-out;
+  background: linear-gradient(240deg, #22f300 -9.66%, #14ce03 114.23%);
+}
+.SaveButton svg path {
+  fill: white;
+  height: 20rem;
+  transition: fill 0.15s ease-out;
+}
+.SaveButton svg {
+  height: fit-content;
+  width: 1.6rem;
+}
+
+.DiscardButton {
+  cursor: pointer;
+}
+.ListWrapper {
+  margin-top: 2rem;
+}
+.PointItemWrapper {
+  margin-top: 1.8rem;
+}
+
+.AddNewItemWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 5rem;
+  padding: 0.8rem;
+  border: 2px solid var(--primary-blue);
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+.AddNewItemIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.AddNewItemIcon path {
+  fill: var(--primary-blue);
+}
+
+@media only screen and (max-width: 1050px) {
+  .Wrapper {
+    padding-bottom: 5rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .Wrapper {
+    flex-direction: column;
+  }
+  .Wrapper {
+    padding-top: 3rem;
+  }
+
+  .AddNewItemWrapper {
+    margin-top: 3rem;
+  }
+}
