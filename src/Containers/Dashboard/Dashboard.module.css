@@ -1,0 +1,27 @@
+.Wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+}
+.LeftWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 3rem;
+}
+.HeadingWrapper{
+    font-size: var(--font-18);
+    font-weight: 600;
+    margin-left: 3rem;
+    margin-bottom: 3rem;
+}
+.SelectorWrapper{
+    width: 18rem;
+    margin-left: 3rem;
+}
+.RightWrapper{
+    display: flex;
+    flex-direction: column;
+}

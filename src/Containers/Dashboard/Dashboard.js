@@ -45,7 +45,7 @@ function Dashboard() {
       <Navbar />
       <div className={styles.Wrapper}>
         <div className={styles.LeftWrapper}>
-          <div className={styles.HeadWrapper}>Today's Booking</div>
+          <div className={styles.HeadingWrapper}>Today's Booking</div>
           <div className={styles.SelectorWrapper}>
             <Select
               closeMenuOnSelect={false}
