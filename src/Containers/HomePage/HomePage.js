@@ -1,16 +1,17 @@
-import React from 'react'
-import styles from './Homepage.module.css';
-import Navbar from '../../Components/Navbar';
-import UserHome from '../../Components/UserHome';
-
+import React from "react";
+import styles from "./Homepage.module.css";
+import Navbar from "../../Components/Navbar";
+import UserHome from "../../Components/UserHome";
 
 function HomePage() {
-    return (
-        <div className={styles.Wrapper}>
-            <Navbar />
-            <UserHome />
-        </div>
-    )
+  return (
+    <>
+      <Navbar />
+      <div className={styles.Wrapper}>
+        <UserHome />
+      </div>
+    </>
+  );
 }
 
 export default HomePage;
