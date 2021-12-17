@@ -76,14 +76,17 @@ function About({ userData = tempData, isStation = false }) {
 
   const saveData = async () => {
     //Save the data
-    setOverallStates({ ...overallStates, isInEditMode: false });
-    if (isStation) {
+    if (isStation && overallStates.hasBeenChanged) {
       try {
         // Station Overall API Call
+        notify("Info updated successfully", "success");
       } catch (err) {
         notify(err.response.data.errors[0].message, "error");
       }
+    } else {
+      notify("No changes to save");
     }
+    setOverallStates({ ...overallStates, isInEditMode: false });
   };
 
   const discardChanges = () => {
