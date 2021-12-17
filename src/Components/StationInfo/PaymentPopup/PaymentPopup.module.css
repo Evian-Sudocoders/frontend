@@ -1,0 +1,47 @@
+.Wrapper {
+  width: 50rem;
+  background-color: var(--white);
+  padding: 4rem 5rem 0 4.5rem;
+  font-size: var(--font-17);
+  font-weight: 500;
+}
+.InputWrapper,
+.TimeWrapper,
+.SlotWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.6rem;
+}
+.SlotWrapper {
+  margin-top: 0.6rem;
+  padding-bottom: 3rem;
+}
+.Input {
+  font-size: var(--font-16);
+  font-weight: 600;
+  padding: 0.5rem 1.8rem;
+  border-radius: 3.4rem;
+  border: 2px solid var(--sec-grey);
+  outline: none;
+}
+.TimeWrapper {
+  margin-top: 1.9rem;
+  margin-bottom: 3rem;
+}
+.EstimatedTime {
+  background: var(--payment-pop-up-bg);
+  border-radius: 3.4rem;
+  color: var(--white);
+  padding: 0.8rem 2.5rem;
+}
+.LowerHeading {
+  font-weight: 600;
+}
+.Button {
+  font-weight: 600;
+  font-size: var(--font-18) !important;
+  width: 18rem;
+  margin: auto;
+  display: block;
+}

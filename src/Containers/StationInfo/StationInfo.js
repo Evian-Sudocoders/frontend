@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "./StationInfo.module.css";
 
 import Navbar from "./../../Components/Navbar";
 import UpperContainer from "../../Components/StationInfo/UpperContainer";
 import LowerContainer from "../../Components/StationInfo/LowerContainer";
+import PaymentPopup from "../../Components/StationInfo/PaymentPopup";
+import PopUp from "./../../Components/PopUp";
 
 const tempData = {
   StationName: "Loremi psum Electric Vehicle Charging Station",
@@ -16,17 +18,29 @@ const tempData = {
 };
 
 function StationInfo() {
+  const [isPopUpOpen, setIsPopUpOpen] = useState(true);
+
   return (
-    <div className={styles.Wrapper}>
-      <Navbar />
-      <UpperContainer
-        StationName={tempData.StationName}
-        StationAddress={tempData.StationAddress}
-        GMapLink={tempData.GMapLink}
-        NumberOfPorts={tempData.NumberOfPorts}
+    <>
+      <div className={styles.Wrapper}>
+        <Navbar />
+        <UpperContainer
+          StationName={tempData.StationName}
+          StationAddress={tempData.StationAddress}
+          GMapLink={tempData.GMapLink}
+          NumberOfPorts={tempData.NumberOfPorts}
+        />
+        <LowerContainer />
+      </div>
+      <PopUp
+        ContentComp={<PaymentPopup price={15} />}
+        isOpen={isPopUpOpen}
+        closeFun={() => {
+          setIsPopUpOpen(false);
+        }}
+        isClosable={false}
       />
-      <LowerContainer />
-    </div>
+    </>
   );
 }
 

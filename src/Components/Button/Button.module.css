@@ -13,6 +13,7 @@
   border-radius: 999px;
   background: var(--main-color);
   transition: box-shadow 0.15s ease-in-out;
+  font-family: "Manrope", sans-serif;
 }
 
 .Hoverable {

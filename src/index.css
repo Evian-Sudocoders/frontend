@@ -51,12 +51,19 @@ html {
   --orange-secondary: #ff8e09;
   --orange-tertiary: #ffd098;
   --aqua: #54b7ff;
+  --sec-aqua: rgba(207, 245, 255, 1);
+
   --dark-aqua: rgba(177, 220, 252, 0.54);
   --dark-green: rgba(51, 214, 0, 0.34);
   --blue-gradient: linear-gradient(
     84.96deg,
     #00c2ff -11.09%,
     rgba(0, 209, 255, 0.63) 155.85%
+  );
+  --payment-pop-up-bg: linear-gradient(
+    84.96deg,
+    #00c2ff -11.09%,
+    rgba(0, 224, 255, 0.42) 155.85%
   );
   --primary-blue: #0dadf7;
   --preloader-bg: #4b33d1;
@@ -84,4 +91,19 @@ html::-webkit-scrollbar-track {
 html::-webkit-scrollbar-thumb {
   background-color: rgba(120, 120, 120, 0.3);
   outline: 1px solid slategrey;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+input {
+  font-family: "Manrope", sans-serif;
 }

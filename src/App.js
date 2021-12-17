@@ -10,6 +10,7 @@ import Profile from "./Containers/Profile/Profile";
 import StationInfo from "./Containers/StationInfo";
 import HomePage from "./Containers/HomePage";
 import { ToastContainer } from "react-toastify";
+import Dashboard from "./Containers/Dashboard/Dashboard";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/profile" component={Profile} />
         <Route path="/userhome" component={HomePage} />
         <Route path="/station" component={StationInfo} />
+        <Route path="/dashboard" component={Dashboard} />
       </Switch>
     </>
   );
