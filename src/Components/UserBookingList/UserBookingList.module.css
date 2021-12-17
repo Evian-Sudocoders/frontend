@@ -17,7 +17,7 @@
 .ListWrapper {
   margin-top: 2rem;
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1050px) {
   .Title {
     margin-top: 2.5rem;
   }

@@ -10,6 +10,8 @@ function UserBookingList({
     .fill({})
     .map((item, index) => ({
       id: index,
+      username: "Abc Xyz",
+      vehicle_number: "MH 12 ABC 1234",
       station: `Lorem Ipsum Electric Vehicle Charging Station`,
       date: new Date(),
       address: `${index} Opp Virwani Ind Est Jay Bharat Indl Est 2nd Flr, 44, Goregaon (east), Surat`,
