@@ -46,7 +46,7 @@ function UserBookingCard({ data }) {
           </div>
           <div className={Styles.ListInfoItem}>
             <h5 className={Styles.label}>{parseLable("Charges")}</h5>
-            <div className={Styles.value}>{data.charges}</div>
+            <div className={Styles.value}>{data.charges +  " ₹"}</div>
           </div>
         </div>
       </div>
