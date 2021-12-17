@@ -34,3 +34,12 @@
     font-size: var(--fontv-35);
   }
 }
+.red{
+  color: red;
+}
+.green{
+  color: rgb(2, 194, 2);
+}
+.yellow{
+  color: rgb(245, 229, 13);
+}

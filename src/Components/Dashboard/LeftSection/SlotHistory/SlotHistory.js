@@ -14,7 +14,7 @@ const slotData = [
     UserName: "Varsani",
     SlotVehicleNo: "HR 05 AM 0000",
     SlotTime: "02:00-02:30",
-    SlotStatus: "Pending",
+    SlotStatus: "Success",
   },
   {
     UserName: "Varsani",
