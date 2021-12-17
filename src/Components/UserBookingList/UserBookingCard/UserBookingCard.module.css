@@ -69,3 +69,52 @@
   font-weight: 500;
   color: var(--sec-black);
 }
+
+@media only screen and (max-width: 1050px) {
+  .LeftSection {
+    margin-right: 2rem;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .Address {
+    margin-top: 0.5rem;
+  }
+  .BottomInfoWrapper {
+    margin-top: 1rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .LeftSection {
+    margin-right: 0rem;
+  }
+  .Wrapper {
+    flex-direction: column;
+    padding: 1.5rem 2rem;
+  }
+  .RightSection {
+    margin-top: 0.5rem;
+    flex-direction: row-reverse;
+    width: inherit;
+    justify-content: space-between;
+  }
+  .StatusButton {
+    width: fit-content;
+  }
+  .ListInfoItem {
+    margin-top: 0.1rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .Wrapper {
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .RightSection {
+    margin-top: 1rem;
+  }
+}
