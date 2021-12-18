@@ -17,8 +17,11 @@ const App = () => {
     <>
       <ToastContainer bodyClassName="ToastBody" />
       <Switch>
-        <Route exact path="/" component={LandingPage} />
-        <Route path={["/signin", "/signup"]} component={LandingPage} />
+        <Route
+          exact
+          path={["/signin", "/signup", "/"]}
+          component={LandingPage}
+        />
         <Route path={["/profile", "/booking"]} component={Profile} />
         <Route path="/userhome" component={HomePage} />
         <Route path="/station" component={StationInfo} />
