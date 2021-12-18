@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./UserHome.module.css";
 import Select from "react-select";
 import Station from "./Station";
+import { getAllStationData } from "../../Services/station.service";
 
 const selectColorStyles = {
   control: (styles) => ({
@@ -31,14 +32,39 @@ const selectColorStyles = {
 };
 
 const StateOptions = [
-  { value: "north-indian", label: "Gujarat" },
-  { value: "south-indian", label: "Maharashtra" },
-  { value: "chinese", label: "UP" },
-  { value: "bengali", label: "Haryana" },
-  { value: "italian", label: "Delhi" },
+  { value: "Gujarat", label: "Gujarat" },
+  { value: "UP", label: "UP" },
+  { value: "Haryana", label: "Haryana" },
+  { value: "Delhi", label: "Delhi" },
+];
+
+const CityOptions = [
+  { value: "Surat", label: "Surat" },
+  { value: "Agra", label: "Agra" },
 ];
 
 function UserHome() {
+  const [stationData, setStationData] = useState([]);
+  const [state, setState] = useState("Gujarat");
+  const [city, setCity] = useState("Surat");
+
+  useEffect(() => {
+    fetchAllStations();
+  }, [state, city]);
+
+  const fetchAllStations = async () => {
+    const stationList = await getAllStationData(state, city);
+    setStationData(stationList);
+  };
+
+  console.log(stationData);
+
+  let count=0;
+  const list = stationData.stations?.map((station, id) => {
+    count++;
+    return (<Station key={id} data={station} />);
+  });
+
   return (
     <div className={styles.Wrapper}>
       <div className={styles.SelectorsWrapper}>
@@ -47,23 +73,25 @@ function UserHome() {
             closeMenuOnSelect={false}
             styles={selectColorStyles}
             options={StateOptions}
+            name="State"
+            onChange={(newValue, action)=>{setState(newValue.value)}}
           />
         </div>
         <div className={styles.SelectorDiv}>
           <Select
             closeMenuOnSelect={false}
             styles={selectColorStyles}
-            options={StateOptions}
+            options={CityOptions}
+            name="City"
+            onChange={(newValue, action)=>{setCity(newValue.value)}}
           />
         </div>
       </div>
       <div className={styles.Count}>
-        <span className={styles.Value}>25</span> results found
+        <span className={styles.Value}>{count}</span> results found
       </div>
       <div className={styles.StationWrapper}>
-        <Station />
-        <Station />
-        <Station />
+        {list}
       </div>
     </div>
   );
