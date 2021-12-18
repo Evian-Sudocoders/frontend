@@ -12,7 +12,8 @@ function LowerSection() {
     <div className={styles.Wrapper}>
       <div className={styles.SubWrapper}>
         <div className={styles.Heading}>
-          Lorem ipsum dolor sit amet consectetur adipisicing.
+          Explore Stations, Compare Prices, Book Slots. Stay away from all
+          physical hassle.
         </div>
         <div className={styles.Button}>
           <Button
