@@ -6,3 +6,5 @@ export const SIGNUP_USER_URL = `${AUTH_URL}/signupuser`;
 export const SIGNUP_STATION_URL = `${AUTH_URL}/signupstation`;
 export const GET_USER_URL = `${AUTH_URL}/getUserDetails`;
 export const GET_STATION_URL = `${STATION_URL}`;
+
+export const GET_ALL_STATION_URL = `${STATION_URL}`;
