@@ -73,10 +73,6 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(hasInitialised);
-  }, [hasInitialised]);
-
   return (
     <>
       {hasInitialised ? (

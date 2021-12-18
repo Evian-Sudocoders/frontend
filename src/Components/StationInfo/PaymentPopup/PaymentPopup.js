@@ -11,14 +11,15 @@ import {
   payementService,
   paymentInitialization,
 } from "../../../Services/payment.service";
-import { getAuth } from "firebase/auth";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function PaymentPopup({ price, slotNumber, bookedSlot }) {
+function PaymentPopup({ price, slotNumber, bookedSlot, isOpen }) {
   const accessToken = useSelector(
     (state) => state.userReducer.userData.accessToken
   );
+  const userData = useSelector((state) => state.userReducer.userData);
+
   let tempData = new Array(48).fill(0);
   const { stationID } = useParams();
 
@@ -61,8 +62,10 @@ function PaymentPopup({ price, slotNumber, bookedSlot }) {
         parseInt(inputValues.finalPrice),
         orderData.orderId,
         orderData.bookingId,
-        accessToken
+        accessToken,
+        userData
       );
+      isOpen(false);
     }
   };
 
