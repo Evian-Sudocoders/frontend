@@ -17,3 +17,4 @@ export const VERIFY_BOOKING_URL = `${BOOKING_URL}/verifyBooking`;
 export const UPDATE_PROFILE_PICTURE_URL = `${USER_URL}/updateProfilePicture`;
 export const UPDATE_ADDRESS_URL = `${STATION_URL}/updateAddress`;
 export const UPDATE_CHARGING_POINTS_INFO_URL = `${STATION_URL}/chargingPoints`;
+export const GET_USER_BOOKINGS = `${USER_URL}/bookings`;

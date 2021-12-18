@@ -136,14 +136,17 @@ function PaymentPopup({ price, slotNumber, bookedSlot, isOpen }) {
             style={{
               width: `calc(${
                 inputValues[input.name].toString().length
-              }ch - 2.7ch + 4rem)`,
+              }ch + 3rem)`,
             }}
           />
         </div>
       );
     }
   );
-
+  // const updateWidth = (elem) => {
+  //   const width = elem.value.length * 0.8 + 2;
+  //   elem.style.width = width + "em";
+  // };
   return (
     <>
       <div className={styles.Wrapper}>

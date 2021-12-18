@@ -66,8 +66,18 @@ function UserHome() {
   const [state, setState] = useState(userData.state);
   const [city, setCity] = useState(userData.city);
 
-  const stateIdx = StateOptions?.findIndex(state => state.value == userData.state);
-  const cityIdx = CityOptions[userData.state]?.findIndex(city => city.value === userData.city);
+  const [stateIdx, setStateIdx] = useState();
+  const [cityIdx, setCityIdx] = useState();
+
+  
+
+  useEffect(() => {
+    const stateId = StateOptions?.findIndex(stateLocal => stateLocal.value == state);
+    const cityId = CityOptions[userData.state]?.findIndex(cityLocal => cityLocal.value === city);
+
+    setStateIdx(stateId);
+    setCityIdx(cityId);
+  }, [state, city, stationData]);
 
   useEffect(() => {
     fetchAllStations();
@@ -78,7 +88,7 @@ function UserHome() {
     setStationData(stationList);
   };
 
-  console.log(stationData);
+  console.log(stateIdx, cityIdx);
 
   let count = 0;
   const list = stationData.stations?.map((station, id) => {
@@ -98,7 +108,7 @@ function UserHome() {
             onChange={(newValue, action) => {
               setState(newValue.value);
             }}
-            defaultValue={StateOptions[stateIdx]}
+            value={StateOptions[stateIdx]}
           />
         </div>
         <div className={styles.SelectorDiv}>
@@ -110,7 +120,7 @@ function UserHome() {
             onChange={(newValue, action) => {
               setCity(newValue.value);
             }}
-            defaultValue={CityOptions[userData.state][cityIdx]}
+            value={CityOptions[userData.state][cityIdx]}
           />
         </div>
       </div>
