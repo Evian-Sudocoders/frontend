@@ -71,6 +71,7 @@ function StationInfo() {
             price={price}
             slotNumber={slotNumber}
             bookedSlot={bookedSlots}
+            isOpen={setIsPopUpOpen}
           />
         }
         isOpen={isPopUpOpen}
