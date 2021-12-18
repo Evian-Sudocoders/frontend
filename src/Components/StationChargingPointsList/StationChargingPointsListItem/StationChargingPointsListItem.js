@@ -29,9 +29,9 @@ function StationChargingPointsListItem({
 
     if (isEditing && onChangeFun) {
       onChangeFun(keyIndex, {
-        id: keyIndex,
-        capacity: powerRef.current.value,
-        cost: chargeRef.current.value,
+        index: keyIndex,
+        capacity: parseFloat(powerRef.current.value),
+        cost: parseFloat(chargeRef.current.value),
       });
     }
   };
@@ -44,7 +44,7 @@ function StationChargingPointsListItem({
   return (
     <div className={Styles.Wrapper}>
       <div className={Styles.LeftWrapper}>
-        <h3 className={Styles.Id}>{data.id}</h3>
+        <h3 className={Styles.Id}>{data.index}</h3>
       </div>
       <div className={Styles.RightWrapper}>
         <div className={Styles.ListItemWrapper}>

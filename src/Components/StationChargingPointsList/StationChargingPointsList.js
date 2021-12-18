@@ -9,19 +9,28 @@ import { ReactComponent as EditIcon } from "../../Assets/Profile/EditIcon.svg";
 import { ReactComponent as SaveIcon } from "../../Assets/Profile/SaveIcon.svg";
 import { ReactComponent as PlusIcon } from "../../Assets/_General/Plus.svg";
 
-import notify from "../../Utils/helper/notifyToast";
+import notify from "./../../Utils/helper/notifyToast";
+import {
+  getStationDataById,
+  updateChargingPointInfo,
+  addChargingPoints,
+} from "./../../Services/station.service";
 
 const tempData = Array(2)
   .fill({})
   .map((_, index) => {
     return {
-      id: index + 1,
+      index: index + 1,
       cost: Math.floor(Math.random() * 100),
       capacity: Math.floor(Math.random() * 40),
     };
   });
 
-function StationChargingPointsList({ pointsData = tempData, refreshDataFun }) {
+function StationChargingPointsList({}) {
+  const userData = useSelector((state) => state.userReducer.userData);
+
+  const [pointsData, setPopointsData] = useState([]);
+
   const [currentPointsData, setCurrentPointsData] = useState(pointsData);
   const updateReqList = useRef([]);
   const newAddReqList = useRef([]);
@@ -47,6 +56,25 @@ function StationChargingPointsList({ pointsData = tempData, refreshDataFun }) {
   };
 
   useEffect(() => {
+    fetchAndSetStationData();
+  }, []);
+
+  useEffect(() => {
+    setCurrentPointsData(pointsData);
+    updateReqList.current = [];
+    newAddReqList.current = [];
+  }, [pointsData]);
+
+  const fetchAndSetStationData = async () => {
+    try {
+      const data = await getStationDataById(userData.uid);
+      setPopointsData(data.chargingPoints);
+    } catch (e) {
+      notify("Internal Server Error", "error");
+    }
+  };
+
+  useEffect(() => {
     newAddReqList.current = currentPointsData.filter(
       (x) => !pointsData.includes(x)
     );
@@ -59,11 +87,6 @@ function StationChargingPointsList({ pointsData = tempData, refreshDataFun }) {
       newAddReqList.current = [];
     }
 
-    console.log(
-      currentPointsData.slice(pointsData.length - currentPointsData.length),
-      pointsData.length - currentPointsData.length
-    );
-
     let tempUpdateReqList = [];
     for (let i = 0; i < pointsData.length; i++) {
       if (!objectsEqual(currentPointsData[i], pointsData[i])) {
@@ -74,29 +97,27 @@ function StationChargingPointsList({ pointsData = tempData, refreshDataFun }) {
   }, [currentPointsData]);
 
   const handleSave = async () => {
-    console.log(updateReqList.current);
-    console.log(newAddReqList.current);
-    if (hasDataChanged) {
-      try {
-        // Send Data to backend
-
-        // refreshDataFun();
-        notify("Info updated successfully", "success");
-      } catch (error) {
-        notify(error.response.data.errors[0].message, "error");
+    try {
+      if (updateReqList.current.length > 0) {
+        let updateReqData = currentPointsData.filter((x, index) =>
+          updateReqList.current.includes(index)
+        );
+        await updateChargingPointInfo(updateReqData, userData.accessToken);
       }
-    } else {
-      notify("No changes to save");
+
+      if (newAddReqList.current.length > 0) {
+        await addChargingPoints(newAddReqList.current, userData.accessToken);
+      }
+      notify("Info updated successfully", "success");
+
+      fetchAndSetStationData();
+    } catch (error) {
+      notify(error, "error");
     }
+
     setHasDataChanged(false);
     setIsInEditMode(false);
   };
-
-  useEffect(() => {
-    setCurrentPointsData(pointsData);
-    updateReqList.current = [];
-    newAddReqList.current = [];
-  }, [pointsData]);
 
   return (
     <>
@@ -110,13 +131,7 @@ function StationChargingPointsList({ pointsData = tempData, refreshDataFun }) {
                   Discard
                 </div>
                 <div
-                  className={
-                    styles.EditSaveButton +
-                    " " +
-                    styles.SaveButton +
-                    " " +
-                    (hasDataChanged ? styles.SaveButtonWithChanges : "")
-                  }
+                  className={styles.EditSaveButton + " " + styles.SaveButton}
                   onClick={() => {
                     handleSave();
                   }}
@@ -160,7 +175,7 @@ function StationChargingPointsList({ pointsData = tempData, refreshDataFun }) {
                   data={item}
                   isEditing={isInEditMode}
                   onChangeFun={handleDataChange}
-                  keyIndex={item.id}
+                  keyIndex={item.index}
                 />
               </div>
             );
@@ -171,7 +186,7 @@ function StationChargingPointsList({ pointsData = tempData, refreshDataFun }) {
           onClick={() => {
             setIsInEditMode(true);
             let newItem = {
-              id: currentPointsData.length + 1,
+              index: currentPointsData.length + 1,
               cost: 0,
               capacity: 0,
             };
