@@ -3,6 +3,7 @@ import styles from "./UserHome.module.css";
 import Select from "react-select";
 import Station from "./Station";
 import { getAllStationData } from "../../Services/station.service";
+import { useSelector } from "react-redux";
 
 const selectColorStyles = {
   control: (styles) => ({
@@ -58,9 +59,15 @@ const CityOptions = {
 };
 
 function UserHome() {
+
+  const userData = useSelector((state) => state.userReducer.userData);
+
   const [stationData, setStationData] = useState([]);
-  const [state, setState] = useState();
-  const [city, setCity] = useState();
+  const [state, setState] = useState(userData.state);
+  const [city, setCity] = useState(userData.city);
+
+  const stateIdx = StateOptions?.findIndex(state => state.value == userData.state);
+  const cityIdx = CityOptions[userData.state]?.findIndex(city => city.value === userData.city);
 
   useEffect(() => {
     fetchAllStations();
@@ -91,6 +98,7 @@ function UserHome() {
             onChange={(newValue, action) => {
               setState(newValue.value);
             }}
+            defaultValue={StateOptions[stateIdx]}
           />
         </div>
         <div className={styles.SelectorDiv}>
@@ -102,6 +110,7 @@ function UserHome() {
             onChange={(newValue, action) => {
               setCity(newValue.value);
             }}
+            defaultValue={CityOptions[userData.state][cityIdx]}
           />
         </div>
       </div>
