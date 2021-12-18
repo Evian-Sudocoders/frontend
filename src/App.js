@@ -19,7 +19,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path={["/signin", "/signup"]} component={LandingPage} />
-        <Route path="/profile" component={Profile} />
+        <Route path={["/profile", "/booking"]} component={Profile} />
         <Route path="/userhome" component={HomePage} />
         <Route path="/station" component={StationInfo} />
         <Route path="/dashboard" component={Dashboard} />
