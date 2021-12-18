@@ -9,7 +9,6 @@ import { useLocation, useHistory } from "react-router-dom";
 
 import {
   MobileNumberTextMask,
-  PinCodeTextMask,
   CustomisedRadio,
 } from "./Helpers/StyledMUIInput";
 
@@ -76,20 +75,14 @@ function SignUp() {
 
       if (signupStatus.status) {
         notify(signupStatus.message, "success");
-        let userdata;
-        if (isStationSelected) {
-          userdata = await getStationData(signupStatus.accessToken);
-          console.log(userdata);
-          userData.isStation = true;
-        } else {
-          userdata = await getUser(signupStatus.accessToken);
-        }
+        const userdata = await getUser(signupStatus.accessToken);
+
         console.log(userdata);
         dispatch({
           type: "UPDATE_USER_DATA",
           data: userdata,
         });
-        if (isStationSelected) {
+        if (userdata.isStation) {
           history.push("/dashboard");
         } else {
           history.push("/userhome");
