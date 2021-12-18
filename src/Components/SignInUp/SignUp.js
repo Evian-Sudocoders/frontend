@@ -22,6 +22,7 @@ import notify from "../../Utils/helper/notifyToast";
 import { signUpUser } from "./../../Services/signInUp.service";
 import { getUser } from "./../../Services/user.service";
 import { getStationData } from "./../../Services/station.service";
+import { validateEmail } from "./Helpers/ValidateEmail";
 
 function SignUp() {
   const location = useLocation();
@@ -71,13 +72,10 @@ function SignUp() {
         isStation: isStationSelected,
       });
 
-      console.log(signupStatus);
-
       if (signupStatus.status) {
         notify(signupStatus.message, "success");
         const userdata = await getUser(signupStatus.accessToken);
 
-        console.log(userdata);
         dispatch({
           type: "UPDATE_USER_DATA",
           data: userdata,
@@ -137,14 +135,6 @@ function SignUp() {
       }
     }
     return true;
-  };
-
-  const validateEmail = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
   };
 
   return (
