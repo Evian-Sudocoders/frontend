@@ -78,10 +78,7 @@ function SignUp() {
         notify(signupStatus.message, "success");
         let userdata;
         if (isStationSelected) {
-          userdata = await getStationData(
-            signupStatus.accessToken,
-            signupStatus.id
-          );
+          userdata = await getStationData(signupStatus.accessToken);
           console.log(userdata);
           userData.isStation = true;
         } else {
@@ -92,9 +89,11 @@ function SignUp() {
           type: "UPDATE_USER_DATA",
           data: userdata,
         });
-        // history.push({
-        //   pathname: "/home",
-        // });
+        if (isStationSelected) {
+          history.push("/dashboard");
+        } else {
+          history.push("/userhome");
+        }
       } else {
         notify(signupStatus.message, "error");
       }

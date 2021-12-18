@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,10 +10,15 @@ import LandingPage from "./Containers/LandingPage";
 import Profile from "./Containers/Profile/Profile";
 import StationInfo from "./Containers/StationInfo";
 import HomePage from "./Containers/HomePage";
-import { ToastContainer } from "react-toastify";
 import Dashboard from "./Containers/Dashboard/Dashboard";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
+  const userData = useSelector((state) => state.userReducer.userData);
+
+  useEffect(() => {
+    console.log(userData);
+  }, [userData]);
   return (
     <>
       <ToastContainer bodyClassName="ToastBody" />
