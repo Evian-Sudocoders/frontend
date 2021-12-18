@@ -1,6 +1,8 @@
 import axios from "axios";
 import { INITIALIZE_BOOKING_URL, VERIFY_BOOKING_URL } from "../Utils/constants";
 
+import notify from "../Utils/helper/notifyToast";
+
 export const paymentInitialization = async (
   accessToken,
   stationId,
@@ -35,7 +37,8 @@ export const payementService = async (
   amount,
   orderId,
   bookingId,
-  accessToken
+  accessToken,
+  userData
 ) => {
   try {
     var options = {
@@ -47,13 +50,6 @@ export const payementService = async (
       image: "",
       order_id: orderId,
       handler: async function (response) {
-        console.log({
-          1: response.razorpay_payment_id,
-          2: response.razorpay_signature,
-          3: orderId,
-          4: bookingId,
-          5: accessToken,
-        });
         await PaymentVerification(
           response.razorpay_payment_id,
           response.razorpay_signature,
@@ -63,9 +59,9 @@ export const payementService = async (
         );
       },
       prefill: {
-        // name: user?.name,
-        // email: user?.email,
-        // contact: "9999999999",
+        name: userData?.name,
+        email: userData?.email,
+        contact: userData.number ? userData?.number : "",
       },
       notes: {
         address: "Evian Corporate Office",
@@ -77,16 +73,16 @@ export const payementService = async (
 
     var rzp1 = new window.Razorpay(options);
     rzp1.on("payment.failed", function (response) {
-      alert(response.error.code);
-      alert(response.error.description);
-      alert(response.error.source);
-      alert(response.error.step);
-      alert(response.error.reason);
-      alert(response.error.metadata.order_id);
-      alert(response.error.metadata.payment_id);
+      //   alert(response.error.code);
+      //   alert(response.error.description);
+      //   alert(response.error.source);
+      //   alert(response.error.step);
+      //   alert(response.error.reason);
+      //   alert(response.error.metadata.order_id);
+      //   alert(response.error.metadata.payment_id);
+      notify("Payment Failed", "error");
     });
     rzp1.open();
-    return true;
   } catch (error) {
     alert(error);
   }
@@ -114,6 +110,7 @@ export const PaymentVerification = async (
         },
       }
     );
+    notify("Payment Successful", "success");
     return data;
   } catch (error) {
     console.log(error);
