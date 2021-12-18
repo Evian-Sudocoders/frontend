@@ -12,16 +12,17 @@ for (let i = 0; i < 5; i++) {
   });
 }
 
-function LowerContainer({ isPopUpOpen, priceSet }) {
-  const SlotComponentList = tempData.map((data, index) => {
+function LowerContainer({ isPopUpOpen, priceSet, chargingPoints, setslot }) {
+  const SlotComponentList = chargingPoints?.map((data, index) => {
     return (
       <SlotComponent
         key={index}
-        SlotNumber={data.SlotNumber}
-        ChargingPower={data.ChargingPower}
-        ChargingPrice={data.ChargingPrice}
+        SlotNumber={data.index}
+        ChargingPower={data.capacity}
+        ChargingPrice={data.cost}
         isPopUpOpen={isPopUpOpen}
         priceSet={priceSet}
+        setslot={setslot}
       />
     );
   });

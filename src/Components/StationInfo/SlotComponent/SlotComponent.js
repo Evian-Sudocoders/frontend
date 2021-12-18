@@ -8,6 +8,7 @@ function SlotComponent({
   ChargingPrice,
   isPopUpOpen,
   priceSet,
+  setslot,
 }) {
   return (
     <div className={styles.Wrapper}>
@@ -24,6 +25,7 @@ function SlotComponent({
             isPopUpOpen(true);
             let price = parseInt(ChargingPrice);
             priceSet(price);
+            setslot(SlotNumber);
           }}
         />
       </div>
