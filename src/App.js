@@ -33,6 +33,7 @@ const App = () => {
         setHasInitialised(true);
       }
     }
+    console.log(userData);
   }, [userData]);
 
   useEffect(() => {
@@ -57,14 +58,7 @@ const App = () => {
 
     dispatch({
       type: "UPDATE_USER_DATA",
-      data: userdata,
-    });
-    dispatch({
-      type: "UPDATE_ACCESS_TOKEN",
-      data: {
-        accessToken,
-        uid,
-      },
+      data: { ...userdata, accessToken, uid },
     });
 
     if (
