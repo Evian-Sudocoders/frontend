@@ -1,1 +1,1 @@
-export const EXAMPLE_ACTION = "EXAMPLE_ACTION";
+export const UPDATE_USER_DATA = "UPDATE_USER_DATA";
