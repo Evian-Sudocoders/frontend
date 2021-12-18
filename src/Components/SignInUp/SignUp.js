@@ -19,16 +19,21 @@ import BottomText from "./Helpers/BottomText";
 import { signUpData } from "../StaticData";
 import { useDispatch } from "react-redux";
 
+import notify from "../../Utils/helper/notifyToast";
+import { signUpUser } from "./../../Services/signInUp.service";
+import { getUser } from "./../../Services/user.service";
+import { getStationData } from "./../../Services/station.service";
+
 function SignUp() {
   const location = useLocation();
   const formRef = React.useRef(123);
   const history = useHistory();
   const dispatch = useDispatch();
+  const [isDisabled, setIsDisabled] = React.useState(false);
 
   const [values, setValues] = React.useState({
     textmask: "",
     numberformat: "",
-    PinCode: "",
     Mobile: "",
   });
 
@@ -41,17 +46,114 @@ function SignUp() {
     });
   };
 
+  const signUp = async (e) => {
+    e.preventDefault();
+    const inputValidation = handleDataValidation();
+    const elements = formRef.current.elements;
+
+    if (inputValidation) {
+      setIsDisabled(true);
+      const userData = {
+        name: elements.Name.value,
+        email: elements.SignUpEmail.value,
+        phone: elements.Mobile.value,
+        state: elements.State.value,
+        city: elements.City.value,
+      };
+      if (isStationSelected) {
+        userData.address = elements.Address.value;
+        userData.location = elements.URL.value;
+      }
+
+      const signupStatus = await signUpUser({
+        email: elements.SignUpEmail.value,
+        password: elements.SignUpPassword.value,
+        userData: userData,
+        isStation: isStationSelected,
+      });
+
+      console.log(signupStatus);
+
+      if (signupStatus.status) {
+        notify(signupStatus.message, "success");
+        let userdata;
+        if (isStationSelected) {
+          userdata = await getStationData(
+            signupStatus.accessToken,
+            signupStatus.id
+          );
+          console.log(userdata);
+          userData.isStation = true;
+        } else {
+          userdata = await getUser(signupStatus.accessToken);
+        }
+        console.log(userdata);
+        dispatch({
+          type: "UPDATE_USER_DATA",
+          data: userdata,
+        });
+        // history.push({
+        //   pathname: "/home",
+        // });
+      } else {
+        notify(signupStatus.message, "error");
+      }
+      setIsDisabled(false);
+    }
+  };
+
   const handleDataValidation = () => {
+    if (formRef.current.elements.Name.value === "") {
+      notify("Please enter your name", "warning");
+      return false;
+    }
+    if (
+      !formRef.current.elements.SignUpEmail.value ||
+      !validateEmail(formRef.current.elements.SignUpEmail.value)
+    ) {
+      notify("Please enter valid Email address", "warning");
+      return false;
+    }
+    if (formRef.current.elements.State.value === "") {
+      notify("Please enter your state name", "warning");
+      return false;
+    }
+    if (formRef.current.elements.City.value === "") {
+      notify("Please enter your city name", "warning");
+      return false;
+    }
+    if (formRef.current.elements.SignUpPassword.value.length < 6) {
+      notify("Password should be atleast 6 characters long", "warning");
+      return false;
+    }
+    if (
+      formRef.current.elements.ConfirmPassword.value.length !==
+      formRef.current.elements.SignUpPassword.value.length
+    ) {
+      notify("Confirm password should be same as password", "warning");
+      return false;
+    }
+    if (formRef.current.elements.UserType.value === "Station") {
+      if (formRef.current.elements.Address.value === "") {
+        notify("Please enter your address", "warning");
+        return false;
+      }
+
+      if (formRef.current.elements.URL.value === "") {
+        notify("Please enter your Google map URL", "warning");
+        return false;
+      }
+    }
     return true;
   };
 
-  const signUp = async (e) => {
-    e.preventDefault();
-    handleDataValidation();
-    fetchUserData();
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
   };
-
-  const fetchUserData = async () => {};
 
   return (
     <div
@@ -66,7 +168,13 @@ function SignUp() {
       <div className={Styles.UpperSection}>
         <span className={Styles.Title}>{signUpData.title}</span>
         <form ref={formRef} className={Styles.Form} onSubmit={signUp}>
-          <StyledMUIInput fullWidth id="Name" label="Name" variant="standard" />
+          <StyledMUIInput
+            fullWidth
+            id="Name"
+            label="Name"
+            variant="standard"
+            disabled={isDisabled}
+          />
           <StyledMUIInput
             fullWidth
             id="SignUpEmail"
@@ -75,6 +183,7 @@ function SignUp() {
             type="email"
             margin="dense"
             autoComplete="username"
+            disabled={isDisabled}
           />
           <StyledMUIInput
             fullWidth
@@ -82,6 +191,7 @@ function SignUp() {
             label="State"
             variant="standard"
             margin="dense"
+            disabled={isDisabled}
           />
           <StyledMUIInput
             fullWidth
@@ -89,6 +199,7 @@ function SignUp() {
             label="City/Town"
             variant="standard"
             margin="dense"
+            disabled={isDisabled}
           />
 
           <StyledMUIInput
@@ -97,12 +208,13 @@ function SignUp() {
             value={values.Mobile}
             onChange={handleChange}
             name="Mobile"
-            id="MobileSignUp"
+            id="Mobile"
             InputProps={{
               inputComponent: MobileNumberTextMask,
             }}
             variant="standard"
             margin="dense"
+            disabled={isDisabled}
           />
           <StyledMUIInput
             fullWidth
@@ -112,6 +224,17 @@ function SignUp() {
             type="password"
             margin="dense"
             autoComplete="current-password"
+            disabled={isDisabled}
+          />
+          <StyledMUIInput
+            fullWidth
+            id="ConfirmPassword"
+            label="Confirm Password"
+            variant="standard"
+            type="password"
+            margin="dense"
+            autoComplete="current-password"
+            disabled={isDisabled}
           />
           <RadioGroup
             row
@@ -124,6 +247,7 @@ function SignUp() {
             }}
           >
             <FormControlLabel
+              disabled={isDisabled}
               value="User"
               control={<CustomisedRadio />}
               label={
@@ -135,6 +259,7 @@ function SignUp() {
               }
             />
             <FormControlLabel
+              disabled={isDisabled}
               value="Station"
               control={<CustomisedRadio />}
               label={
@@ -154,6 +279,7 @@ function SignUp() {
                 label="Address"
                 variant="standard"
                 margin="dense"
+                disabled={isDisabled}
               />
               <StyledMUIInput
                 fullWidth
@@ -163,6 +289,7 @@ function SignUp() {
                 margin="dense"
                 type="url"
                 autoComplete="url"
+                disabled={isDisabled}
               />
             </>
           ) : null}
