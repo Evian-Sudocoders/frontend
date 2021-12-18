@@ -9,7 +9,6 @@ import { useLocation, useHistory } from "react-router-dom";
 
 import {
   MobileNumberTextMask,
-  PinCodeTextMask,
   CustomisedRadio,
 } from "./Helpers/StyledMUIInput";
 
@@ -23,6 +22,7 @@ import notify from "../../Utils/helper/notifyToast";
 import { signUpUser } from "./../../Services/signInUp.service";
 import { getUser } from "./../../Services/user.service";
 import { getStationData } from "./../../Services/station.service";
+import { validateEmail } from "./Helpers/ValidateEmail";
 
 function SignUp() {
   const location = useLocation();
@@ -72,29 +72,8 @@ function SignUp() {
         isStation: isStationSelected,
       });
 
-      console.log(signupStatus);
-
       if (signupStatus.status) {
         notify(signupStatus.message, "success");
-        let userdata;
-        if (isStationSelected) {
-          userdata = await getStationData(
-            signupStatus.accessToken,
-            signupStatus.id
-          );
-          console.log(userdata);
-          userData.isStation = true;
-        } else {
-          userdata = await getUser(signupStatus.accessToken);
-        }
-        console.log(userdata);
-        dispatch({
-          type: "UPDATE_USER_DATA",
-          data: userdata,
-        });
-        // history.push({
-        //   pathname: "/home",
-        // });
       } else {
         notify(signupStatus.message, "error");
       }
@@ -145,14 +124,6 @@ function SignUp() {
       }
     }
     return true;
-  };
-
-  const validateEmail = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
   };
 
   return (

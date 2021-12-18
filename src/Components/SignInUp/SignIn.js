@@ -4,23 +4,64 @@ import Styles from "./SignInUp.module.css";
 
 import StyledMUIInput from "./Helpers/StyledMUIInput";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 import Button from "../Button";
 import BottomText from "./Helpers/BottomText";
 
 import { signInData } from "../StaticData.js";
+import notify from "../../Utils/helper/notifyToast";
+import { signInUser } from "../../Services/signInUp.service";
+import { validateEmail } from "./Helpers/ValidateEmail";
+import { getUser } from "./../../Services/user.service";
+import { useDispatch } from "react-redux";
 
 function SignIn() {
   const location = useLocation();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const fetchUserData = async () => {};
+  const formRef = React.useRef(123);
 
-  async function SignIn(e) {
+  const [isDisabled, setIsDisabled] = React.useState(false);
+
+  const signIn = async (e) => {
     e.preventDefault();
-    // Signn up user here
-    fetchUserData();
-  }
+    const inputValidation = handleDataValidation();
+    const elements = formRef.current.elements;
+
+    if (inputValidation) {
+      setIsDisabled(true);
+      const signinStatus = await signInUser({
+        email: elements.SignInEmail.value,
+        password: elements.SignInPassword.value,
+      });
+
+      if (signinStatus.status) {
+        notify(signinStatus.message, "success");
+      } else {
+        notify(signinStatus.message, "error");
+      }
+      setIsDisabled(false);
+    }
+  };
+
+  const handleDataValidation = () => {
+    if (
+      !formRef.current.elements.SignInEmail.value ||
+      !validateEmail(formRef.current.elements.SignInEmail.value)
+    ) {
+      notify("Please enter valid Email address", "warning");
+      return false;
+    }
+
+    if (formRef.current.elements.SignInPassword.value.length < 6) {
+      notify("Password should be atleast 6 characters long", "warning");
+      return false;
+    }
+
+    return true;
+  };
 
   return (
     <div
@@ -34,7 +75,7 @@ function SignIn() {
     >
       <div className={Styles.UpperSection}>
         <span className={Styles.Title}>{signInData.title}</span>
-        <form className={Styles.Form} onSubmit={SignIn}>
+        <form className={Styles.Form} onSubmit={signIn} ref={formRef}>
           <StyledMUIInput
             fullWidth
             id="SignInEmail"
@@ -43,6 +84,7 @@ function SignIn() {
             type="email"
             margin="dense"
             autoComplete="username"
+            disabled={isDisabled}
           />
           <StyledMUIInput
             fullWidth
@@ -52,6 +94,7 @@ function SignIn() {
             type="password"
             margin="dense"
             autoComplete="current-password"
+            disabled={isDisabled}
           />
           <Button
             content="Continue"
