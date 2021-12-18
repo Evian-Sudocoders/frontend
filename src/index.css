@@ -42,6 +42,7 @@ html {
   --black: #222222;
   --sec-black: #444444;
   --ter-black: #888888;
+  --tert-grey: #999999;
   --black-opa-35: rgba(0, 0, 0, 0.35);
   --sec-grey: #cccccc;
   --light-green: #52c62e;
@@ -58,13 +59,15 @@ html {
   --blue-gradient: linear-gradient(
     84.96deg,
     #00c2ff -11.09%,
-    rgba(0, 209, 255, 0.63) 155.85%
+    rgba(45, 64, 68, 0.63) 155.85%
   );
   --payment-pop-up-bg: linear-gradient(
     84.96deg,
     #00c2ff -11.09%,
     rgba(0, 224, 255, 0.42) 155.85%
   );
+
+  --payment-bg: linear-gradient(180deg, rgba(99, 212, 252, 0) 0%, #63d4fc 100%);
   --primary-blue: #0dadf7;
   --preloader-bg: #4b33d1;
   --input-bg-light-blue: #fafcff;

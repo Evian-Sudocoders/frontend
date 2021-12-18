@@ -2,7 +2,13 @@ import React from "react";
 
 import Button from "../../Button";
 import styles from "./SlotComponent.module.css";
-function SlotComponent({ SlotNumber, ChargingPower, ChargingPrice }) {
+function SlotComponent({
+  SlotNumber,
+  ChargingPower,
+  ChargingPrice,
+  isPopUpOpen,
+  priceSet,
+}) {
   return (
     <div className={styles.Wrapper}>
       <div className={styles.LeftWrapper}>
@@ -13,7 +19,12 @@ function SlotComponent({ SlotNumber, ChargingPower, ChargingPrice }) {
         <Button
           wrapperClass={styles.ChargingPrice}
           content={`₹${ChargingPrice} / slot`}
-          mainColor="var(--blue-gradient)"
+          mainColor="var(--payment-pop-up-bg)"
+          onClick={() => {
+            isPopUpOpen(true);
+            let price = parseInt(ChargingPrice);
+            priceSet(price);
+          }}
         />
       </div>
     </div>

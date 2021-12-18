@@ -1,8 +1,10 @@
 .Wrapper {
   width: 50rem;
+
   background-color: var(--white);
-  padding: 4rem 5rem 0 4.5rem;
+  padding: 3rem 3.5rem 0 3.5rem;
   font-size: var(--font-17);
+  z-index: 6;
   font-weight: 500;
 }
 .InputWrapper,
@@ -16,6 +18,8 @@
 .SlotWrapper {
   margin-top: 0.6rem;
   padding-bottom: 3rem;
+  position: relative;
+  z-index: 4;
 }
 .Input {
   font-size: var(--font-16);
@@ -39,9 +43,65 @@
   font-weight: 600;
 }
 .Button {
+  position: relative;
   font-weight: 600;
   font-size: var(--font-18) !important;
   width: 18rem;
   margin: auto;
   display: block;
+  z-index: 2;
+  margin-bottom: 20rem;
+}
+.LowerIllustration {
+  position: absolute;
+  width: 100%;
+  height: 20rem;
+  background: var(--payment-bg);
+  background-color: var(--white);
+  display: flex;
+  align-items: flex-end;
+  bottom: 0;
+  z-index: 0;
+}
+.LowerStrip {
+  height: 5rem;
+  width: 100%;
+  background-color: var(--tert-grey);
+}
+.CarImg {
+  position: absolute;
+  width: 27rem;
+  object-fit: contain;
+  right: 0;
+  bottom: 2.5rem;
+}
+@media only screen and (max-width: 540px) {
+  .Wrapper {
+    width: 95vw;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .Wrapper {
+    padding: 2rem 2rem 0 2rem;
+    font-size: var(--font-16);
+  }
+  .Input {
+    font-size: var(--font-15);
+  }
+  .TimeWrapper {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  .Button {
+    font-size: var(--font-16) !important;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .Wrapper {
+    padding: 1rem 1rem 0 1rem;
+    font-size: var(--font-15);
+  }
+  .Input {
+    font-size: var(--font-14);
+  }
 }

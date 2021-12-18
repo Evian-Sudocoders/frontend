@@ -17,6 +17,10 @@ export const selectColorStyles = {
     ":hover": {
       border: "2px solid var(--sec-grey)",
     },
+    "@media only screen and (max-width: 440px)": {
+      ...styles["@media only screen and (max-width: 440px)"],
+      fontSize: "var(--font-16)",
+    },
   }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
     return {
@@ -35,12 +39,20 @@ export const selectColorStyles = {
         ...styles[":visited"],
         backgroundColor: "var(--sec-aqua)",
       },
+      "@media only screen and (max-width: 440px)": {
+        ...styles["@media only screen and (max-width: 440px)"],
+        fontSize: "var(--font-16)",
+      },
     };
   },
   multiValueLabel: (styles, { data }) => ({
     ...styles,
     fontSize: "var(--font-17)",
     backgroundColor: "var(--sec-aqua)",
+    "@media only screen and (max-width: 440px)": {
+      ...styles["@media only screen and (max-width: 440px)"],
+      fontSize: "var(--font-16)",
+    },
   }),
   multiValueRemove: (styles, { data }) => ({
     ...styles,

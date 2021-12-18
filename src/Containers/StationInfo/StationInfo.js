@@ -18,7 +18,8 @@ const tempData = {
 };
 
 function StationInfo() {
-  const [isPopUpOpen, setIsPopUpOpen] = useState(true);
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [price, setPrice] = useState(0);
 
   return (
     <>
@@ -30,15 +31,15 @@ function StationInfo() {
           GMapLink={tempData.GMapLink}
           NumberOfPorts={tempData.NumberOfPorts}
         />
-        <LowerContainer />
+        <LowerContainer isPopUpOpen={setIsPopUpOpen} priceSet={setPrice} />
       </div>
       <PopUp
-        ContentComp={<PaymentPopup price={15} />}
+        ContentComp={<PaymentPopup price={price} />}
         isOpen={isPopUpOpen}
         closeFun={() => {
           setIsPopUpOpen(false);
         }}
-        isClosable={false}
+        isClosable={true}
       />
     </>
   );

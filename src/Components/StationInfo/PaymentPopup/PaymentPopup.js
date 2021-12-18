@@ -5,6 +5,7 @@ import { inputRequired, vechicleInputRequired } from "./InputRequired";
 import { SlotTimeFun } from "./helper/SlotTimeFun";
 import { EstimatedTimeCalcFun } from "./helper/EstimatedTimeCalcFun";
 import { selectColorStyles } from "./helper/ColorStyles";
+import CarImg from "../../../Assets/PopUp/Car.svg";
 import Button from "../../Button";
 
 function PaymentPopup({ price }) {
@@ -114,57 +115,63 @@ function PaymentPopup({ price }) {
   );
 
   return (
-    <div className={styles.Wrapper}>
-      <form>
-        {inputRequiredList}
-        <div className={styles.TimeWrapper}>
-          <p>Estimated Time</p>
-          <p className={styles.EstimatedTime}>
-            <span>{finalChargingTime.hoursOfcharging}</span>&nbsp;H&nbsp;
-            <span>{finalChargingTime.minutesOfcharging}&nbsp;M</span>
-          </p>
-        </div>
-        {vechicleInputRequiredList}
-        <div className={styles.SlotWrapper}>
-          <p className={styles.LowerHeading}>Slot:</p>
-          <Select
-            isMulti
-            name="bookingSlots"
-            options={totalSlots}
-            styles={selectColorStyles}
-            isClearable={false}
-            placeholder="Select Slots"
-            onChange={(newValue, action) => {
-              if (action.action == "select-option") {
-                let newData = inputValues.bookedSlot;
-                newData.push(action.option.value);
-                setInputValues({ ...inputValues, bookedSlot: newData });
-              }
-              if (action.action == "remove-value") {
-                let newData = inputValues.bookedSlot;
-                for (let i = 0; i < newData.length; i++) {
-                  if (newData[i] == action.removedValue.value) {
-                    newData.splice(i, 1);
-                    break;
-                  }
+    <>
+      <div className={styles.Wrapper}>
+        <form className={styles.WrapperForm}>
+          {inputRequiredList}
+          <div className={styles.TimeWrapper}>
+            <p>Estimated Time</p>
+            <p className={styles.EstimatedTime}>
+              <span>{finalChargingTime.hoursOfcharging}</span>&nbsp;H&nbsp;
+              <span>{finalChargingTime.minutesOfcharging}&nbsp;M</span>
+            </p>
+          </div>
+          {vechicleInputRequiredList}
+          <div className={styles.SlotWrapper}>
+            <p className={styles.LowerHeading}>Slot:</p>
+            <Select
+              isMulti
+              name="bookingSlots"
+              options={totalSlots}
+              styles={selectColorStyles}
+              isClearable={false}
+              placeholder="Select Slots"
+              onChange={(newValue, action) => {
+                if (action.action == "select-option") {
+                  let newData = inputValues.bookedSlot;
+                  newData.push(action.option.value);
+                  setInputValues({ ...inputValues, bookedSlot: newData });
                 }
-                setInputValues({ ...inputValues, bookedSlot: newData });
-              }
-              setInputValues({
-                ...inputValues,
-                finalPrice: newValue.length * price,
-              });
-            }}
+                if (action.action == "remove-value") {
+                  let newData = inputValues.bookedSlot;
+                  for (let i = 0; i < newData.length; i++) {
+                    if (newData[i] == action.removedValue.value) {
+                      newData.splice(i, 1);
+                      break;
+                    }
+                  }
+                  setInputValues({ ...inputValues, bookedSlot: newData });
+                }
+                setInputValues({
+                  ...inputValues,
+                  finalPrice: newValue.length * price,
+                });
+              }}
+            />
+          </div>
+          <Button
+            content={`Book for ₹${inputValues.finalPrice}`}
+            mainColor="var(--payment-pop-up-bg)"
+            wrapperClass={styles.Button}
+            onClick={handleSubmit}
           />
-        </div>
-        <Button
-          content={`Book for ₹${inputValues.finalPrice}`}
-          mainColor="var(--blue-gradient)"
-          wrapperClass={styles.Button}
-          onClick={handleSubmit}
-        />
-      </form>
-    </div>
+        </form>
+      </div>
+      <div className={styles.LowerIllustration}>
+        <div className={styles.LowerStrip} />
+        <img src={CarImg} alt="Car" className={styles.CarImg} />
+      </div>
+    </>
   );
 }
 
