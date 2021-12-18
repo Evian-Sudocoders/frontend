@@ -1,6 +1,5 @@
 import axios from "axios";
 
-HEAD;
 import {
   UPDATE_PROFILE_PICTURE_URL,
   UPDATE_ADDRESS_URL,
