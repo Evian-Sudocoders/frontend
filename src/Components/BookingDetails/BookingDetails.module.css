@@ -1,0 +1,99 @@
+.Wrapper {
+  min-height: 100vh;
+  /* min-height: 100%; */
+  width: 45rem;
+  position: fixed;
+  right: 0px;
+  background-color: white;
+  z-index: 5;
+  padding: 5rem 4rem;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  transition: transform 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.Wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.CarBg {
+  left: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 32.5rem;
+}
+.Car {
+  position: absolute;
+  bottom: 0;
+  margin: 0 auto;
+  width: 100%;
+  left: 0;
+  right: 0;
+  height: fit-content;
+  width: fit-content;
+  margin-bottom: 3.65rem;
+}
+.Content {
+  width: 100%;
+}
+.Title {
+  font-size: var(--font-20);
+  font-weight: 600;
+  color: var(--black);
+}
+.Date {
+  font-size: var(--font-17);
+  font-weight: 600;
+  color: var(--sec-black);
+  margin-top: 0.3rem;
+}
+.Address {
+  width: 100%;
+  font-size: var(--font-14);
+  color: var(--sec-black);
+  font-weight: 500;
+  margin-top: 0.4rem;
+}
+
+.ListDataWrapper {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-17);
+  color: var(--sec-black);
+}
+
+.ListItem {
+  display: flex;
+}
+.ListItemLable {
+  margin-right: 0.5rem;
+  font-weight: 600;
+}
+
+.Status {
+  font-size: var(--font-17);
+  color: var(--sec-black);
+  margin-top: 2.5rem;
+}
+
+.ButtonWrapper {
+  margin-top: 6rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Button {
+  width: fit-content !important;
+  padding: 0.8rem 2.5rem !important;
+  font-size: var(--font-17) !important;
+  font-weight: 500 !important;
+}
