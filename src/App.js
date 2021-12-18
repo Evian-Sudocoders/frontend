@@ -33,7 +33,6 @@ const App = () => {
         setHasInitialised(true);
       }
     }
-    console.log(userData);
   }, [userData]);
 
   useEffect(() => {
@@ -73,10 +72,6 @@ const App = () => {
       }
     }
   };
-
-  useEffect(() => {
-    console.log(hasInitialised);
-  }, [hasInitialised]);
 
   return (
     <>

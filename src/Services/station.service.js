@@ -1,21 +1,20 @@
 import axios from "axios";
 
+HEAD;
 import {
-  GET_STATION_URL,
   UPDATE_PROFILE_PICTURE_URL,
   UPDATE_ADDRESS_URL,
+  GET_ALL_STATION_URL,
+  CHARGING_POINT_URL,
+  STATION_URL,
 } from "../Utils/constants";
 
-export const getStationData = async (accessToken) => {
+export const getStationDataById = async (stationId) => {
   try {
-    const { data } = await axios.get(GET_STATION_URL, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
+    const { data } = await axios.get(STATION_URL + "/" + stationId);
     return data;
-  } catch (err) {
-    throw err;
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -54,5 +53,24 @@ export const updateStationInfo = async (address, accessToken) => {
     return data;
   } catch (err) {
     throw err;
+  }
+};
+export const getBookedSlot = async (stationId, index) => {
+  try {
+    const { data } = await axios.get(
+      CHARGING_POINT_URL + "/" + stationId + "/" + index
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAllStationData = async (state, city) => {
+  try {
+    const { data } = await axios.get(`${GET_ALL_STATION_URL}/${state}/${city}`);
+    return data;
+  } catch (err) {
+    console.log(err);
   }
 };

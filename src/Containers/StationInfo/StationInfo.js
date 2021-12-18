@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import styles from "./StationInfo.module.css";
 
@@ -7,6 +8,10 @@ import UpperContainer from "../../Components/StationInfo/UpperContainer";
 import LowerContainer from "../../Components/StationInfo/LowerContainer";
 import PaymentPopup from "../../Components/StationInfo/PaymentPopup";
 import PopUp from "./../../Components/PopUp";
+import {
+  getBookedSlot,
+  getStationDataById,
+} from "./../../Services/station.service";
 
 const tempData = {
   StationName: "Loremi psum Electric Vehicle Charging Station",
@@ -19,22 +24,56 @@ const tempData = {
 
 function StationInfo() {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [stationData, setStationData] = useState({});
+  const [bookedSlots, setBookedSlots] = useState([]);
   const [price, setPrice] = useState(0);
+  const [slotNumber, setSlotNumber] = useState(1);
+  const { stationID } = useParams();
 
+  useEffect(() => {
+    fetchStationData();
+  }, []);
+
+  const fetchStationData = async () => {
+    const data = await getStationDataById(stationID);
+    setStationData(data);
+  };
+
+  useEffect(() => {
+    handleBookedSlots();
+  }, [slotNumber]);
+
+  const handleBookedSlots = async () => {
+    const data = await getBookedSlot(stationID, slotNumber);
+
+    setBookedSlots(data.bookedSlots);
+  };
   return (
     <>
       <div className={styles.Wrapper}>
         <Navbar />
         <UpperContainer
-          StationName={tempData.StationName}
-          StationAddress={tempData.StationAddress}
-          GMapLink={tempData.GMapLink}
-          NumberOfPorts={tempData.NumberOfPorts}
+          StationName={stationData?.name}
+          StationAddress={stationData?.address}
+          GMapLink={stationData?.location}
+          NumberOfPorts={stationData?.chargingPoints?.length}
         />
-        <LowerContainer isPopUpOpen={setIsPopUpOpen} priceSet={setPrice} />
+        <LowerContainer
+          isPopUpOpen={setIsPopUpOpen}
+          priceSet={setPrice}
+          chargingPoints={stationData?.chargingPoints}
+          setslot={setSlotNumber}
+        />
       </div>
       <PopUp
-        ContentComp={<PaymentPopup price={price} />}
+        ContentComp={
+          <PaymentPopup
+            price={price}
+            slotNumber={slotNumber}
+            bookedSlot={bookedSlots}
+            isOpen={setIsPopUpOpen}
+          />
+        }
         isOpen={isPopUpOpen}
         closeFun={() => {
           setIsPopUpOpen(false);

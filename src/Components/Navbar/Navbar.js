@@ -2,8 +2,11 @@ import React from "react";
 import styles from "./Navbar.module.css";
 
 import { ReactComponent as Logo } from "../../Assets/_General/evian.svg";
+import { useSelector } from "react-redux";
 
 function Navbar() {
+  const userData = useSelector((state) => state.userReducer.userData);
+
   return (
     <div className={styles.Wrapper}>
       <div className={styles.SubWrapper}>
@@ -16,7 +19,7 @@ function Navbar() {
             alt="Default Profile Photo"
             className={styles.ProfilePhoto}
           />
-          <span className={styles.UserName}>Rayna Franci</span>
+          <span className={styles.UserName}>{userData?.name}</span>
         </div>
       </div>
     </div>

@@ -7,9 +7,22 @@ import { EstimatedTimeCalcFun } from "./helper/EstimatedTimeCalcFun";
 import { selectColorStyles } from "./helper/ColorStyles";
 import CarImg from "../../../Assets/PopUp/Car.svg";
 import Button from "../../Button";
+import {
+  payementService,
+  paymentInitialization,
+} from "../../../Services/payment.service";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-function PaymentPopup({ price }) {
+function PaymentPopup({ price, slotNumber, bookedSlot, isOpen }) {
+  const accessToken = useSelector(
+    (state) => state.userReducer.userData.accessToken
+  );
+  const userData = useSelector((state) => state.userReducer.userData);
+
   let tempData = new Array(48).fill(0);
+  const { stationID } = useParams();
+
   const [inputValues, setInputValues] = useState({
     batterySize: "40",
     chargingPower: "80",
@@ -25,7 +38,7 @@ function PaymentPopup({ price }) {
     minutesOfcharging: "0",
   });
   const [totalSlots, setTotalSlots] = useState([]);
-  const [bookedSlot, setBookedSlot] = useState([16, 17]);
+  // const [bookedSlot, setBookedSlot] = useState(bookSlot);
 
   const handleInput = (e) => {
     const name = e.target.name;
@@ -33,10 +46,27 @@ function PaymentPopup({ price }) {
     setInputValues({ ...inputValues, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputValues);
-    //RazorPay Integration
+
+    if (accessToken) {
+      const orderData = await paymentInitialization(
+        accessToken,
+        stationID,
+        inputValues.vehicleNumber,
+        slotNumber,
+        inputValues.bookedSlot,
+        parseInt(inputValues.finalPrice)
+      );
+      const data = await payementService(
+        parseInt(inputValues.finalPrice),
+        orderData.orderId,
+        orderData.bookingId,
+        accessToken,
+        userData
+      );
+      isOpen(false);
+    }
   };
 
   useEffect(() => {
@@ -53,7 +83,7 @@ function PaymentPopup({ price }) {
       let startTimeMinutes = parseInt(startTime[1]);
       let currentDate = new Date();
       let disabled = false;
-      if (currentDate.getHours() > startTimeHours || bookedSlot.includes(i)) {
+      if (currentDate.getHours() > startTimeHours || bookedSlot?.includes(i)) {
         disabled = true;
       } else if (
         currentDate.getHours() == startTimeHours &&

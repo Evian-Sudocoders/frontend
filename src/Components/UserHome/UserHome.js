@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./UserHome.module.css";
 import Select from "react-select";
 import Station from "./Station";
+import { getAllStationData } from "../../Services/station.service";
+import { useSelector } from "react-redux";
 
 const selectColorStyles = {
   control: (styles) => ({
@@ -31,14 +33,59 @@ const selectColorStyles = {
 };
 
 const StateOptions = [
-  { value: "north-indian", label: "Gujarat" },
-  { value: "south-indian", label: "Maharashtra" },
-  { value: "chinese", label: "UP" },
-  { value: "bengali", label: "Haryana" },
-  { value: "italian", label: "Delhi" },
+  { value: "Gujarat", label: "Gujarat" },
+  { value: "UP", label: "UP" },
+  { value: "Haryana", label: "Haryana" },
+  { value: "Delhi", label: "Delhi" },
 ];
 
+const CityOptions = {
+  Gujarat: [
+    { value: "Surat", label: "Surat" },
+    { value: "Ahmedabad", label: "Ahmedabad" },
+  ],
+  UP: [
+    { value: "Agra", label: "Agra" },
+    { value: "Kanpur", label: "Kanpur" },
+  ],
+  Haryana: [
+    { value: "Gurgaon", label: "Gurgaon" },
+    { value: "Karnal", label: "Karnal" },
+  ],
+  Delhi: [
+    { value: "Lajpat Nagar", label: "Lajpat Nagar" },
+    { value: "Safdarjung", label: "Safdarjung" },
+  ],
+};
+
 function UserHome() {
+
+  const userData = useSelector((state) => state.userReducer.userData);
+
+  const [stationData, setStationData] = useState([]);
+  const [state, setState] = useState(userData.state);
+  const [city, setCity] = useState(userData.city);
+
+  const stateIdx = StateOptions?.findIndex(state => state.value == userData.state);
+  const cityIdx = CityOptions[userData.state]?.findIndex(city => city.value === userData.city);
+
+  useEffect(() => {
+    fetchAllStations();
+  }, [state, city]);
+
+  const fetchAllStations = async () => {
+    const stationList = await getAllStationData(state, city);
+    setStationData(stationList);
+  };
+
+  console.log(stationData);
+
+  let count = 0;
+  const list = stationData.stations?.map((station, id) => {
+    count++;
+    return <Station key={id} data={station} />;
+  });
+
   return (
     <div className={styles.Wrapper}>
       <div className={styles.SelectorsWrapper}>
@@ -47,24 +94,30 @@ function UserHome() {
             closeMenuOnSelect={false}
             styles={selectColorStyles}
             options={StateOptions}
+            name="State"
+            onChange={(newValue, action) => {
+              setState(newValue.value);
+            }}
+            defaultValue={StateOptions[stateIdx]}
           />
         </div>
         <div className={styles.SelectorDiv}>
           <Select
             closeMenuOnSelect={false}
             styles={selectColorStyles}
-            options={StateOptions}
+            options={state ? CityOptions[state] : []}
+            name="City"
+            onChange={(newValue, action) => {
+              setCity(newValue.value);
+            }}
+            defaultValue={CityOptions[userData.state][cityIdx]}
           />
         </div>
       </div>
       <div className={styles.Count}>
-        <span className={styles.Value}>25</span> results found
+        <span className={styles.Value}>{count}</span> results found
       </div>
-      <div className={styles.StationWrapper}>
-        <Station />
-        <Station />
-        <Station />
-      </div>
+      <div className={styles.StationWrapper}>{list}</div>
     </div>
   );
 }
