@@ -80,11 +80,6 @@ function SignUp() {
           type: "UPDATE_USER_DATA",
           data: userdata,
         });
-        if (userdata.isStation) {
-          history.push("/dashboard");
-        } else {
-          history.push("/userhome");
-        }
       } else {
         notify(signupStatus.message, "error");
       }
