@@ -28,31 +28,33 @@ function UserBookingCard({ data }) {
     <div className={Styles.Wrapper}>
       <div className={Styles.LeftSection}>
         <div className={Styles.TopInfoWrapper}>
-          <h3 className={Styles.StationName}>{data.station}</h3>
-          <div className={Styles.Address}>{data.address}</div>
+          <h3 className={Styles.StationName}>{data?.stationName}</h3>
+          <div className={Styles.Address}>{data?.address}</div>
         </div>
         <div className={Styles.BottomInfoWrapper}>
           <div className={Styles.ListInfoItem}>
             <h5 className={Styles.label}>{parseLable("Point no")}</h5>
-            <div className={Styles.value}>{data.pointNo}</div>
+            <div className={Styles.value}>{data?.chargingPoint}</div>
           </div>
           <div className={Styles.ListInfoItem}>
             <h5 className={Styles.label}>{parseLable("Slot(s) Timing")}</h5>
             <div className={Styles.value}>
-              {SlotTimeFun(data.slots[0]).startTime +
+              {SlotTimeFun(data?.slots[0]).startTime +
                 "-" +
-                SlotTimeFun(data.slots[data.slots.length - 1]).endTime}
+                SlotTimeFun(data?.slots[data?.slots.length - 1]).endTime}
             </div>
           </div>
           <div className={Styles.ListInfoItem}>
             <h5 className={Styles.label}>{parseLable("Charges")}</h5>
-            <div className={Styles.value}>{data.charges +  " ₹"}</div>
+            <div className={Styles.value}>{data?.totalAmount + " ₹"}</div>
           </div>
         </div>
       </div>
       <div className={Styles.RightSection}>
         <StatusButton status={data.status} />
-        <div className={Styles.Date}>{data.date.toLocaleDateString()}</div>
+        <div className={Styles.Date}>
+          {new Date(data?.createdAt._seconds * 1000).toLocaleDateString()}
+        </div>
       </div>
     </div>
   );
