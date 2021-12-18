@@ -1,6 +1,5 @@
 import axios from "axios";
-
-import { STATION_URL, CHARGING_POINT_URL } from "../Utils/constants";
+import { GET_STATION_URL, GET_ALL_STATION_URL, CHARGING_POINT_URL, STATION_URL} from "../Utils/constants";
 
 export const getStationDataById = async (stationId) => {
   try {
@@ -20,3 +19,14 @@ export const getBookedSlot = async (stationId, index) => {
     console.log(error);
   }
 };
+
+export const getAllStationData = async (state, city) => {
+  try {
+    const { data } = await axios.get(`${GET_ALL_STATION_URL}/${state}/${city}`);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+

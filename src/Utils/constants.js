@@ -7,6 +7,9 @@ export const CHARGING_POINT_URL = `${BASE_URL}/chargingPoint/bookedSlots`;
 export const SIGNUP_USER_URL = `${AUTH_URL}/signupuser`;
 export const SIGNUP_STATION_URL = `${AUTH_URL}/signupstation`;
 export const GET_USER_URL = `${AUTH_URL}/getUserDetails`;
+export const GET_STATION_URL = `${STATION_URL}`;
+
+export const GET_ALL_STATION_URL = `${STATION_URL}`;
 
 export const INITIALIZE_BOOKING_URL = `${BOOKING_URL}/initializeBooking`;
 export const VERIFY_BOOKING_URL = `${BOOKING_URL}/verifyBooking`;
