@@ -1,8 +1,11 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Button from "../../Button";
 import styles from "./Station.module.css";
 
 function Station({ data }) {
+  const history = useHistory();
+
   let cost;
   if (data.numberOfChargingPoints) {
     cost = `₹${data.minCost}-${data.maxCost}/slot`;
@@ -25,7 +28,9 @@ function Station({ data }) {
         <Button
           wrapperClass={styles.ButtonStyle}
           content={cost}
-          // onClick={}
+          onClick={()=>(
+            history.push(`/station/${data.id}`)
+          )}
         />
       </div>
     </div>
