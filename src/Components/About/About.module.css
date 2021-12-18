@@ -74,18 +74,34 @@
 }
 
 .PersonalInfoMobileAndEmail {
+  width: calc(100% - 16rem);
   word-wrap: break-word;
   display: flex;
   flex-direction: column;
   padding-top: 0.5rem;
   font-weight: 500;
+  overflow-wrap: break-word;
+}
+.StationPersonalInfoMobileAndEmail {
+  width: 100%;
+}
+
+.PersonalInfoMobileAndEmail p {
+  width: 100%;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+.PersonalInfoContentEmail {
+  word-wrap: break-word;
+  display: inline-block;
 }
 
 .PersonalInfoFSSAI {
   font-weight: 800;
 }
 .PersonalInfoImageWrapper {
-  width: 16rem;
+  width: 16rem !important;
   height: 12rem;
   display: flex;
   align-items: center;
@@ -290,6 +306,9 @@
   .Wrapper {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
+  }
+  .PersonalInfoMobileAndEmail {
+    width: 100%;
   }
 }
 @media only screen and (max-width: 500px) {

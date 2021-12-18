@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import Styles from "./Profile.module.css";
 
@@ -11,9 +12,10 @@ import StationChargingPointsList from "./../../Components/StationChargingPointsL
 import BookingDetails from "../../Components/BookingDetails/BookingDetails";
 
 function Profile() {
+  const userData = useSelector((state) => state.userReducer.userData);
+
   const Location = useLocation();
   const history = useHistory();
-  const [isStation, setIsStation] = useState(false);
   const [bookings, setBookings] = useState([]);
   const [bookingSlideDetails, setBookingSlideDetails] = useState({
     isOpen: false,
@@ -33,24 +35,23 @@ function Profile() {
 
   useEffect(() => {
     // Fetch Data
-
-    let tempData = Array(12)
-      .fill({})
-      .map((item, index) => ({
-        id: index,
-        username: "Abc Xyz",
-        vehicle_number: "MH 12 ABC 1234",
-        station: `Lorem Ipsum Electric Vehicle Charging Station`,
-        date: new Date(),
-        address: `${index} Opp Virwani Ind Est Jay Bharat Indl Est 2nd Flr, 44, Goregaon (east), Surat`,
-        pointNo: Math.floor(Math.random() * 6) + 1,
-        slots: Array(Math.floor(Math.random() * 6) + 1)
-          .fill(Math.floor(Math.random() * 15))
-          .map((x, index) => x + index),
-        charges: Math.floor(Math.random() * 100),
-        status: index < 2 ? "pending" : "success",
-      }));
-    setBookings(tempData);
+    // let tempData = Array(12)
+    //   .fill({})
+    //   .map((item, index) => ({
+    //     id: index,
+    //     username: "Abc Xyz",
+    //     vehicle_number: "MH 12 ABC 1234",
+    //     station: `Lorem Ipsum Electric Vehicle Charging Station`,
+    //     date: new Date(),
+    //     address: `${index} Opp Virwani Ind Est Jay Bharat Indl Est 2nd Flr, 44, Goregaon (east), Surat`,
+    //     pointNo: Math.floor(Math.random() * 6) + 1,
+    //     slots: Array(Math.floor(Math.random() * 6) + 1)
+    //       .fill(Math.floor(Math.random() * 15))
+    //       .map((x, index) => x + index),
+    //     charges: Math.floor(Math.random() * 100),
+    //     status: index < 2 ? "pending" : "success",
+    //   }));
+    // setBookings(tempData);
   }, []);
 
   const openBookingSlide = (id, index) => {
@@ -104,7 +105,7 @@ function Profile() {
           <Navbar />
           <div className={Styles.SubWrapper}>
             <div className={Styles.LeftWrapper}>
-              {isStation ? (
+              {userData.isStation ? (
                 <StationChargingPointsList />
               ) : (
                 <UserBookingList
@@ -115,7 +116,7 @@ function Profile() {
             </div>
             <div className={Styles.Line} />
             <div className={Styles.AboutWraper}>
-              <About isStation={isStation} />
+              <About isStation={userData.isStation} userData={userData} />
             </div>
           </div>
           <div

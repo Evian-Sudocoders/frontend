@@ -1,8 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import notify from "../../Utils/helper/notifyToast";
+import { useDispatch, useSelector } from "react-redux";
 
+import notify from "../../Utils/helper/notifyToast";
 import { getAuth, signOut } from "firebase/auth";
+import { uploadFile } from "./../../Services/firebase.service";
+import {
+  updateProfilePicture,
+  updateStationInfo,
+} from "../../Services/station.service";
 
 import Styles from "./About.module.css";
 
@@ -13,8 +19,6 @@ import { AboutSecHeadersData } from "./../StaticData";
 
 import EditableTextArea from "./EditableTextArea";
 
-import { useDispatch, useSelector } from "react-redux";
-
 const tempData = {
   phone: "9966445522",
   email: "abc@xyz.com",
@@ -23,11 +27,11 @@ const tempData = {
   city: "Surat",
   profilePicture:
     "https://s3-alpha-sig.figma.com/img/add1/75d2/10c497455f79cd54356f8b1580320962?Expires=1640563200&Signature=ZN-bH~otrw1Bp5SBdME9woz597ncstqa5rNsHPhQpoLPhKkrU6s6BHhwzj1UdVRwqiKwVRgyUmkCuoXQ7jPfNFbdPUXpWpbGevUcpxHwxwLMsmuwdVypt1DfEFTviTvWK3rfbYG-WinF-JOAe-P1nMXX7FaUy3t1~v~SIc1JttLSQ09S-sMDl8b7~WT~YDB27ibKOrUpU5U1RMk-9nSMWe3yRHWbuubuE-lLc2OgICSxJzZcUpd2JfPQf0o7hEJby0NiRIoP8NIB23EVSikcLMdy0ZGHkYGzv2btKE0sxpyib6Co~Z5Sxs8acrUlOLpzInNNoGSEt3KqCAefjiawaA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-  URL: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59499.58498205518!2d72.88424786739341!3d21.24278804338059!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0474a3047158d%3A0x8053e89cd105a418!2sElectric%20Vehicle%20Charging%20Station!5e0!3m2!1sen!2sin!4v1639556330888!5m2!1sen!2sin",
+  location:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59499.58498205518!2d72.88424786739341!3d21.24278804338059!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0474a3047158d%3A0x8053e89cd105a418!2sElectric%20Vehicle%20Charging%20Station!5e0!3m2!1sen!2sin!4v1639556330888!5m2!1sen!2sin",
 };
 
 function About({ userData = tempData, isStation = false }) {
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const profileImageInputRef = useRef(12);
@@ -47,7 +51,7 @@ function About({ userData = tempData, isStation = false }) {
   useEffect(() => {
     if (
       currentUserData.address === userData.address &&
-      currentUserData.URL === userData.URL
+      currentUserData.location === userData.location
     ) {
       setOverallStates({
         ...overallStates,
@@ -62,8 +66,8 @@ function About({ userData = tempData, isStation = false }) {
   }, [
     currentUserData.address,
     userData.address,
-    currentUserData.URL,
-    userData.URL,
+    currentUserData.location,
+    userData.location,
   ]);
 
   const handleAddressEdit = (newAddress) => {
@@ -71,7 +75,7 @@ function About({ userData = tempData, isStation = false }) {
   };
 
   const handleURLChange = (newURL) => {
-    setCurrentUserData({ ...currentUserData, URL: newURL });
+    setCurrentUserData({ ...currentUserData, location: newURL });
   };
 
   const saveData = async () => {
@@ -80,8 +84,16 @@ function About({ userData = tempData, isStation = false }) {
       try {
         // Station Overall API Call
         notify("Info updated successfully", "success");
+        console.log(currentUserData.address, currentUserData.location);
+        await updateStationInfo(
+          {
+            address: currentUserData.address,
+            location: currentUserData.location,
+          },
+          userData.accessToken
+        );
       } catch (err) {
-        notify(err.response.data.errors[0].message, "error");
+        notify(err.response);
       }
     } else {
       notify("No changes to save");
@@ -98,12 +110,17 @@ function About({ userData = tempData, isStation = false }) {
     const [file] = profileImageInputRef.current.files;
     try {
       if (file) {
+        notify("Uploading profile picture...", "info");
         profileImageRef.current.src = URL.createObjectURL(file);
-        // Upload image to firebase and call on change
+        const downloadURL = await uploadFile(file, "profile");
         // call api
+        await updateProfilePicture(downloadURL, userData.accessToken);
+        notify("Profile picture updated successfully", "success");
       }
     } catch (err) {
-      notify(err.response.data.errors[0].message, "error");
+      console.log(err);
+      console.log(err.response);
+      notify(err, "error");
     }
   };
 
@@ -144,16 +161,18 @@ function About({ userData = tempData, isStation = false }) {
               />
             </div>
           ) : null}
-          <div className={Styles.PersonalInfoMobileAndEmail}>
-            <span className={Styles.PersonalInfoContentMobile}>
-              {userData.phone}
-            </span>
-            <span className={Styles.PersonalInfoContentEmail}>
-              {userData.email}
-            </span>
-            <span className={Styles.PersonalInfoCityState}>
+          <div
+            className={
+              Styles.PersonalInfoMobileAndEmail + " " + isStation
+                ? Styles.StationPersonalInfoMobileAndEmail
+                : ""
+            }
+          >
+            <p className={Styles.PersonalInfoContentMobile}>{userData.phone}</p>
+            <p className={Styles.PersonalInfoContentEmail}>{userData.email}</p>
+            <p className={Styles.PersonalInfoCityState}>
               {userData.city + ", " + userData.state}
-            </span>
+            </p>
             <span className={Styles.PersonalInfoFSSAI}>{userData.fssaiId}</span>
           </div>
         </div>
@@ -216,7 +235,7 @@ function About({ userData = tempData, isStation = false }) {
 
             <div className={Styles.EditableListItem}>
               <EditableTextArea
-                inputValue={currentUserData.URL}
+                inputValue={currentUserData.location}
                 isEditable={overallStates.isInEditMode}
                 dataChangeFun={handleURLChange}
                 focusIndex={1}
@@ -240,17 +259,8 @@ function About({ userData = tempData, isStation = false }) {
               console.log("signed out");
               dispatch({
                 type: "UPDATE_USER_DATA",
-                details: {},
+                details: null,
               });
-              dispatch({
-                type: "UPDATE_STATION_DATA",
-                details: {},
-              });
-              dispatch({
-                type: "UPDATE_ACCESS_TOKEN",
-                details: { accessToken: null, uid: null },
-              });
-              history.push("/");
             })
             .catch((error) => {
               console.log(error);
