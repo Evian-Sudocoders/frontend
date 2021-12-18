@@ -74,12 +74,6 @@ function SignUp() {
 
       if (signupStatus.status) {
         notify(signupStatus.message, "success");
-        const userdata = await getUser(signupStatus.accessToken);
-
-        dispatch({
-          type: "UPDATE_USER_DATA",
-          data: userdata,
-        });
       } else {
         notify(signupStatus.message, "error");
       }

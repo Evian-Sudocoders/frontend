@@ -39,17 +39,6 @@ function SignIn() {
 
       if (signinStatus.status) {
         notify(signinStatus.message, "success");
-        const userdata = await getUser(signinStatus.accessToken);
-
-        dispatch({
-          type: "UPDATE_USER_DATA",
-          data: userdata,
-        });
-        if (userdata.isStation) {
-          history.push("/dashboard");
-        } else {
-          history.push("/userhome");
-        }
       } else {
         notify(signinStatus.message, "error");
       }
