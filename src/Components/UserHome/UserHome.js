@@ -38,15 +38,29 @@ const StateOptions = [
   { value: "Delhi", label: "Delhi" },
 ];
 
-const CityOptions = [
-  { value: "Surat", label: "Surat" },
-  { value: "Agra", label: "Agra" },
-];
+const CityOptions = {
+  Gujarat: [
+    { value: "Surat", label: "Surat" },
+    { value: "Ahmedabad", label: "Ahmedabad" },
+  ],
+  UP: [
+    { value: "Agra", label: "Agra" },
+    { value: "Kanpur", label: "Kanpur" },
+  ],
+  Haryana: [
+    { value: "Gurgaon", label: "Gurgaon" },
+    { value: "Karnal", label: "Karnal" },
+  ],
+  Delhi: [
+    { value: "Lajpat Nagar", label: "Lajpat Nagar" },
+    { value: "Safdarjung", label: "Safdarjung" },
+  ],
+};
 
 function UserHome() {
   const [stationData, setStationData] = useState([]);
-  const [state, setState] = useState("Gujarat");
-  const [city, setCity] = useState("Surat");
+  const [state, setState] = useState();
+  const [city, setCity] = useState();
 
   useEffect(() => {
     fetchAllStations();
@@ -59,10 +73,10 @@ function UserHome() {
 
   console.log(stationData);
 
-  let count=0;
+  let count = 0;
   const list = stationData.stations?.map((station, id) => {
     count++;
-    return (<Station key={id} data={station} />);
+    return <Station key={id} data={station} />;
   });
 
   return (
@@ -74,25 +88,27 @@ function UserHome() {
             styles={selectColorStyles}
             options={StateOptions}
             name="State"
-            onChange={(newValue, action)=>{setState(newValue.value)}}
+            onChange={(newValue, action) => {
+              setState(newValue.value);
+            }}
           />
         </div>
         <div className={styles.SelectorDiv}>
           <Select
             closeMenuOnSelect={false}
             styles={selectColorStyles}
-            options={CityOptions}
+            options={state ? CityOptions[state] : []}
             name="City"
-            onChange={(newValue, action)=>{setCity(newValue.value)}}
+            onChange={(newValue, action) => {
+              setCity(newValue.value);
+            }}
           />
         </div>
       </div>
       <div className={styles.Count}>
         <span className={styles.Value}>{count}</span> results found
       </div>
-      <div className={styles.StationWrapper}>
-        {list}
-      </div>
+      <div className={styles.StationWrapper}>{list}</div>
     </div>
   );
 }
