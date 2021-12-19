@@ -23,6 +23,7 @@ import { signUpUser } from "./../../Services/signInUp.service";
 import { getUser } from "./../../Services/user.service";
 import { getStationData } from "./../../Services/station.service";
 import { validateEmail } from "./Helpers/ValidateEmail";
+import { fetchAndSetUserData } from "./Helpers/updateState";
 
 function SignUp() {
   const location = useLocation();
@@ -73,7 +74,13 @@ function SignUp() {
       });
 
       if (signupStatus.status) {
-        notify(signupStatus.message, "success");
+        await fetchAndSetUserData(
+          signupStatus.accessToken,
+          signupStatus.uid,
+          dispatch,
+          history,
+          signupStatus.message
+        );
       } else {
         notify(signupStatus.message, "error");
       }
