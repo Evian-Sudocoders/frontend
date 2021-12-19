@@ -16,7 +16,7 @@ function UserBookingList({ bookings, openBookingSlide }) {
             className={Styles.ItemWrapper}
             onClick={() => {
               if (openBookingSlide) {
-                openBookingSlide(item.id, index);
+                openBookingSlide(index);
               }
             }}
           >

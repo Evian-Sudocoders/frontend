@@ -1,5 +1,9 @@
 import axios from "axios";
-import { INITIALIZE_BOOKING_URL, VERIFY_BOOKING_URL } from "../Utils/constants";
+import {
+  INITIALIZE_BOOKING_URL,
+  VERIFY_BOOKING_URL,
+  BOOKING_URL,
+} from "../Utils/constants";
 
 import notify from "../Utils/helper/notifyToast";
 
@@ -73,13 +77,6 @@ export const payementService = async (
 
     var rzp1 = new window.Razorpay(options);
     rzp1.on("payment.failed", function (response) {
-      //   alert(response.error.code);
-      //   alert(response.error.description);
-      //   alert(response.error.source);
-      //   alert(response.error.step);
-      //   alert(response.error.reason);
-      //   alert(response.error.metadata.order_id);
-      //   alert(response.error.metadata.payment_id);
       notify("Payment Failed", "error");
     });
     rzp1.open();
@@ -111,6 +108,23 @@ export const PaymentVerification = async (
       }
     );
     notify("Payment Successful", "success");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const successBooking = async (bookingId, accessToken) => {
+  try {
+    const { data } = await axios.put(
+      BOOKING_URL + "/" + bookingId,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
     return data;
   } catch (error) {
     console.log(error);

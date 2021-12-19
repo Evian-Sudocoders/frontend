@@ -11,6 +11,7 @@ import UserBookingList from "./../../Components/UserBookingList";
 import StationChargingPointsList from "./../../Components/StationChargingPointsList/index";
 import BookingDetails from "../../Components/BookingDetails/BookingDetails";
 import { getUserBookings } from "../../Services/user.service";
+import { successBooking } from "../../Services/payment.service";
 
 function Profile() {
   const userData = useSelector((state) => state.userReducer.userData);
@@ -40,12 +41,10 @@ function Profile() {
 
   const fetchUserBookings = async () => {
     const response = await getUserBookings(userData.accessToken);
-    console.log(response);
     setBookings(response.bookings);
   };
 
-  const openBookingSlide = (id, index) => {
-    console.log(id, index);
+  const openBookingSlide = (index) => {
     setBookingSlideDetails({
       isOpen: true,
       bookingDetails: bookings[index],
@@ -75,10 +74,10 @@ function Profile() {
     history.push("/profile");
   };
 
-  const markSuccess = (id) => {
-    // Mark booking as success
-    // Refetch Data
-    console.log(id);
+  const markSuccess = async (id) => {
+    const data = await successBooking(id, userData.accessToken);
+    fetchUserBookings();
+    closeBookingSlide();
   };
 
   useEffect(() => {
