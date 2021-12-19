@@ -144,6 +144,9 @@ function About({ userData = tempData, isStation = false }) {
                 src={currentUserData.profilePicture}
                 alt="Profile"
                 className={Styles.PersonalInfoImage}
+                onLoad={(e) => {
+                  e.target.style.opacity = 1;
+                }}
               />
               <div
                 className={Styles.EditImageScrim}
