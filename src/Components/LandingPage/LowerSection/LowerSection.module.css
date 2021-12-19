@@ -10,7 +10,7 @@
     #1fbcff 4.9%,
     rgba(76, 202, 255, 0) 121.16%
   );
-  margin-bottom: 15rem;
+  margin-bottom: 14.5rem;
 }
 .SubWrapper {
   margin: 8rem;
@@ -23,13 +23,13 @@
 .Heading {
   width: 65rem;
   font-weight: 500;
-  font-size: 4.8rem;
+  font-size: var(--font-40);
   text-align: center;
   color: #ffffff;
   margin-bottom: 6rem;
 }
 .ButtonStyle {
-  padding: 1.2rem 3rem;
+  padding: 1.2rem 3.5rem;
   background: linear-gradient(
     81.71deg,
     #ffffff -3.64%,
@@ -37,7 +37,7 @@
   );
   border-radius: 33px;
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: var(--font-18);
   line-height: 27px;
   text-align: center;
   color: #20d7ff !important;
@@ -70,77 +70,109 @@
   width: fit-content;
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1000px) {
   .Heading {
-    width: 45rem;
-    font-weight: 500;
-    font-size: 3.5rem;
-    text-align: center;
-    color: #ffffff;
-    margin-bottom: 6rem;
+    width: 50rem;
+    font-size: var(--font-30);
+  }
+  .Ev2 {
+    height: 35rem;
+    top: calc(100% - 35rem + 0.85rem);
+  }
+  .Ev3 {
+    position: absolute;
+    height: 6rem;
+    top: calc(100% - 5.95rem);
+  }
+  .Ev4 {
+    height: 15rem;
+    top: calc(100% - 12rem);
+    right: 7rem;
+  }
+  .ButtonStyle {
+    font-size: var(--font-17) !important;
+    padding: 0.9rem 2.8rem !important;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .Wrapper {
+    margin-bottom: 12rem;
+  }
+  .Heading {
+    width: 50rem;
+    font-size: var(--font-30);
   }
   .Ev2 {
     height: 28rem;
-    top: calc(100% - 28rem + 0.74rem);
+    top: calc(100% - 28rem + 0.85rem);
   }
   .Ev3 {
     position: absolute;
     height: 5rem;
-    top: calc(100% - 5rem + 0.04rem);
+    top: calc(100% - 4.95rem);
   }
   .Ev4 {
-    height: 13rem;
-    top: calc(100% - 10rem);
-    right: 7rem;
+    height: 12rem;
+    top: calc(100% - 9rem);
+    right: 6rem;
   }
 }
 
-@media only screen and (max-width: 580px) {
+@media only screen and (max-width: 600px) {
+  .SubWrapper {
+    margin: 0;
+    margin-top: 6rem;
+  }
   .Heading {
-    width: 35rem;
-    font-weight: 500;
-    font-size: 2.5rem;
-    text-align: center;
-    color: #ffffff;
-    margin-bottom: 6rem;
+    width: min(39rem, 80%);
+    font-size: var(--font-24);
+    margin-bottom: 5rem;
   }
   .Ev2 {
-    height: 20rem;
-    top: calc(100% - 20rem + 0.52rem);
+    height: 24rem;
+    top: calc(100% - 24rem + 0.7rem);
   }
   .Ev3 {
     position: absolute;
-    height: 3rem;
-    top: calc(100% - 3rem + 0.03rem);
+    height: 4.3rem;
+    top: calc(100% - 4.24rem);
   }
   .Ev4 {
-    height: 8rem;
-    top: calc(100% - 6rem);
-    right: 3.8rem;
+    height: 10rem;
+    top: calc(100% - 7.4rem);
+    right: 5.5rem;
+  }
+  .ButtonStyle {
+    font-size: var(--font-16) !important;
+    padding: 0.8rem 2.7rem !important;
   }
 }
 
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 480px) {
+  .SubWrapper {
+    margin: 0;
+    margin-top: 5rem;
+  }
   .Heading {
-    width: 25rem;
-    font-weight: 500;
-    font-size: 1.8rem;
-    text-align: center;
-    color: #ffffff;
-    margin-bottom: 6rem;
+    font-size: var(--font-22);
+    margin-bottom: 3.5rem;
   }
   .Ev2 {
-    height: 16rem;
-    top: calc(100% - 16rem + 0.5rem);
+    height: 50vw;
+    top: calc(100% - 48.5vw);
   }
   .Ev3 {
     position: absolute;
-    height: 2rem;
-    top: calc(100% - 2rem + 0.03rem);
+    height: 8.5vw;
+    top: calc(100% - 8.84vw);
   }
   .Ev4 {
-    height: 5rem;
-    top: calc(100% - 3.8rem);
-    right: 2.8rem;
+    height: 20.5vw;
+    top: calc(100% - 15vw);
+    right: 9vw;
+  }
+  .ButtonStyle {
+    font-size: var(--font-16) !important;
+    padding: 0.8rem 2.7rem !important;
   }
 }
