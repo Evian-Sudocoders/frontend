@@ -16,7 +16,7 @@ function Preloader() {
     <div className={Styles.Wrapper}>
       <video
         loop
-        autostart
+        autostart="true"
         autoPlay
         muted
         src={Video}
