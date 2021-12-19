@@ -59,7 +59,7 @@ export const updateStationInfo = async (address, accessToken) => {
 export const updateChargingPointInfo = async (chargingPoints, accessToken) => {
   try {
     const { data } = await axios.put(
-      "https://evian.azurewebsites.net/api/v1/station/chargingPoints",
+      UPDATE_CHARGING_POINTS_INFO_URL,
       {
         chargingPoints,
       },
@@ -78,7 +78,7 @@ export const updateChargingPointInfo = async (chargingPoints, accessToken) => {
 export const addChargingPoints = async (chargingPoints, accessToken) => {
   try {
     const { data } = await axios.post(
-      "https://evian.azurewebsites.net/api/v1/station/chargingPoints",
+      UPDATE_CHARGING_POINTS_INFO_URL,
       {
         chargingPoints,
       },
