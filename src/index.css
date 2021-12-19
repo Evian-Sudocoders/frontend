@@ -1,13 +1,112 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Manrope", sans-serif;
+  font-size: 62.5%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+:root {
+  /* Font Sizes */
+  --font-12: 1.2rem;
+  --font-13: 1.3rem;
+  --font-135: 1.35rem;
+  --font-14: 1.4rem;
+  --font-15: 1.5rem;
+  --font-16: 1.6rem;
+  --font-17: 1.7rem;
+  --font-18: 1.8rem;
+  --font-20: 2rem;
+  --font-22: 2.2rem;
+  --font-24: 2.4rem;
+  --font-26: 2.6rem;
+  --font-30: 3rem;
+  --font-36: 3.6rem;
+  --font-38: 3.8rem;
+  --font-42: 4.2rem;
+  --font-45: 4.5rem;
+  --font-52: 5.2rem;
+  --fontv-4: 4vw;
+  --fontv-3: 3vw;
+  --fontv-35: 3.5vw;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  /* Colors */
+  --white: #ffffff;
+  --pure-black: #000000;
+  --black: #222222;
+  --sec-black: #444444;
+  --ter-black: #888888;
+  --tert-grey: #999999;
+  --black-opa-35: rgba(0, 0, 0, 0.35);
+  --sec-grey: #cccccc;
+  --light-green: #52c62e;
+  --pure-green: #00923f;
+  --save-green: #60b246;
+  --orange-primary: #ff8c0a;
+  --orange-secondary: #ff8e09;
+  --orange-tertiary: #ffd098;
+  --aqua: #54b7ff;
+  --sec-aqua: rgba(207, 245, 255, 1);
+
+  --dark-aqua: rgba(177, 220, 252, 0.54);
+  --dark-green: rgba(51, 214, 0, 0.34);
+  --blue-gradient: linear-gradient(
+    84.96deg,
+    #00c2ff -11.09%,
+    rgba(0, 209, 255, 0.63) 155.85%
+  );
+  --payment-pop-up-bg: linear-gradient(
+    84.96deg,
+    #00c2ff -11.09%,
+    rgba(0, 224, 255, 0.42) 155.85%
+  );
+
+  --payment-bg: linear-gradient(180deg, rgba(99, 212, 252, 0) 0%, #63d4fc 100%);
+  --primary-blue: #0dadf7;
+  --preloader-bg: #4b33d1;
+  --input-bg-light-blue: #fafcff;
+  --footer-bg: radial-gradient(
+    135.03% 1068.6% at -25% 126.74%,
+    #a7e5ff 0%,
+    rgb(174 197 255 / 0%) 100%
+  );
+  --success-gradient: linear-gradient(
+    84.96deg,
+    #2ad100 -11.09%,
+    rgba(0, 255, 25, 0.63) 155.85%
+  );
+}
+
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: rgba(230, 230, 230, 0.2);
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: rgba(120, 120, 120, 0.3);
+  outline: 1px solid slategrey;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+input {
+  font-family: "Manrope", sans-serif;
 }

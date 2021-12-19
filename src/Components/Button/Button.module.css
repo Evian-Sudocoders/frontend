@@ -1,0 +1,25 @@
+.Button {
+  width: 100%;
+  display: inline;
+  white-space: nowrap;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 1.4rem 3rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  color: var(--black);
+  border-radius: 999px;
+  background: var(--main-color);
+  transition: box-shadow 0.15s ease-in-out;
+  font-family: "Manrope", sans-serif;
+}
+
+.Hoverable {
+  color: var(--white);
+}
+
+.Hoverable:hover {
+  box-shadow: 5px 9px 13px rgba(175, 175, 175, 0.5);
+}

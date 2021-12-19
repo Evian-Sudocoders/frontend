@@ -1,0 +1,154 @@
+.Wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.LogoWrapper {
+  position: absolute;
+  top: 2.5rem;
+}
+
+.SubWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.LeftContainer {
+  width: 45rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.Heading {
+  font-size: var(--font-42);
+  margin-bottom: 5rem;
+  height: fit-content;
+}
+
+.Buttons {
+  width: fit-content;
+  display: flex;
+}
+
+.ButtonStyle1 {
+  background: linear-gradient(
+    63.31deg,
+    #00d1ff -9.99%,
+    #06c4ff -9.98%,
+    rgba(3, 195, 255, 0.23) 131.09%
+  );
+  font-weight: 500;
+  font-size: 2rem !important;
+  color: white;
+  transition: box-shadow 0.2s ease-out !important;
+}
+
+.ButtonStyle1:hover {
+  box-shadow: 5px 9px 13px rgba(175, 175, 175, 0.5);
+}
+
+.ButtonStyle2 {
+  height: fit-content;
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.RightContainer {
+  display: flex;
+  margin-left: 9rem;
+}
+
+.Ev1 {
+  width: 57rem;
+  height: 37rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  .Heading {
+    font-size: var(--font-36);
+    margin-bottom: 5rem;
+  }
+  .LeftContainer {
+    width: 40rem;
+  }
+  .RightContainer {
+    margin-left: 5rem;
+    margin-bottom: 15rem;
+  }
+  .Ev1 {
+    width: 53rem;
+    height: 33rem;
+  }
+}
+
+@media only screen and (max-width: 1020px) {
+  .Heading {
+    font-size: var(--font-30);
+    margin-bottom: 5rem;
+  }
+  .LeftContainer {
+    width: 35rem;
+  }
+  .RightContainer {
+    margin-left: 0rem;
+  }
+  .Ev1 {
+    width: 47rem;
+    height: 27rem;
+  }
+  .ButtonStyle1,
+  .ButtonStyle2 {
+    padding: 1rem;
+    width: 15rem;
+    font-size: 1.6rem !important;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .SubWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15rem;
+  }
+  .LeftContainer {
+    width: 40rem;
+    align-items: center;
+  }
+  .RightContainer {
+    margin-top: 10rem;
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .SubWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12rem;
+  }
+  .LeftContainer {
+    width: 25rem;
+    align-items: center;
+    text-align: center;
+  }
+  .RightContainer {
+    margin-top: 6rem;
+    margin-bottom: 5rem;
+    align-items: center;
+    width: 25rem;
+  }
+  .ButtonStyle1,
+  .ButtonStyle2 {
+    padding: 1rem;
+    width: 12rem;
+    font-size: 1.6rem !important;
+  }
+  .Ev1 {
+    width: 40rem;
+    height: 20rem;
+  }
+}

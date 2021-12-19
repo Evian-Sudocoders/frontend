@@ -1,0 +1,79 @@
+.Wrapper {
+  width: 100%;
+  border: 1px solid rgb(177, 176, 176);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+}
+.InfoContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: fit-content;
+  justify-content: space-between;
+  margin-right: 2rem;
+}
+.StationName {
+  font-weight: 500;
+  font-size: var(--font-17);
+  margin-bottom: 0.5rem;
+}
+.StationAddress {
+  font-weight: 500;
+  font-size: var(--font-13);
+  margin-bottom: 0.5rem;
+}
+.PointCount {
+  font-weight: 800;
+  font-size: var(--font-16);
+}
+.ButtonStyle {
+  padding: 1rem 2rem;
+  width: 15rem;
+  height: 4rem;
+  background: linear-gradient(
+    84.96deg,
+    #00c2ff -11.09%,
+    rgba(0, 209, 255, 0.63) 155.85%
+  );
+  border-radius: 28px;
+  font-weight: 500;
+  font-size: var(--font-15) !important;
+  text-align: center;
+  color: white !important;
+  transition: box-shadow 0.2s ease;
+}
+
+@media only screen and (max-width: 600px) {
+  .Wrapper {
+    padding: 1rem 1rem;
+  }
+  .ButtonStyle {
+    padding: 0.5rem 0.5rem !important;
+    width: 11rem;
+    height: 3rem;
+    font-size: var(--font-12) !important;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .Wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .InfoContainer {
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+  .StationName {
+    font-weight: 500;
+    font-size: var(--font-15);
+  }
+  .StationAddress {
+    font-weight: 500;
+    font-size: var(--font-12);
+  }
+}

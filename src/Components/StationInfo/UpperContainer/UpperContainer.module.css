@@ -1,0 +1,112 @@
+.Wrapper {
+  width: 100%;
+  max-width: 110rem;
+  margin: 4rem auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.LeftWrapper {
+  display: flex;
+}
+.Map {
+  width: 24rem;
+  height: 18rem;
+  border: 2px solid var(--sec-black);
+}
+.StationInfoWrapper {
+  margin: 0.6rem 0 0 2.7rem;
+}
+.StationInfoWrapper h2,
+.StationInfoWrapper p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.StationInfoWrapper h2 {
+  font-size: var(--font-22);
+  max-width: 50rem;
+  color: var(--black);
+  -webkit-line-clamp: 2;
+}
+.StationInfoWrapper p {
+  font-size: var(--font-16);
+  font-weight: 500;
+  color: var(--black);
+  max-width: 35rem;
+  margin-top: 0.5rem;
+  -webkit-line-clamp: 2;
+}
+.RightWrapper,
+.PortsWrapperMobile {
+  margin-top: 0.8rem;
+  font-size: var(--font-18);
+  font-weight: 500;
+}
+.PortsSpan {
+  font-weight: 800;
+}
+.PortsWrapperMobile {
+  display: none;
+}
+@media only screen and (max-width: 1200px) {
+  .Wrapper {
+    padding: 0 4rem;
+  }
+}
+@media only screen and (max-width: 980px) {
+  .Wrapper {
+    padding: 0 4rem;
+  }
+  .StationInfoWrapper h2 {
+    font-size: var(--font-20);
+  }
+  .StationInfoWrapper p {
+    font-size: var(--font-14);
+  }
+  .RightWrapper,
+  .PortsWrapperMobile {
+    font-size: var(--font-16);
+  }
+}
+@media only screen and (max-width: 900px) {
+  .RightWrapper {
+    display: none;
+  }
+  .PortsWrapperMobile {
+    display: block;
+    margin-top: 1rem;
+  }
+}
+@media only screen and (max-width: 630px) {
+  .Wrapper {
+    padding: 0 2rem;
+  }
+  .StationInfoWrapper {
+    margin-left: 1.5rem;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .LeftWrapper {
+    flex-direction: column;
+  }
+  .StationInfoWrapper {
+    margin-left: 0rem;
+    margin-top: 1rem;
+  }
+  .PortsWrapperMobile {
+    margin-top: 0.5rem;
+  }
+  .Map {
+    width: 28rem;
+    height: 21rem;
+  }
+}
+@media only screen and (max-width: 330px) {
+  .Map {
+    width: 100%;
+  }
+  .Wrapper {
+    padding: 0 1.5rem;
+  }
+}

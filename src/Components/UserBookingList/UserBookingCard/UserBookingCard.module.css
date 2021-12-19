@@ -1,0 +1,120 @@
+.Wrapper {
+  margin-top: 1.2rem;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  border: 1px solid var(--ter-black);
+  padding: 1.8rem 2.5rem;
+}
+
+.LeftSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 3.5rem;
+}
+
+.RightSection {
+  width: fit-content;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.StationName {
+  font-weight: 600;
+  font-size: var(--font-20);
+  color: var(--black);
+}
+
+.Address {
+  font-weight: 500;
+  color: var(--sec-black);
+  font-size: var(--font-14);
+}
+
+.BottomInfoWrapper {
+  margin-top: 2rem;
+}
+.ListInfoItem {
+  display: flex;
+  margin-top: 0.3rem;
+}
+
+.label {
+  font-size: var(--font-16);
+  font-weight: 500;
+}
+.value {
+  font-size: var(--font-16);
+  font-weight: 600;
+  margin-left: 0.5em;
+}
+
+.StatusButton {
+  text-transform: capitalize;
+  font-size: var(--font-17) !important;
+  padding: 0.8rem 2.5rem !important;
+  font-weight: 400 !important;
+}
+
+.Date {
+  font-size: var(--font-14);
+  font-weight: 500;
+  color: var(--sec-black);
+}
+
+@media only screen and (max-width: 1050px) {
+  .LeftSection {
+    margin-right: 2rem;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .Address {
+    margin-top: 0.5rem;
+  }
+  .BottomInfoWrapper {
+    margin-top: 1rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .LeftSection {
+    margin-right: 0rem;
+  }
+  .Wrapper {
+    flex-direction: column;
+    padding: 1.5rem 2rem;
+  }
+  .RightSection {
+    margin-top: 0.5rem;
+    flex-direction: row-reverse;
+    width: inherit;
+    justify-content: space-between;
+  }
+  .StatusButton {
+    width: fit-content;
+  }
+  .ListInfoItem {
+    margin-top: 0.1rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .Wrapper {
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .RightSection {
+    margin-top: 1rem;
+  }
+}

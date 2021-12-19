@@ -1,0 +1,46 @@
+.Wrapper {
+  width: 100%;
+  height: fit-content;
+}
+
+.TextArea {
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
+  border-radius: none;
+  padding: 0;
+  margin: 0;
+  resize: none;
+  font-family: "Manrope", sans-serif;
+  color: var(--black);
+  font-weight: 500;
+  overflow: hidden;
+  font-size: var(--font-16);
+  font-weight: 600;
+  width: 100%;
+  transition: background-color 0.15s ease-in-out;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  box-ordinal-group: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.Pincode {
+  box-ordinal-group: 0.5rem;
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
+  border-radius: none;
+  padding: 0;
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  color: var(--black);
+  font-weight: 700;
+  -moz-appearance: textfield;
+  border-radius: 0.4rem;
+}
+
+.Pincode::-webkit-outer-spin-button,
+.Pincode::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
