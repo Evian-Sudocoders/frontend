@@ -33,6 +33,7 @@ const tempData = {
 
 function About({ userData = tempData, isStation = false }) {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const profileImageInputRef = useRef(12);
   const profileImageRef = useRef(123);
@@ -163,9 +164,9 @@ function About({ userData = tempData, isStation = false }) {
           ) : null}
           <div
             className={
-              Styles.PersonalInfoMobileAndEmail + " " + isStation
-                ? Styles.StationPersonalInfoMobileAndEmail
-                : ""
+              Styles.PersonalInfoMobileAndEmail +
+              " " +
+              (isStation ? Styles.StationPersonalInfoMobileAndEmail : "")
             }
           >
             <p className={Styles.PersonalInfoContentMobile}>{userData.phone}</p>
@@ -265,6 +266,7 @@ function About({ userData = tempData, isStation = false }) {
             .catch((error) => {
               console.log(error);
             });
+          history.push("/");
         }}
       >
         Logout
