@@ -44,6 +44,7 @@
   font-size: 2rem !important;
   color: white;
   transition: box-shadow 0.2s ease-out !important;
+  padding: 0rem 3.5rem !important;
 }
 
 .ButtonStyle1:hover {
@@ -63,31 +64,27 @@
 
 .Ev1 {
   width: 57rem;
-  height: 37rem;
+  height: fit-content;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1250px) {
   .Heading {
     font-size: var(--font-36);
-    margin-bottom: 5rem;
   }
   .LeftContainer {
     width: 40rem;
   }
   .RightContainer {
     margin-left: 5rem;
-    margin-bottom: 15rem;
   }
   .Ev1 {
     width: 53rem;
-    height: 33rem;
   }
 }
 
-@media only screen and (max-width: 1020px) {
+@media only screen and (max-width: 1100px) {
   .Heading {
     font-size: var(--font-30);
-    margin-bottom: 5rem;
   }
   .LeftContainer {
     width: 35rem;
@@ -97,58 +94,79 @@
   }
   .Ev1 {
     width: 47rem;
-    height: 27rem;
   }
   .ButtonStyle1,
   .ButtonStyle2 {
-    padding: 1rem;
-    width: 15rem;
-    font-size: 1.6rem !important;
+    font-size: var(--font-17) !important;
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 950px) {
+  .Wrapper {
+    padding-bottom: 10rem;
+  }
   .SubWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 15rem;
+    margin-top: 13rem;
   }
   .LeftContainer {
     width: 40rem;
     align-items: center;
+    text-align: center;
   }
   .RightContainer {
-    margin-top: 10rem;
+    margin-top: 9rem;
+  }
+  .Ev1 {
+    width: 40rem;
   }
 }
 
-@media only screen and (max-width: 490px) {
+@media only screen and (max-width: 500px) {
   .SubWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 12rem;
   }
-  .LeftContainer {
-    width: 25rem;
-    align-items: center;
-    text-align: center;
+  .Wrapper {
+    padding-bottom: 8rem;
   }
+  .LeftContainer {
+    width: min(75%, 34rem);
+    justify-content: space-between;
+    height: max(20rem, fit-content);
+  }
+  .Heading {
+    font-size: var(--font-24);
+  }
+
   .RightContainer {
-    margin-top: 6rem;
-    margin-bottom: 5rem;
+    margin-top: 10rem;
     align-items: center;
-    width: 25rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
   .ButtonStyle1,
   .ButtonStyle2 {
-    padding: 1rem;
-    width: 12rem;
     font-size: 1.6rem !important;
   }
   .Ev1 {
-    width: 40rem;
-    height: 20rem;
+    width: min(32rem, 80%);
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .ButtonStyle1,
+  .ButtonStyle2 {
+    padding: 0rem !important;
+    padding: 3vw 8vw !important;
+    font-size: 5.3vw !important;
+  }
+  .Heading {
+    font-size: 7.8vw;
   }
 }
