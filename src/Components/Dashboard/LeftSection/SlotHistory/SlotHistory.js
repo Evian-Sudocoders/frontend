@@ -30,11 +30,16 @@ const slotData = [
   },
 ];
 
-function SlotHistory() {
-
-  const slotList = slotData?.map((slot, index) => {
-    return <SlotHistoryIndividual slotDetails={slot} key={index} />;
-  });
+function SlotHistory({ booingsData, currentActivePoint }) {
+  const slotList = booingsData
+    ?.filter((item) => {
+      return (
+        item.chargingPoint === (currentActivePoint ? currentActivePoint : 1)
+      );
+    })
+    .map((slot, index) => {
+      return <SlotHistoryIndividual slotDetails={slot} key={index} />;
+    });
   return (
     <div className={styles.SlotHistoryContainer}>
       <p className={styles.SlotHistoryTitle}>Slot History</p>
