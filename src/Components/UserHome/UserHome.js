@@ -59,7 +59,6 @@ const CityOptions = {
 };
 
 function UserHome() {
-
   const userData = useSelector((state) => state.userReducer.userData);
 
   const [stationData, setStationData] = useState([]);
@@ -69,11 +68,16 @@ function UserHome() {
   const [stateIdx, setStateIdx] = useState();
   const [cityIdx, setCityIdx] = useState();
 
-  
+  const [isStateOpen, setIsStateOpen] = useState(false);
+  const [isCityOpen, setIsCityOpen] = useState(false);
 
   useEffect(() => {
-    const stateId = StateOptions?.findIndex(stateLocal => stateLocal.value == state);
-    const cityId = CityOptions[userData.state]?.findIndex(cityLocal => cityLocal.value === city);
+    const stateId = StateOptions?.findIndex(
+      (stateLocal) => stateLocal.value == state
+    );
+    const cityId = CityOptions[userData.state]?.findIndex(
+      (cityLocal) => cityLocal.value === city
+    );
 
     setStateIdx(stateId);
     setCityIdx(cityId);
@@ -88,7 +92,7 @@ function UserHome() {
     setStationData(stationList);
   };
 
-  console.log(stateIdx, cityIdx);
+  // console.log(stateIdx, cityIdx);
 
   let count = 0;
   const list = stationData.stations?.map((station, id) => {
@@ -99,7 +103,14 @@ function UserHome() {
   return (
     <div className={styles.Wrapper}>
       <div className={styles.SelectorsWrapper}>
-        <div className={styles.SelectorDiv}>
+        <div
+          className={styles.SelectorDiv}
+          onClick={() => {
+            if (!isStateOpen) {
+              setIsStateOpen(true);
+            }
+          }}
+        >
           <Select
             closeMenuOnSelect={false}
             styles={selectColorStyles}
@@ -107,11 +118,20 @@ function UserHome() {
             name="State"
             onChange={(newValue, action) => {
               setState(newValue.value);
+              setIsStateOpen(false);
             }}
             value={StateOptions[stateIdx]}
+            menuIsOpen={isStateOpen}
           />
         </div>
-        <div className={styles.SelectorDiv}>
+        <div
+          className={styles.SelectorDiv}
+          onClick={() => {
+            if (!isCityOpen) {
+              setIsCityOpen(true);
+            }
+          }}
+        >
           <Select
             closeMenuOnSelect={false}
             styles={selectColorStyles}
@@ -119,8 +139,10 @@ function UserHome() {
             name="City"
             onChange={(newValue, action) => {
               setCity(newValue.value);
+              setIsCityOpen(false);
             }}
             value={CityOptions[userData.state][cityIdx]}
+            menuIsOpen={isCityOpen}
           />
         </div>
       </div>
