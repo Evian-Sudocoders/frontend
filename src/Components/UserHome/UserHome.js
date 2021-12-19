@@ -4,33 +4,7 @@ import Select from "react-select";
 import Station from "./Station";
 import { getAllStationData } from "../../Services/station.service";
 import { useSelector } from "react-redux";
-
-const selectColorStyles = {
-  control: (styles) => ({
-    ...styles,
-    fontSize: "var(--font-16)",
-    border: "1px solid black",
-  }),
-  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    return {
-      ...styles,
-      fontSize: "var(--font-16)",
-      transition: "background-color 0.1s ease",
-      ":active": {
-        ...styles[":active"],
-        // backgroundColor: "var(--orange-tertiary)",
-      },
-      ":hover": {
-        ...styles[":hover"],
-        // backgroundColor: "var(--orange-tertiary)",
-      },
-      ":visited": {
-        ...styles[":visited"],
-        // backgroundColor: "var(--orange-tertiary)",
-      },
-    };
-  },
-};
+import { selectStyles } from "./helpers/SelectStyles";
 
 const StateOptions = [
   { value: "Gujarat", label: "Gujarat" },
@@ -65,8 +39,8 @@ function UserHome() {
   const [state, setState] = useState(userData.state);
   const [city, setCity] = useState(userData.city);
 
-  const [stateIdx, setStateIdx] = useState();
-  const [cityIdx, setCityIdx] = useState();
+  const [stateIdx, setStateIdx] = useState(0);
+  const [cityIdx, setCityIdx] = useState(0);
 
   const [isStateOpen, setIsStateOpen] = useState(false);
   const [isCityOpen, setIsCityOpen] = useState(false);
@@ -75,12 +49,16 @@ function UserHome() {
     const stateId = StateOptions?.findIndex(
       (stateLocal) => stateLocal.value == state
     );
-    const cityId = CityOptions[userData.state]?.findIndex(
-      (cityLocal) => cityLocal.value === city
-    );
+    if (stateId >= 0) {
+      const cityId = CityOptions[userData.state]?.findIndex(
+        (cityLocal) => cityLocal.value === city
+      );
 
-    setStateIdx(stateId);
-    setCityIdx(cityId);
+      if (cityId >= 0) {
+        setStateIdx(stateId);
+        setCityIdx(cityId);
+      }
+    }
   }, [state, city, stationData]);
 
   useEffect(() => {
@@ -103,46 +81,32 @@ function UserHome() {
   return (
     <div className={styles.Wrapper}>
       <div className={styles.SelectorsWrapper}>
-        <div
-          className={styles.SelectorDiv}
-          onClick={() => {
-            if (!isStateOpen) {
-              setIsStateOpen(true);
-            }
-          }}
-        >
+        <div className={styles.SelectorDiv}>
           <Select
             closeMenuOnSelect={false}
-            styles={selectColorStyles}
+            styles={selectStyles}
             options={StateOptions}
             name="State"
-            onChange={(newValue, action) => {
+            onChange={(newValue) => {
               setState(newValue.value);
-              setIsStateOpen(false);
             }}
             value={StateOptions[stateIdx]}
-            menuIsOpen={isStateOpen}
+            blurInputOnSelect
+            isSearchable={false}
           />
         </div>
-        <div
-          className={styles.SelectorDiv}
-          onClick={() => {
-            if (!isCityOpen) {
-              setIsCityOpen(true);
-            }
-          }}
-        >
+        <div className={styles.SelectorDiv}>
           <Select
             closeMenuOnSelect={false}
-            styles={selectColorStyles}
+            styles={selectStyles}
             options={state ? CityOptions[state] : []}
             name="City"
-            onChange={(newValue, action) => {
+            onChange={(newValue) => {
               setCity(newValue.value);
-              setIsCityOpen(false);
             }}
-            value={CityOptions[userData.state][cityIdx]}
-            menuIsOpen={isCityOpen}
+            value={CityOptions[StateOptions[stateIdx]?.value][cityIdx]}
+            blurInputOnSelect
+            isSearchable={false}
           />
         </div>
       </div>

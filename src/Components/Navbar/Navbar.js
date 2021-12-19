@@ -1,9 +1,11 @@
 import React from "react";
-import styles from "./Navbar.module.css";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
+import styles from "./Navbar.module.css";
+
 import { ReactComponent as Logo } from "../../Assets/_General/evian.svg";
-import { useSelector } from "react-redux";
+import DefaultImage from "../../Assets/_General/DefaultImg.png";
 
 function Navbar() {
   const userData = useSelector((state) => state.userReducer.userData);
@@ -29,9 +31,14 @@ function Navbar() {
         </div>
         <div className={styles.RightWrapper} onClick={handleClickProfile}>
           <img
-            src="https://images.pexels.com/photos/1097456/pexels-photo-1097456.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            src={
+              userData.profilePicture ? userData.profilePicture : DefaultImage
+            }
             alt="Default Profile Photo"
             className={styles.ProfilePhoto}
+            onLoad={(e) => {
+              e.target.style.opacity = "1";
+            }}
           />
           <span className={styles.UserName}>{userData?.name}</span>
         </div>

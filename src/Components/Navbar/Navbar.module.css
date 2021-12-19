@@ -8,8 +8,7 @@
   top: 0;
 }
 .SubWrapper {
-  width: 100%;
-  max-width: 126rem;
+  width: 110rem;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -20,7 +19,7 @@
   align-items: center;
 }
 .Logo {
-  width: 12rem;
+  width: fit-content;
   margin-right: 3rem;
   cursor: pointer;
 }
@@ -39,22 +38,17 @@
   height: 3rem;
   object-fit: cover;
   border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
 }
-@media only screen and (max-width: 1350px) {
+
+@media only screen and (max-width: 1170px) {
   .SubWrapper {
-    padding: 0 4rem;
+    padding: 0 3.5rem;
+    width: 100%;
   }
 }
-@media only screen and (max-width: 1230px) {
-  .SubWrapper {
-    padding: 0 6rem;
-  }
-}
-@media only screen and (max-width: 1080px) {
-  .SubWrapper {
-    padding: 0 4rem;
-  }
-}
+
 @media only screen and (max-width: 540px) {
   .SubWrapper {
     border-bottom: 2px solid var(--grey);

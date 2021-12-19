@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 1rem 2rem;
+  padding: 1.5rem 2.5rem;
   margin-bottom: 1rem;
 }
 .InfoContainer {
@@ -18,22 +18,24 @@
 }
 .StationName {
   font-weight: 500;
-  font-size: var(--font-17);
+  font-size: var(--font-20);
   margin-bottom: 0.5rem;
 }
 .StationAddress {
   font-weight: 500;
-  font-size: var(--font-13);
-  margin-bottom: 0.5rem;
+  font-size: var(--font-16);
+}
+.StationPoints {
+  margin-top: 1.3rem;
+  font-weight: 500;
+  font-size: var(--font-17);
 }
 .PointCount {
   font-weight: 800;
-  font-size: var(--font-16);
+  font-size: var(--font-18);
 }
 .ButtonStyle {
-  padding: 1rem 2rem;
-  width: 15rem;
-  height: 4rem;
+  padding: 1rem 2.5rem;
   background: linear-gradient(
     84.96deg,
     #00c2ff -11.09%,
@@ -41,7 +43,7 @@
   );
   border-radius: 28px;
   font-weight: 500;
-  font-size: var(--font-15) !important;
+  font-size: var(--font-16) !important;
   text-align: center;
   color: white !important;
   transition: box-shadow 0.2s ease;
