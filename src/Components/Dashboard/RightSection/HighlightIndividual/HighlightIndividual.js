@@ -7,16 +7,10 @@ function HighlightIndividual({
   highlightNumber,
 }) {
   return (
-    <div
-      className={
-        styles.HighlightIndividualContainer + " " + wrapperClass
-      }
-    >
-      <p className={styles.HighlightIndividualTitle}>
-        {highlightTitle}
-      </p>
+    <div className={styles.HighlightIndividualContainer + " " + wrapperClass}>
+      <p className={styles.HighlightIndividualTitle}>{highlightTitle}</p>
       <p className={styles.HighlightIndividualNumber}>
-        {highlightTitle === "total subscriptions"
+        {highlightTitle === "total bookings"
           ? highlightNumber
           : "₹" + highlightNumber}
       </p>
