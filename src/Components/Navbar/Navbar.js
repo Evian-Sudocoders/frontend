@@ -10,12 +10,16 @@ function Navbar() {
   const history = useHistory();
 
   const handleClickHomePage = () => {
-    history.push(`/userhome`);
-  }
+    if (userData) {
+      history.push(`/home`);
+    } else {
+      history.push(`/`);
+    }
+  };
 
   const handleClickProfile = () => {
     history.push(`/profile`);
-  }
+  };
 
   return (
     <div className={styles.Wrapper}>

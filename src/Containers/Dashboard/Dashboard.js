@@ -111,8 +111,6 @@ function Dashboard() {
   }, [bookingsData]);
   return (
     <>
-      <Navbar />
-
       <div className={styles.Wrapper}>
         <div className={styles.LeftWrapper}>
           <div className={styles.HeadingWrapper}>Today's Booking</div>

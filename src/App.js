@@ -37,11 +37,7 @@ const App = () => {
         history.location.pathname === "/signin" ||
         history.location.pathname === "/signup"
       ) {
-        if (userData.isStation) {
-          history.push("/dashboard");
-        } else {
-          history.push("/userhome");
-        }
+        history.push("/home");
       }
     }
   }, [userData]);
@@ -84,9 +80,8 @@ const App = () => {
               component={LandingPage}
             />
             <Route path={["/profile", "/booking"]} component={Profile} />
-            <Route path="/userhome" component={HomePage} />
+            <Route path="/home" component={HomePage} />
             <Route path="/station/:stationID" component={StationInfo} />
-            <Route path="/dashboard" component={Dashboard} />
           </Switch>
         </>
       ) : (
