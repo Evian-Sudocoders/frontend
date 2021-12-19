@@ -21,7 +21,7 @@ const paymentData = [
   },
 ];
 
-function PaymentHistory() {
+function PaymentHistory({ paymentData = [] }) {
   const paymentHistoryHeadings = ["customer name", "amount(₹)", "date & time"];
 
   const paymentList = paymentData?.map((payment, index) => {
