@@ -32,6 +32,17 @@ const App = () => {
       if (!hasInitialised) {
         setHasInitialised(true);
       }
+      if (
+        history.location.pathname === "/" ||
+        history.location.pathname === "/signin" ||
+        history.location.pathname === "/signup"
+      ) {
+        if (userData.isStation) {
+          history.push("/dashboard");
+        } else {
+          history.push("/userhome");
+        }
+      }
     }
   }, [userData]);
 
@@ -59,18 +70,6 @@ const App = () => {
       type: "UPDATE_USER_DATA",
       data: { ...userdata, accessToken, uid },
     });
-
-    if (
-      history.location.pathname === "/" ||
-      history.location.pathname === "/signin" ||
-      history.location.pathname === "/signup"
-    ) {
-      if (userdata.isStation) {
-        history.push("/dashboard");
-      } else {
-        history.push("/userhome");
-      }
-    }
   };
 
   return (

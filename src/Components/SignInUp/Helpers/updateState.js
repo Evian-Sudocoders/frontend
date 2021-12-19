@@ -9,16 +9,11 @@ export const fetchAndSetUserData = async (
   message
 ) => {
   const userdata = await getUser(accessToken);
-  notify(message, "success");
 
   dispatch({
     type: "UPDATE_USER_DATA",
     data: { ...userdata, accessToken, uid },
   });
 
-  if (userdata.isStation) {
-    history.push("/dashboard");
-  } else {
-    history.push("/userhome");
-  }
+  notify(message, "success");
 };
