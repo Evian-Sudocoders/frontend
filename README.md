@@ -1,70 +1,88 @@
-# Getting Started
+<div align="center">
+  <h1>EVIAN</h1>
+  <p>
+    The Frontend Repository for the
+    <a href="https://evian.netlify.app/">
+    Evian Website
+  </a>
+  <br/>
+ UI for Evian: https://www.figma.com/file/pYRgQZescDkHIZQS5DkV9x/EVIAN-UI?node-id=0%3A1
+  </p>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Generator Front To Back](https://github.com/GunaShekar02/generator-front-to-back).
+## What is Evian?
+It is a one stop solution to all your EV Charging Problem. It will significantly impact user's time and effort. Instead of finding EV stations and empty slots physically, You can now explore various stations, compare prices and book slots from home.
 
-## Available Scripts
+## What's our Motive?
 
-In the project directory, you can run:
+<ul>
+<li>Electric Vehicles have revolutionized the automobile industry. A large portion of the automobile will be replaced by EVs in the near future
+</li>
+<li>
+The number of users using EVs is increasing rapidly, and so are the investments made in this sector. The global EV sales grew by 43% from 2019 and the global electric car industry market share rose to a record 4,6% in 2020.
+</li>
+<li>
+it will come with some issues. Because EV charging takes longer, consumers will have to wait in queues for recharge. This would be a waste of the user's time. 
+</li>
+<li>
+But we have a solution: what if a user could reserve a slot for recharging from home? What if customers could obtain a list of local charging stations and their available slots? 
+Here comes Evians, where users can schedule charging spaces, check available stations, and book slots accordingly.
+</li>
+</ul>
 
-### `yarn start`
+## Screenshots
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Landing Page
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![1]()
 
-### `yarn test`
+#### Signup Page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![2]()
 
-### `yarn build`
+#### User Home Page
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![3]()
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### User Profile Page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![4]()
 
-### `yarn eject`
+#### Station Detail Page
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![5]()
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Station Dashboard
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![6]()
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Getting Started
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Fork the repository
+2. Clone the repository
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+git clone https://github.com/Evian-Sudocoders/frontend
+```
 
-### Code Splitting
+3. Open the folder containing the cloned repository
+4. Install the required packages, libraries and dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```sh
+npm install
+```
 
-### Analyzing the Bundle Size
+5. Custom API keys can be set up in a .env file. We have added an example of env in .env.example file.
+6. Run the project locally to access the frontend functionality of the website
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```sh
+npm start
+```
 
-### Making a Progressive Web App
+## Contributors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Akash Gupta](https://github.com/akashgupta1909)
+- [Harsh Gupta](https://github.com/harshgupta1249)
+- [Harshil Mendpara](https://github.com/HarshilMendpara)
+- [Raj Varsani](https://github.com/RajVarsani)
