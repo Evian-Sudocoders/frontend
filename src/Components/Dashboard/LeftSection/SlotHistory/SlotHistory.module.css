@@ -1,10 +1,19 @@
 .SlotHistoryContainer {
-  margin-left: 3rem;
+  margin: 0;
+  width: 100%;
+  padding-top: 2.5rem;
+}
+.SlotHistoryWrapper {
+  width: 100%;
 }
 .SlotHistoryTitle {
-  font-size: var(--font-17);
+  font-size: var(--font-20);
   font-weight: 700;
-  margin: 3rem 0;
+  margin: 1.5rem 0;
+  margin-top: 2.5rem;
+}
+.SlotHistoryHeadingContainer p {
+  font-weight: 600;
 }
 @media screen and (max-width: 1150px) {
   .SlotHistoryContainer {
@@ -36,8 +45,17 @@
   justify-self: end;
 }
 
+@media screen and (max-width: 600px) {
+  .SlotHistoryContainer {
+    padding-top: 0rem;
+  }
+}
+
 @media screen and (max-width: 400px) {
-  .SlotUserName, .SlotVehicleNo, .SlotTime, .SlotStatus  {
+  .SlotUserName,
+  .SlotVehicleNo,
+  .SlotTime,
+  .SlotStatus {
     font-size: var(--fontv-35);
   }
 }

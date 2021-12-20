@@ -18,6 +18,7 @@ import { ReactComponent as SaveIcon } from "../../Assets/Profile/SaveIcon.svg";
 import { AboutSecHeadersData } from "./../StaticData";
 
 import EditableTextArea from "./EditableTextArea";
+import { getUser } from "./../../Services/user.service";
 
 const tempData = {
   phone: "9966445522",
@@ -114,8 +115,14 @@ function About({ userData = tempData, isStation = false }) {
         notify("Uploading profile picture...", "info");
         profileImageRef.current.src = URL.createObjectURL(file);
         const downloadURL = await uploadFile(file, "profile");
-        // call api
         await updateProfilePicture(downloadURL, userData.accessToken);
+        const userdataLocale = await getUser(userData.accessToken);
+        console.log(userdataLocale.profilePicture);
+
+        dispatch({
+          type: "UPDATE_USER_DATA",
+          data: { ...userData, profilePicture: userdataLocale.profilePicture },
+        });
         notify("Profile picture updated successfully", "success");
       }
     } catch (err) {

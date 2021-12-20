@@ -2,8 +2,7 @@
   display: grid;
   grid-template-columns: 25fr 21fr 22fr;
   grid-column-gap: 1rem;
-  width: 51rem;
-  margin: 4rem;
+  width: 100%;
   margin-right: 0;
 }
 .HighlightInstance:nth-child(1) {
@@ -20,7 +19,7 @@
     var(--light-green) -9.37%,
     var(--dark-green) 124.75%
   );
-  padding-right: 4rem;
+  padding-right: 3rem;
 }
 .HighlightInstance:nth-child(3) {
   background: linear-gradient(
@@ -28,9 +27,9 @@
     var(--orange-tertiary) -6.78%,
     var(--orange-secondary) 102.98%
   );
-  padding-right: 5rem;
+  padding-right: 4.5rem;
 }
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1170px) {
   .HighlightContainer {
     width: 100%;
     height: fit-content;
@@ -48,10 +47,14 @@
   }
 }
 
+@media screen and (max-width: 600px) {
+  .HighlightContainer {
+    margin: 1vw 0;
+    grid-gap: calc(1vw + 0.5rem);
+  }
+}
 @media screen and (max-width: 500px) {
   .HighlightContainer {
-    width: 90vw;
-    margin: 1vw 0;
-    min-height: 3vw;
+    grid-template-columns: 1fr;
   }
 }

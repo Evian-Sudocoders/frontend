@@ -108,7 +108,7 @@ function StationChargingPointsList({}) {
       if (newAddReqList.current.length > 0) {
         await addChargingPoints(newAddReqList.current, userData.accessToken);
       }
-      notify("Info updated successfully", "success");
+      notify("Charging points updated successfully", "success");
 
       fetchAndSetStationData();
     } catch (error) {

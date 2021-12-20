@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { Switch, Route, useLocation, useHistory } from "react-router-dom";
+import {
+  Switch,
+  Route,
+  useLocation,
+  useHistory,
+  Redirect,
+} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -74,14 +80,38 @@ const App = () => {
         <>
           <ToastContainer bodyClassName="ToastBody" />
           <Switch>
-            <Route
-              exact
-              path={["/signin", "/signup", "/"]}
-              component={LandingPage}
-            />
-            <Route path={["/profile", "/booking"]} component={Profile} />
-            <Route path="/home" component={HomePage} />
-            <Route path="/station/:stationID" component={StationInfo} />
+            {userData ? (
+              <>
+                <Route path={["/profile", "/booking"]} component={Profile} />
+                <Route path="/home" component={HomePage} />
+                {!userData.isStation ? (
+                  <Route path="/station/:stationID" component={StationInfo} />
+                ) : null}
+                {(location.pathname !== "/profile" &&
+                  location.pathname !== "/booking" &&
+                  !location.pathname.startsWith("/station") &&
+                  location.pathname !== "/home") ||
+                (location.pathname.startsWith("/station") &&
+                  userData.isStation) ? (
+                  <Redirect to="/home" />
+                ) : null}
+              </>
+            ) : (
+              <>
+                <Route
+                  exact
+                  path={["/signin", "/signup", "/"]}
+                  component={LandingPage}
+                />
+                {location.pathname !== "/signin" &&
+                location.pathname !== "/signup" &&
+                location.pathname !== "/" ? (
+                  <Redirect to="/" />
+                ) : null}
+              </>
+            )}
+            {/* <Redirect to="/" /> */}
+            {/* {userData ? <Redirect to="/home" /> : <Redirect to="/" />} */}
           </Switch>
         </>
       ) : (

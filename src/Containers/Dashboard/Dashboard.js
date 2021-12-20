@@ -11,6 +11,7 @@ import PaymentHistory from "../../Components/Dashboard/RightSection/PaymentHisto
 
 import { getStationDashboardData } from "../../Services/station.service";
 import { getStationDataById } from "./../../Services/station.service";
+import { selectStyles } from "./helpers/SelectStylesDashboard";
 
 const selectColorStyles = {
   control: (styles) => ({
@@ -53,8 +54,7 @@ function Dashboard() {
   const [highlightData, setHighlightData] = React.useState([0, 0, 0]);
   const [todaysOrders, setTodaysOrders] = React.useState(null);
 
-  const [currentActivePoint, setCurrentActivePoint] = React.useState(0);
-  const [chargingPointsData, setChargingPointsData] = React.useState([]);
+  const [currentActivePoint, setCurrentActivePoint] = React.useState(1);
   const [pointOptions, setPointOptions] = React.useState([]);
 
   useEffect(async () => {
@@ -109,6 +109,7 @@ function Dashboard() {
       setHighlightData([totalOrders, totalEarnings, totalEarningInLastMonth]);
     }
   }, [bookingsData]);
+
   return (
     <>
       <div className={styles.Wrapper}>
@@ -117,12 +118,14 @@ function Dashboard() {
           <div className={styles.SelectorWrapper}>
             <Select
               closeMenuOnSelect={false}
-              styles={selectColorStyles}
+              styles={selectStyles}
               options={pointOptions}
               onChange={(newElem) => {
                 setCurrentActivePoint(parseInt(newElem.value));
               }}
               value={pointOptions[currentActivePoint - 1]}
+              blurInputOnSelect={true}
+              isSearchable={false}
             />
           </div>
           <div className={styles.SlotListWrapper}>

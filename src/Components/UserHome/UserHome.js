@@ -39,8 +39,8 @@ function UserHome() {
   const [state, setState] = useState(userData.state);
   const [city, setCity] = useState(userData.city);
 
-  const [stateIdx, setStateIdx] = useState(0);
-  const [cityIdx, setCityIdx] = useState(0);
+  // const [stateIdx, setStateIdx] = useState(0);
+  // const [cityIdx, setCityIdx] = useState(0);
 
   useEffect(() => {
     const stateId = StateOptions?.findIndex(
@@ -52,11 +52,13 @@ function UserHome() {
       );
 
       if (cityId >= 0) {
-        setStateIdx(stateId);
-        setCityIdx(cityId);
+        setCity(CityOptions[userData.state][cityId]);
+        setState(StateOptions[stateId]);
       }
     }
-  }, [state, city, stationData]);
+    // setState(userData.state);
+    // setCity(userData.city);
+  }, [stationData]);
 
   useEffect(() => {
     fetchAllStations();
@@ -64,11 +66,9 @@ function UserHome() {
 
   const fetchAllStations = async () => {
     setStationData([]);
-    const stationList = await getAllStationData(state, city);
+    const stationList = await getAllStationData(state.value, city.value);
     setStationData(stationList);
   };
-
-  // console.log(stateIdx, cityIdx);
 
   let count = 0;
   const list = stationData.stations?.map((station, id) => {
@@ -85,10 +85,11 @@ function UserHome() {
             styles={selectStyles}
             options={StateOptions}
             name="State"
-            onChange={(newValue) => {
-              setState(newValue.value);
+            value={state}
+            onChange={(newValue, abc) => {
+              setState(newValue);
+              setCity(CityOptions[newValue.value][0]);
             }}
-            value={StateOptions[stateIdx]}
             blurInputOnSelect
             isSearchable={false}
           />
@@ -97,12 +98,12 @@ function UserHome() {
           <Select
             closeMenuOnSelect={false}
             styles={selectStyles}
-            options={state ? CityOptions[state] : []}
+            options={state ? CityOptions[state.value] : []}
             name="City"
             onChange={(newValue) => {
-              setCity(newValue.value);
+              setCity(newValue);
             }}
-            value={CityOptions[StateOptions[stateIdx]?.value][cityIdx]}
+            value={city}
             blurInputOnSelect
             isSearchable={false}
           />
