@@ -89,6 +89,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .Button {
@@ -96,4 +97,5 @@
   padding: 0.8rem 2.5rem !important;
   font-size: var(--font-17) !important;
   font-weight: 500 !important;
+  z-index: 50;
 }

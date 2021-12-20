@@ -50,6 +50,7 @@ function Dashboard() {
   const userData = useSelector((state) => state.userReducer.userData);
 
   const [bookingsData, setBookingsData] = React.useState(null);
+  const [successBookingsData, setSuccessBookingsData] = React.useState(null);
 
   const [highlightData, setHighlightData] = React.useState([0, 0, 0]);
   const [todaysOrders, setTodaysOrders] = React.useState(null);
@@ -85,6 +86,18 @@ function Dashboard() {
 
   useEffect(() => {
     if (bookingsData) {
+      let tmpBookingsData = [...bookingsData];
+      if (bookingsData) {
+        const successBookingsDataTmp = tmpBookingsData.filter(
+          (booking) => booking.status === "success"
+        );
+        setSuccessBookingsData(successBookingsDataTmp);
+      }
+    }
+  }, [bookingsData]);
+
+  useEffect(() => {
+    if (bookingsData && successBookingsData) {
       const tmpTodaysOrders = bookingsData.filter(
         (order) =>
           order.startDate.getDate() === new Date().getDate() &&
@@ -93,11 +106,11 @@ function Dashboard() {
       );
       setTodaysOrders(tmpTodaysOrders);
 
-      let totalOrders = bookingsData?.length;
-      let totalEarnings = bookingsData?.reduce((acc, curr) => {
+      let totalOrders = successBookingsData.length;
+      let totalEarnings = successBookingsData?.reduce((acc, curr) => {
         return acc + curr.totalAmount;
       }, 0);
-      let totalEarningInLastMonth = bookingsData?.reduce((acc, curr) => {
+      let totalEarningInLastMonth = successBookingsData?.reduce((acc, curr) => {
         if (
           curr.startDate.getMonth() === new Date().getMonth() &&
           curr.startDate.getFullYear() === new Date().getFullYear()
@@ -108,7 +121,7 @@ function Dashboard() {
       }, 0);
       setHighlightData([totalOrders, totalEarnings, totalEarningInLastMonth]);
     }
-  }, [bookingsData]);
+  }, [bookingsData, successBookingsData]);
 
   return (
     <>
@@ -130,7 +143,7 @@ function Dashboard() {
           </div>
           <div className={styles.SlotListWrapper}>
             <SlotHistory
-              booingsData={todaysOrders}
+              bookingsData={todaysOrders}
               currentActivePoint={currentActivePoint}
             />
           </div>
@@ -141,7 +154,7 @@ function Dashboard() {
             <Highlight highlightData={highlightData} />
           </div>
           <div className={styles.PaymentHistoryWrapper}>
-            <PaymentHistory paymentData={bookingsData} />
+            <PaymentHistory paymentData={successBookingsData} />
           </div>
         </div>
       </div>

@@ -31,8 +31,8 @@ const slotData = [
   },
 ];
 
-function SlotHistory({ booingsData, currentActivePoint }) {
-  const slotList = booingsData
+function SlotHistory({ bookingsData, currentActivePoint }) {
+  const slotList = bookingsData
     ?.filter((item) => {
       return (
         item.chargingPoint === (currentActivePoint ? currentActivePoint : 1)

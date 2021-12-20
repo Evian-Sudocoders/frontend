@@ -14,13 +14,13 @@ function Highlight({ highlightData }) {
       />
       <HighlightIndividual
         wrapperClass={styles.HighlightInstance}
-        highlightTitle="total subscriptions"
+        highlightTitle="Total Earnings"
         highlightNumber={highlightData[1]}
         key={2}
       />
       <HighlightIndividual
         wrapperClass={styles.HighlightInstance}
-        highlightTitle="total earnings"
+        highlightTitle="Last Month Earnings"
         highlightNumber={highlightData[2]}
         key={3}
       />

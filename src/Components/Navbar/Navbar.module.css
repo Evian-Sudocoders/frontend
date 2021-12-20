@@ -26,6 +26,7 @@
 .UserName {
   font-weight: 600;
   font-size: var(--font-15);
+  margin-left: 1.5rem;
 }
 .RightWrapper {
   display: flex;
@@ -33,7 +34,6 @@
   cursor: pointer;
 }
 .ProfilePhoto {
-  margin-right: 1.5rem;
   width: 3rem;
   height: 3rem;
   object-fit: cover;
@@ -55,6 +55,12 @@
   }
 }
 
+@media only screen and (max-width: 500px) {
+  .UserName {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 375px) {
   .Wrapper {
     padding: 1.2rem 0;
@@ -68,6 +74,6 @@
   .ProfilePhoto {
     width: 2.8rem;
     height: 2.8rem;
-    margin-right: 1.1rem;
+    /* margin-right: 1.1rem; */
   }
 }
