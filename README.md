@@ -1,14 +1,13 @@
 <div align="center">
   <h1>EVIAN</h1>
   <p>
-    The Frontend Repository for the
+    Hosted Link :
     <a href="https://evian.netlify.app/">
     Evian Website
   </a>
   <br/>
- UI for Evian: https://www.figma.com/file/pYRgQZescDkHIZQS5DkV9x/EVIAN-UI
+ UI for Evian : <a href="https://www.figma.com/file/pYRgQZescDkHIZQS5DkV9x/EVIAN-UI"> Figma
   </p>
-  <br>
 </div>
 
 ## What is Evian?
@@ -23,7 +22,7 @@ It is a one stop solution to all your EV Charging Problem. It will significantly
 The number of users using EVs is increasing rapidly, and so are the investments made in this sector. The global EV sales grew by 43% from 2019 and the global electric car industry market share rose to a record 4,6% in 2020.
 </li>
 <li>
-it will come with some issues. Because EV charging takes longer, consumers will have to wait in queues for recharge. This would be a waste of the user's time. 
+It will come with some issues. Because EV charging takes longer, consumers will have to wait in queues for recharge. This would be a waste of the user's time. 
 </li>
 <li>
 But we have a solution: what if a user could reserve a slot for recharging from home? What if customers could obtain a list of local charging stations and their available slots? 
