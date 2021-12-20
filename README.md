@@ -6,7 +6,7 @@
     Evian Website
   </a>
   <br/>
- UI for Evian: https://www.figma.com/file/pYRgQZescDkHIZQS5DkV9x/EVIAN-UI?node-id=0%3A1
+ UI for Evian: https://www.figma.com/file/pYRgQZescDkHIZQS5DkV9x/EVIAN-UI
   </p>
   <br>
 </div>
