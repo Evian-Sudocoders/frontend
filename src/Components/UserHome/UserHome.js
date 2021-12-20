@@ -42,9 +42,6 @@ function UserHome() {
   const [stateIdx, setStateIdx] = useState(0);
   const [cityIdx, setCityIdx] = useState(0);
 
-  const [isStateOpen, setIsStateOpen] = useState(false);
-  const [isCityOpen, setIsCityOpen] = useState(false);
-
   useEffect(() => {
     const stateId = StateOptions?.findIndex(
       (stateLocal) => stateLocal.value == state
@@ -66,6 +63,7 @@ function UserHome() {
   }, [state, city]);
 
   const fetchAllStations = async () => {
+    setStationData([]);
     const stationList = await getAllStationData(state, city);
     setStationData(stationList);
   };

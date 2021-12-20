@@ -49,25 +49,25 @@
   }
 }
 
-@media only screen and (max-width: 540px) {
+@media only screen and (max-width: 600px) {
   .SubWrapper {
-    border-bottom: 2px solid var(--grey);
+    padding: 0 2.5rem;
   }
 }
-@media only screen and (max-width: 450px) {
+
+@media only screen and (max-width: 375px) {
   .Wrapper {
     padding: 1.2rem 0;
   }
   .SubWrapper {
-    padding: 0 2rem 1rem 2rem;
-    padding-bottom: 0;
+    padding: 0rem 6%;
   }
   .Logo {
-    width: 9rem;
+    height: 1.75rem;
   }
   .ProfilePhoto {
     width: 2.8rem;
     height: 2.8rem;
-    margin-right: 1rem;
+    margin-right: 1.1rem;
   }
 }

@@ -28,9 +28,7 @@ function Station({ data }) {
         <Button
           wrapperClass={styles.ButtonStyle}
           content={cost}
-          onClick={()=>(
-            history.push(`/station/${data.id}`)
-          )}
+          onClick={() => history.push(`/station/${data.id}`)}
         />
       </div>
     </div>
