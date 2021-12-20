@@ -8,6 +8,7 @@
   <br/>
  UI for Evian: https://www.figma.com/file/pYRgQZescDkHIZQS5DkV9x/EVIAN-UI?node-id=0%3A1
   </p>
+  <br>
 </div>
 
 ## What is Evian?
@@ -34,27 +35,31 @@ Here comes Evians, where users can schedule charging spaces, check available sta
 
 #### Landing Page
 
-![1]()
+![1](https://github.com/Evian-Sudocoders/frontend/blob/main/src/Assets/ReadmeAssets/1.png)
 
 #### Signup Page
 
-![2]()
+![2](https://github.com/Evian-Sudocoders/frontend/blob/main/src/Assets/ReadmeAssets/2.png)
 
 #### User Home Page
 
-![3]()
+![3](https://github.com/Evian-Sudocoders/frontend/blob/main/src/Assets/ReadmeAssets/3.png)
 
 #### User Profile Page
 
-![4]()
+![4](https://github.com/Evian-Sudocoders/frontend/blob/main/src/Assets/ReadmeAssets/6.png)
 
 #### Station Detail Page
 
-![5]()
+![5](https://github.com/Evian-Sudocoders/frontend/blob/main/src/Assets/ReadmeAssets/4.png)
+
+#### Slot Booking
+
+![6](https://github.com/Evian-Sudocoders/frontend/blob/main/src/Assets/ReadmeAssets/5.png)
 
 #### Station Dashboard
 
-![6]()
+![7](https://github.com/Evian-Sudocoders/frontend/blob/main/src/Assets/ReadmeAssets/7.png)
 
 
 ## Getting Started
