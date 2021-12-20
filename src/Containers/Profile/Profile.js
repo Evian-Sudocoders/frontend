@@ -41,7 +41,11 @@ function Profile() {
 
   const fetchUserBookings = async () => {
     const response = await getUserBookings(userData.accessToken);
-    setBookings(response.bookings);
+    // Sort the bookings by date
+    const sortedBookings = response.bookings.sort((a, b) => {
+      return new Date(b.createdAt._seconds) - new Date(a.createdAt._seconds);
+    });
+    setBookings(sortedBookings);
   };
 
   const openBookingSlide = (index) => {
