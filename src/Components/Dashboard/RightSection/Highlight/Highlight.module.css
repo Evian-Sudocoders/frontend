@@ -1,6 +1,6 @@
 .HighlightContainer {
   display: grid;
-  grid-template-columns: 25fr 21fr 22fr;
+  grid-template-columns: 20fr 22fr 20fr;
   grid-column-gap: 1rem;
   width: 100%;
   margin-right: 0;
@@ -11,7 +11,7 @@
     var(--aqua) 22.53%,
     var(--dark-aqua) 117.18%
   );
-  padding-right: 3rem;
+  padding-right: 4rem;
 }
 .HighlightInstance:nth-child(2) {
   background: linear-gradient(

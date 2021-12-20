@@ -12,6 +12,7 @@ import {
   getBookedSlot,
   getStationDataById,
 } from "./../../Services/station.service";
+import Preloader from "../../Components/Preloader/Preloader";
 
 const tempData = {
   StationName: "Loremi psum Electric Vehicle Charging Station",
@@ -24,9 +25,12 @@ const tempData = {
 
 function StationInfo() {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
-  const [stationData, setStationData] = useState({});
+  const [stationData, setStationData] = useState(null);
   const [bookedSlots, setBookedSlots] = useState([]);
-  const [price, setPrice] = useState(0);
+  const [popupInfo, setPopupInfo] = useState({
+    price: 0,
+    power: 0,
+  });
   const [slotNumber, setSlotNumber] = useState(1);
   const { stationID } = useParams();
 
@@ -45,41 +49,51 @@ function StationInfo() {
 
   const handleBookedSlots = async () => {
     const data = await getBookedSlot(stationID, slotNumber);
-
     setBookedSlots(data.bookedSlots);
+  };
+
+  const setData = (data) => {
+    setPopupInfo(data);
   };
   return (
     <>
-      <Navbar />
-      <div className={styles.Wrapper}>
-        <UpperContainer
-          StationName={stationData?.name}
-          StationAddress={stationData?.address}
-          GMapLink={stationData?.location}
-          NumberOfPorts={stationData?.chargingPoints?.length}
-        />
-        <LowerContainer
-          isPopUpOpen={setIsPopUpOpen}
-          priceSet={setPrice}
-          chargingPoints={stationData?.chargingPoints}
-          setslot={setSlotNumber}
-        />
-      </div>
-      <PopUp
-        ContentComp={
-          <PaymentPopup
-            price={price}
-            slotNumber={slotNumber}
-            bookedSlot={bookedSlots}
-            isOpen={setIsPopUpOpen}
+      {stationData ? (
+        <>
+          <Navbar />
+          <div className={styles.Wrapper}>
+            <UpperContainer
+              StationName={stationData?.name}
+              StationAddress={stationData?.address}
+              GMapLink={stationData?.location}
+              NumberOfPorts={stationData?.chargingPoints?.length}
+            />
+            <LowerContainer
+              isPopUpOpen={setIsPopUpOpen}
+              priceSet={setData}
+              chargingPoints={stationData?.chargingPoints}
+              setslot={setSlotNumber}
+            />
+          </div>
+          <PopUp
+            ContentComp={
+              <PaymentPopup
+                price={popupInfo.price}
+                power={popupInfo.power}
+                slotNumber={slotNumber}
+                bookedSlot={bookedSlots}
+                isOpen={setIsPopUpOpen}
+              />
+            }
+            isOpen={isPopUpOpen}
+            closeFun={() => {
+              setIsPopUpOpen(false);
+            }}
+            isClosable={true}
           />
-        }
-        isOpen={isPopUpOpen}
-        closeFun={() => {
-          setIsPopUpOpen(false);
-        }}
-        isClosable={true}
-      />
+        </>
+      ) : (
+        <Preloader />
+      )}
     </>
   );
 }

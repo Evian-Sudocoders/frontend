@@ -110,8 +110,6 @@ const App = () => {
                 ) : null}
               </>
             )}
-            {/* <Redirect to="/" /> */}
-            {/* {userData ? <Redirect to="/home" /> : <Redirect to="/" />} */}
           </Switch>
         </>
       ) : (

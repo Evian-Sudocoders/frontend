@@ -24,7 +24,7 @@ function SlotComponent({
           onClick={() => {
             isPopUpOpen(true);
             let price = parseInt(ChargingPrice);
-            priceSet(price);
+            priceSet({ price, power: parseInt(ChargingPower) });
             setslot(SlotNumber);
           }}
         />

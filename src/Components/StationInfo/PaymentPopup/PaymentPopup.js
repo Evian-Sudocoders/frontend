@@ -14,7 +14,9 @@ import {
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function PaymentPopup({ price, slotNumber, bookedSlot, isOpen }) {
+function PaymentPopup({ price, slotNumber, bookedSlot, isOpen, power }) {
+  const formref = React.useRef(123);
+
   const accessToken = useSelector(
     (state) => state.userReducer.userData.accessToken
   );
@@ -24,11 +26,11 @@ function PaymentPopup({ price, slotNumber, bookedSlot, isOpen }) {
   const { stationID } = useParams();
 
   const [inputValues, setInputValues] = useState({
-    batterySize: "40",
-    chargingPower: "80",
-    startingChargeLevel: "20",
-    targetChargeLevel: "80",
-    vehicleNumber: "AB 01 AB 1234",
+    batterySize: "0",
+    chargingPower: power,
+    startingChargeLevel: "0",
+    targetChargeLevel: "0",
+    vehicleNumber: "",
     bookedSlot: [],
     finalPrice: "0",
   });
@@ -38,7 +40,6 @@ function PaymentPopup({ price, slotNumber, bookedSlot, isOpen }) {
     minutesOfcharging: "0",
   });
   const [totalSlots, setTotalSlots] = useState([]);
-  // const [bookedSlot, setBookedSlot] = useState(bookSlot);
 
   const handleInput = (e) => {
     const name = e.target.name;
@@ -68,6 +69,14 @@ function PaymentPopup({ price, slotNumber, bookedSlot, isOpen }) {
       isOpen(false);
     }
   };
+
+  useEffect(() => {
+    setInputValues({
+      ...inputValues,
+      chargingPower: power,
+    });
+    formref.current.elements.chargingPower.value = power;
+  }, [power]);
 
   useEffect(() => {
     const data = EstimatedTimeCalcFun(inputValues, price);
@@ -123,7 +132,7 @@ function PaymentPopup({ price, slotNumber, bookedSlot, isOpen }) {
   const vechicleInputRequiredList = vechicleInputRequired.map(
     (input, index) => {
       return (
-        <div className={styles.InputWrapper} key={index}>
+        <form className={styles.InputWrapper} key={index}>
           <label className={`${styles.Label} ${styles.LowerHeading}`}>
             {input.label}
           </label>
@@ -139,7 +148,7 @@ function PaymentPopup({ price, slotNumber, bookedSlot, isOpen }) {
               }ch + 3rem)`,
             }}
           />
-        </div>
+        </form>
       );
     }
   );
@@ -150,7 +159,7 @@ function PaymentPopup({ price, slotNumber, bookedSlot, isOpen }) {
   return (
     <>
       <div className={styles.Wrapper}>
-        <form className={styles.WrapperForm}>
+        <form className={styles.WrapperForm} ref={formref}>
           {inputRequiredList}
           <div className={styles.TimeWrapper}>
             <p>Estimated Time</p>
