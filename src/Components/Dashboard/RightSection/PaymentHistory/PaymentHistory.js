@@ -21,16 +21,22 @@ const paymentData = [
   },
 ];
 
-function PaymentHistory() {
-  const paymentHistoryHeadings = ["customer name", "amount(₹)", "date & time"];
+function PaymentHistory({ paymentData = [] }) {
+  const paymentHistoryHeadings = ["Name", "amount(₹)", "date & time"];
 
   const paymentList = paymentData?.map((payment, index) => {
     return <PaymentHistoryIndividual paymentDetails={payment} key={index} />;
   });
 
-  const paymentHistoryHeadingList = paymentHistoryHeadings.map((heading) => {
-    return <p className={styles.PaymentHistoryHeading}>{heading}</p>;
-  });
+  const paymentHistoryHeadingList = paymentHistoryHeadings.map(
+    (heading, index) => {
+      return (
+        <p key={index} className={styles.PaymentHistoryHeading}>
+          {heading}
+        </p>
+      );
+    }
+  );
 
   return (
     <div className={styles.PaymentHistoryContainer}>

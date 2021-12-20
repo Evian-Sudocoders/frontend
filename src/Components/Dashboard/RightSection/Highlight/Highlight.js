@@ -3,9 +3,7 @@ import React from "react";
 import styles from "./Highlight.module.css";
 import HighlightIndividual from "../HighlightIndividual/HighlightIndividual";
 
-function Highlight() {
-
-  const highlightData = [10, 20, 30];
+function Highlight({ highlightData }) {
   return (
     <div className={styles.HighlightContainer}>
       <HighlightIndividual

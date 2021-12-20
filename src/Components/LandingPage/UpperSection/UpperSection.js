@@ -25,7 +25,8 @@ function UpperSection() {
       <div className={styles.SubWrapper}>
         <div className={styles.LeftContainer}>
           <div className={styles.Heading}>
-          One stop solution to all your EV charging problems now at your fingertips.
+            One stop solution to all your EV charging problems now at your
+            fingertips.
           </div>
           <div className={styles.Buttons}>
             <Button

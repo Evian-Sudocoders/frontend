@@ -50,8 +50,8 @@ function StationInfo() {
   };
   return (
     <>
+      <Navbar />
       <div className={styles.Wrapper}>
-        <Navbar />
         <UpperContainer
           StationName={stationData?.name}
           StationAddress={stationData?.address}

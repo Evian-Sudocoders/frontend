@@ -43,9 +43,11 @@ function BookingDetails({
         <CarBg className={styles.CarBg} preserveAspectRatio="xMinYMin slice" />
         <Car className={styles.Car} />
         <div className={styles.Content}>
-          <h3 className={styles.Title}>{bookingDetails.station}</h3>
+          <h3 className={styles.Title}>{bookingDetails.stationName}</h3>
           <h5 className={styles.Date}>
-            {bookingDetails.date.toLocaleDateString()}
+            {new Date(
+              bookingDetails?.createdAt?._seconds * 1000
+            ).toLocaleDateString()}
           </h5>
           <p className={styles.Address}>{bookingDetails.address}</p>
 
@@ -53,7 +55,7 @@ function BookingDetails({
             <div className={styles.ListItem}>
               <div className={styles.ListItemLable}>Point No :</div>
               <div className={styles.ListItemValue}>
-                {bookingDetails.pointNo}
+                {bookingDetails.chargingPoint}
               </div>
             </div>
             <div className={styles.ListItem}>
@@ -69,7 +71,7 @@ function BookingDetails({
             <div className={styles.ListItem}>
               <div className={styles.ListItemLable}>Charges :</div>
               <div className={styles.ListItemValue}>
-                {bookingDetails.charges + " ₹"}
+                {bookingDetails.totalAmount + " ₹"}
               </div>
             </div>
           </div>

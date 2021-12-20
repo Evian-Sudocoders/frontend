@@ -1,15 +1,16 @@
 .PaymentHistoryContainer {
-  margin-left: 4rem;
+  width: 100%;
 }
 .PaymentHistoryTitle {
-  font-size: var(--font-17);
-  font-weight: 700;
+  font-size: var(--font-18);
+  font-weight: 600;
   margin: 3rem 0;
+  margin-bottom: 1.5rem;
 }
 .PaymentHistoryHeadingContainer {
   display: grid;
-  grid-template-columns: 30fr 10fr 30fr;
-  width: 51rem;
+  grid-template-columns: 30fr 20fr 38fr;
+  width: 100%;
   font-size: var(--font-17);
   font-weight: 600;
   text-transform: capitalize;
@@ -21,22 +22,6 @@
 .PaymentHistoryHeading:nth-child(3) {
   text-align: right;
 }
-@media screen and (max-width: 1150px) {
-  .PaymentHistoryHeadingContainer {
-    width: 100%;
-  }
-  .PaymentHistoryContainer {
-    margin-left: 0;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .PaymentHistoryHeadingContainer {
-    font-size: var(--fontv-4);
-  }
-}
-
-
 .PaymentHistoryIndividualWrapper {
   display: grid;
   grid-template-columns: 30fr 10fr 30fr;
@@ -56,15 +41,30 @@
   font-weight: 600;
   justify-self: end;
 }
+@media screen and (max-width: 1150px) {
+  .PaymentHistoryHeadingContainer {
+    width: 100%;
+  }
+  .PaymentHistoryContainer {
+    margin-left: 0;
+  }
+}
 
-@media screen and (max-width: 400px) {
-  .PaymentUserName {
-    font-size: var(--fontv-35);
+@media screen and (max-width: 500px) {
+  .PaymentUserName,
+  .PaymentAmount,
+  .PaymentTimestamp,
+  .PaymentHistoryHeadingContainer {
+    font-size: calc(1vw + 1.1rem);
   }
-  .PaymentAmount {
-    font-size: var(--fontv-35);
+  .PaymentHistoryHeadingContainer {
+    grid-template-columns: 30fr 20fr 25fr;
+    margin-bottom: calc(1vw + 0.3rem);
   }
-  .PaymentTimestamp {
-    font-size: var(--fontv-35);
+  .PaymentHistoryTitle {
+    font-size: calc(1vw + 1.4rem);
+    margin: 0;
+    margin-top: calc(2vw + 0.8rem);
+    margin-bottom: calc(1vw + 0.5rem);
   }
 }

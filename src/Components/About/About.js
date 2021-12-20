@@ -18,6 +18,7 @@ import { ReactComponent as SaveIcon } from "../../Assets/Profile/SaveIcon.svg";
 import { AboutSecHeadersData } from "./../StaticData";
 
 import EditableTextArea from "./EditableTextArea";
+import { getUser } from "./../../Services/user.service";
 
 const tempData = {
   phone: "9966445522",
@@ -33,6 +34,7 @@ const tempData = {
 
 function About({ userData = tempData, isStation = false }) {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const profileImageInputRef = useRef(12);
   const profileImageRef = useRef(123);
@@ -113,8 +115,14 @@ function About({ userData = tempData, isStation = false }) {
         notify("Uploading profile picture...", "info");
         profileImageRef.current.src = URL.createObjectURL(file);
         const downloadURL = await uploadFile(file, "profile");
-        // call api
         await updateProfilePicture(downloadURL, userData.accessToken);
+        const userdataLocale = await getUser(userData.accessToken);
+        console.log(userdataLocale.profilePicture);
+
+        dispatch({
+          type: "UPDATE_USER_DATA",
+          data: { ...userData, profilePicture: userdataLocale.profilePicture },
+        });
         notify("Profile picture updated successfully", "success");
       }
     } catch (err) {
@@ -143,6 +151,9 @@ function About({ userData = tempData, isStation = false }) {
                 src={currentUserData.profilePicture}
                 alt="Profile"
                 className={Styles.PersonalInfoImage}
+                onLoad={(e) => {
+                  e.target.style.opacity = 1;
+                }}
               />
               <div
                 className={Styles.EditImageScrim}
@@ -163,9 +174,9 @@ function About({ userData = tempData, isStation = false }) {
           ) : null}
           <div
             className={
-              Styles.PersonalInfoMobileAndEmail + " " + isStation
-                ? Styles.StationPersonalInfoMobileAndEmail
-                : ""
+              Styles.PersonalInfoMobileAndEmail +
+              " " +
+              (isStation ? Styles.StationPersonalInfoMobileAndEmail : "")
             }
           >
             <p className={Styles.PersonalInfoContentMobile}>{userData.phone}</p>
@@ -265,6 +276,7 @@ function About({ userData = tempData, isStation = false }) {
             .catch((error) => {
               console.log(error);
             });
+          history.push("/");
         }}
       >
         Logout

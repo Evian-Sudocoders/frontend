@@ -1,6 +1,5 @@
 .Wrapper {
-  width: 100%;
-  max-width: 110rem;
+  width: 110rem;
   margin: 0 auto;
 }
 .Line {
@@ -14,18 +13,19 @@
   font-size: var(--font-16);
   margin-bottom: 1.8rem;
 }
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1170px) {
   .Wrapper {
-    padding: 0 4rem;
+    width: 100%;
+    padding: 0 3.5rem;
   }
 }
-@media only screen and (max-width: 630px) {
+@media only screen and (max-width: 600px) {
   .Wrapper {
-    padding: 0 2rem;
+    padding: 0 2.5rem;
   }
 }
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 375px) {
   .Wrapper {
-    padding: 0 1.5rem;
+    padding: 0 4%;
   }
 }

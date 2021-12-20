@@ -1,45 +1,48 @@
 .SlotHistoryIndividualWrapper {
   display: grid;
   grid-template-columns: 15fr 20fr 20fr 10fr;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
+  width: 100%;
 }
 .SlotUserName {
-  font-size: var(--font-14);
-  font-weight: 600;
+  font-size: var(--font-16);
+  font-weight: 500;
+  text-align: start;
 }
 .SlotVehicleNo {
-  font-size: var(--font-14);
-  font-weight: 600;
+  font-size: var(--font-16);
+  font-weight: 500;
+  text-align: center;
 }
 .SlotTime {
-  font-size: var(--font-14);
-  font-weight: 600;
+  font-size: var(--font-16);
+  font-weight: 500;
+  text-align: center;
 }
 .SlotStatus {
-  font-size: var(--font-14);
-  font-weight: 600;
+  font-size: var(--font-16);
+  font-weight: 500;
+  text-align: end;
 }
 
-@media screen and (max-width: 400px) {
-  .SlotUserName {
-    font-size: var(--fontv-35);
-  }
-  .SlotVehicleNo {
-    font-size: var(--fontv-35);
-  }
-  .SlotTime {
-    font-size: var(--fontv-35);
-  }
+@media screen and (max-width: 500px) {
+  .SlotUserName,
+  .SlotVehicleNo,
+  .SlotTime,
   .SlotStatus {
-    font-size: var(--fontv-35);
+    font-size: calc(1vw + 1.1rem);
+  }
+  .SlotHistoryIndividualWrapper {
+    grid-template-columns: 25fr 30fr 25fr;
+    margin-bottom: calc(1vw + 0.3rem);
   }
 }
-.red{
+.red {
   color: red;
 }
-.green{
+.green {
   color: rgb(2, 194, 2);
 }
-.yellow{
+.yellow {
   color: rgb(245, 229, 13);
 }

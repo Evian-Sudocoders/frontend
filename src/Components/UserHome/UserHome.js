@@ -4,33 +4,7 @@ import Select from "react-select";
 import Station from "./Station";
 import { getAllStationData } from "../../Services/station.service";
 import { useSelector } from "react-redux";
-
-const selectColorStyles = {
-  control: (styles) => ({
-    ...styles,
-    fontSize: "var(--font-16)",
-    border: "1px solid black",
-  }),
-  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    return {
-      ...styles,
-      fontSize: "var(--font-16)",
-      transition: "background-color 0.1s ease",
-      ":active": {
-        ...styles[":active"],
-        // backgroundColor: "var(--orange-tertiary)",
-      },
-      ":hover": {
-        ...styles[":hover"],
-        // backgroundColor: "var(--orange-tertiary)",
-      },
-      ":visited": {
-        ...styles[":visited"],
-        // backgroundColor: "var(--orange-tertiary)",
-      },
-    };
-  },
-};
+import { selectStyles } from "./helpers/SelectStyles";
 
 const StateOptions = [
   { value: "Gujarat", label: "Gujarat" },
@@ -59,36 +33,42 @@ const CityOptions = {
 };
 
 function UserHome() {
-
   const userData = useSelector((state) => state.userReducer.userData);
 
   const [stationData, setStationData] = useState([]);
   const [state, setState] = useState(userData.state);
   const [city, setCity] = useState(userData.city);
 
-  const [stateIdx, setStateIdx] = useState();
-  const [cityIdx, setCityIdx] = useState();
-
-  
+  // const [stateIdx, setStateIdx] = useState(0);
+  // const [cityIdx, setCityIdx] = useState(0);
 
   useEffect(() => {
-    const stateId = StateOptions?.findIndex(stateLocal => stateLocal.value == state);
-    const cityId = CityOptions[userData.state]?.findIndex(cityLocal => cityLocal.value === city);
+    const stateId = StateOptions?.findIndex(
+      (stateLocal) => stateLocal.value == state
+    );
+    if (stateId >= 0) {
+      const cityId = CityOptions[userData.state]?.findIndex(
+        (cityLocal) => cityLocal.value === city
+      );
 
-    setStateIdx(stateId);
-    setCityIdx(cityId);
-  }, [state, city, stationData]);
+      if (cityId >= 0) {
+        setCity(CityOptions[userData.state][cityId]);
+        setState(StateOptions[stateId]);
+      }
+    }
+    // setState(userData.state);
+    // setCity(userData.city);
+  }, [stationData]);
 
   useEffect(() => {
     fetchAllStations();
   }, [state, city]);
 
   const fetchAllStations = async () => {
-    const stationList = await getAllStationData(state, city);
+    setStationData([]);
+    const stationList = await getAllStationData(state.value, city.value);
     setStationData(stationList);
   };
-
-  console.log(stateIdx, cityIdx);
 
   let count = 0;
   const list = stationData.stations?.map((station, id) => {
@@ -102,25 +82,30 @@ function UserHome() {
         <div className={styles.SelectorDiv}>
           <Select
             closeMenuOnSelect={false}
-            styles={selectColorStyles}
+            styles={selectStyles}
             options={StateOptions}
             name="State"
-            onChange={(newValue, action) => {
-              setState(newValue.value);
+            value={state}
+            onChange={(newValue, abc) => {
+              setState(newValue);
+              setCity(CityOptions[newValue.value][0]);
             }}
-            value={StateOptions[stateIdx]}
+            blurInputOnSelect
+            isSearchable={false}
           />
         </div>
         <div className={styles.SelectorDiv}>
           <Select
             closeMenuOnSelect={false}
-            styles={selectColorStyles}
-            options={state ? CityOptions[state] : []}
+            styles={selectStyles}
+            options={state ? CityOptions[state.value] : []}
             name="City"
-            onChange={(newValue, action) => {
-              setCity(newValue.value);
+            onChange={(newValue) => {
+              setCity(newValue);
             }}
-            value={CityOptions[userData.state][cityIdx]}
+            value={city}
+            blurInputOnSelect
+            isSearchable={false}
           />
         </div>
       </div>

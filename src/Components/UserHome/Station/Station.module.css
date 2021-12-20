@@ -5,8 +5,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 1rem 2rem;
-  margin-bottom: 1rem;
+  padding: 1.5rem 2.3rem;
+  margin-bottom: 1.2rem;
 }
 .InfoContainer {
   display: flex;
@@ -18,22 +18,24 @@
 }
 .StationName {
   font-weight: 500;
-  font-size: var(--font-17);
+  font-size: var(--font-20);
   margin-bottom: 0.5rem;
 }
 .StationAddress {
   font-weight: 500;
-  font-size: var(--font-13);
-  margin-bottom: 0.5rem;
+  font-size: var(--font-16);
+}
+.StationPoints {
+  margin-top: 1.3rem;
+  font-weight: 500;
+  font-size: var(--font-17);
 }
 .PointCount {
   font-weight: 800;
-  font-size: var(--font-16);
+  font-size: var(--font-18);
 }
 .ButtonStyle {
-  padding: 1rem 2rem;
-  width: 15rem;
-  height: 4rem;
+  padding: 1rem 2.5rem;
   background: linear-gradient(
     84.96deg,
     #00c2ff -11.09%,
@@ -41,39 +43,60 @@
   );
   border-radius: 28px;
   font-weight: 500;
-  font-size: var(--font-15) !important;
+  font-size: var(--font-16) !important;
   text-align: center;
   color: white !important;
   transition: box-shadow 0.2s ease;
+  min-width: 10rem !important;
 }
 
 @media only screen and (max-width: 600px) {
   .Wrapper {
-    padding: 1rem 1rem;
+    flex-direction: column;
+    padding: 1.5rem 2rem;
   }
   .ButtonStyle {
-    padding: 0.5rem 0.5rem !important;
-    width: 11rem;
-    height: 3rem;
-    font-size: var(--font-12) !important;
+    margin: 0 auto !important;
+    margin-top: 1.4rem !important;
+    font-size: var(--font-15) !important;
+  }
+  .ButtonContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .InfoContainer {
+    width: 100%;
+    margin-right: 0rem;
   }
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 375px) {
   .Wrapper {
     flex-direction: column;
+    padding: 1.3rem 1.5rem;
+  }
+  .ButtonStyle {
+    margin-top: 1.3rem !important;
+    font-size: var(--font-14) !important;
+  }
+  .ButtonContainer {
+    width: 100%;
+    display: flex;
     align-items: center;
   }
-  .InfoContainer {
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-  }
   .StationName {
-    font-weight: 500;
-    font-size: var(--font-15);
+    font-size: var(--font-18);
   }
   .StationAddress {
-    font-weight: 500;
-    font-size: var(--font-12);
+    font-size: var(--font-15);
+  }
+  .StationPoints {
+    margin-top: 1rem;
+    font-size: var(--font-15);
+  }
+  .PointCount {
+    font-size: var(--font-15);
   }
 }

@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./SlotHistory.module.css";
 
 import SlotHistoryIndividual from "../SlotHistoryIndividual";
+import { SlotTimeFun } from "../../../StationInfo/PaymentPopup/helper/SlotTimeFun";
 
 const slotData = [
   {
@@ -30,14 +31,38 @@ const slotData = [
   },
 ];
 
-function SlotHistory() {
-
-  const slotList = slotData?.map((slot, index) => {
-    return <SlotHistoryIndividual slotDetails={slot} key={index} />;
-  });
+function SlotHistory({ booingsData, currentActivePoint }) {
+  const slotList = booingsData
+    ?.filter((item) => {
+      return (
+        item.chargingPoint === (currentActivePoint ? currentActivePoint : 1)
+      );
+    })
+    .map((slot, index) => {
+      return (
+        <SlotHistoryIndividual
+          slotDetails={slot}
+          key={index}
+          timing={
+            SlotTimeFun(slot.slots[0]).startTime +
+            " - " +
+            SlotTimeFun(slot.slots[slot.slots.length - 1]).endTime
+          }
+        />
+      );
+    });
   return (
     <div className={styles.SlotHistoryContainer}>
-      <p className={styles.SlotHistoryTitle}>Slot History</p>
+      {/* <p className={styles.SlotHistoryTitle}>Slot History</p> */}
+      <SlotHistoryIndividual
+        slotDetails={{
+          userName: "Name",
+          vehicleNumber: "Vehicle Number",
+          status: "Status",
+        }}
+        timing={"Slot"}
+        wrapperClass={styles.SlotHistoryHeadingContainer}
+      />
       <div className={styles.SlotHistoryWrapper}>{slotList}</div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 import Styles from "./SignInUp.module.css";
 
@@ -10,11 +11,11 @@ import Button from "../Button";
 import BottomText from "./Helpers/BottomText";
 
 import { signInData } from "../StaticData.js";
-import notify from "../../Utils/helper/notifyToast";
 import { signInUser } from "../../Services/signInUp.service";
 import { validateEmail } from "./Helpers/ValidateEmail";
 import { getUser } from "./../../Services/user.service";
-import { useDispatch } from "react-redux";
+import { fetchAndSetUserData } from "./Helpers/updateState";
+import notify from "../../Utils/helper/notifyToast";
 
 function SignIn() {
   const location = useLocation();
@@ -38,10 +39,17 @@ function SignIn() {
       });
 
       if (signinStatus.status) {
-        notify(signinStatus.message, "success");
+        await fetchAndSetUserData(
+          signinStatus.accessToken,
+          signinStatus.uid,
+          dispatch,
+          history,
+          signinStatus.message
+        );
       } else {
         notify(signinStatus.message, "error");
       }
+
       setIsDisabled(false);
     }
   };

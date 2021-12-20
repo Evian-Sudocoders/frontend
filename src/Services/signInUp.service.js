@@ -34,6 +34,7 @@ export const signUpUser = async ({ email, password, userData, isStation }) => {
       status: true,
       message: "Sign up Successful",
       accessToken: accessToken,
+      uid: userCredentialResult.user.uid,
     };
   } catch (error) {
     const message =
@@ -62,6 +63,7 @@ export const signInUser = async ({ email, password }) => {
       status: true,
       message: "Sign in Successful",
       accessToken: accessToken,
+      uid: userCredentialResult.user.uid,
     };
   } catch (error) {
     const message =

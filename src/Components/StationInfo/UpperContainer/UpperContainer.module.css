@@ -1,6 +1,5 @@
 .Wrapper {
-  width: 100%;
-  max-width: 110rem;
+  width: 110rem;
   margin: 4rem auto 0 auto;
   display: flex;
   justify-content: space-between;
@@ -49,9 +48,10 @@
 .PortsWrapperMobile {
   display: none;
 }
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1170px) {
   .Wrapper {
-    padding: 0 4rem;
+    width: 100%;
+    padding: 0 3.5rem;
   }
 }
 @media only screen and (max-width: 980px) {
@@ -78,9 +78,9 @@
     margin-top: 1rem;
   }
 }
-@media only screen and (max-width: 630px) {
+@media only screen and (max-width: 600px) {
   .Wrapper {
-    padding: 0 2rem;
+    padding: 0 2.5rem;
   }
   .StationInfoWrapper {
     margin-left: 1.5rem;
@@ -102,11 +102,15 @@
     height: 21rem;
   }
 }
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 375px) {
   .Map {
     width: 100%;
   }
   .Wrapper {
-    padding: 0 1.5rem;
+    padding: 0 4%;
+    margin-top: 2rem;
+  }
+  .StationInfoWrapper {
+    margin-top: 1.5rem;
   }
 }

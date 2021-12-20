@@ -7,6 +7,7 @@ import {
   CHARGING_POINT_URL,
   STATION_URL,
   UPDATE_CHARGING_POINTS_INFO_URL,
+  GET_STATION_DASHBOARD_DATA_URL,
 } from "../Utils/constants";
 
 export const getStationDataById = async (stationId) => {
@@ -52,14 +53,14 @@ export const updateStationInfo = async (address, accessToken) => {
     );
     return data;
   } catch (err) {
-    throw err;
+    console.log(err);
   }
 };
 
 export const updateChargingPointInfo = async (chargingPoints, accessToken) => {
   try {
     const { data } = await axios.put(
-      "https://evian.azurewebsites.net/api/v1/station/chargingPoints",
+      UPDATE_CHARGING_POINTS_INFO_URL,
       {
         chargingPoints,
       },
@@ -71,14 +72,14 @@ export const updateChargingPointInfo = async (chargingPoints, accessToken) => {
     );
     return data;
   } catch (err) {
-    throw err;
+    console.log(err);
   }
 };
 
 export const addChargingPoints = async (chargingPoints, accessToken) => {
   try {
     const { data } = await axios.post(
-      "https://evian.azurewebsites.net/api/v1/station/chargingPoints",
+      UPDATE_CHARGING_POINTS_INFO_URL,
       {
         chargingPoints,
       },
@@ -90,7 +91,20 @@ export const addChargingPoints = async (chargingPoints, accessToken) => {
     );
     return data;
   } catch (err) {
-    throw err;
+    console.log(err);
+  }
+};
+
+export const getStationDashboardData = async (accessToken) => {
+  try {
+    const { data } = await axios.get(GET_STATION_DASHBOARD_DATA_URL, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return data;
+  } catch (err) {
+    console.log(err);
   }
 };
 
