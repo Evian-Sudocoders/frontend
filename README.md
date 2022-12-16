@@ -34,31 +34,31 @@ Here comes Evians, where users can schedule charging spaces, check available sta
 
 #### Landing Page
 
-![1](https://github.com/Evian-Sudocoders/frontend/blob/main/src/Assets/ReadmeAssets/1.png)
+![1](https://user-images.githubusercontent.com/78134473/208165848-834ebfa0-d54b-4e43-9a9e-df15a573c30b.png)
 
 #### Signup Page
+![2](https://user-images.githubusercontent.com/78134473/208165984-60719652-86e0-4948-8efd-420865aa94be.png)
 
-![2](https://github.com/Evian-Sudocoders/frontend/blob/main/src/Assets/ReadmeAssets/2.png)
 
 #### User Home Page
+![3](https://user-images.githubusercontent.com/78134473/208166006-0a8d6d77-b74a-4a74-ad3e-f1634dc6db3a.png)
 
-![3](https://github.com/Evian-Sudocoders/frontend/blob/main/src/Assets/ReadmeAssets/3.png)
 
 #### User Profile Page
+![6](https://user-images.githubusercontent.com/78134473/208165972-c66d0efd-df2f-4cd1-a189-9577a7f72439.png)
 
-![4](https://github.com/Evian-Sudocoders/frontend/blob/main/src/Assets/ReadmeAssets/6.png)
 
 #### Station Detail Page
+![4](https://user-images.githubusercontent.com/78134473/208165958-551a4ed8-4681-4f98-988d-d6390d6e29e1.png)
 
-![5](https://github.com/Evian-Sudocoders/frontend/blob/main/src/Assets/ReadmeAssets/4.png)
 
 #### Slot Booking
+![5](https://user-images.githubusercontent.com/78134473/208166022-0118418f-6185-4966-9eda-bb2cbc685d83.png)
 
-![6](https://github.com/Evian-Sudocoders/frontend/blob/main/src/Assets/ReadmeAssets/5.png)
 
 #### Station Dashboard
+![7](https://user-images.githubusercontent.com/78134473/208166036-463e8f8d-ab8c-4384-831c-e28bc95b08b3.png)
 
-![7](https://github.com/Evian-Sudocoders/frontend/blob/main/src/Assets/ReadmeAssets/7.png)
 
 
 ## Getting Started
