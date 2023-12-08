@@ -1,4 +1,4 @@
-export const BASE_URL = "https://evian.azurewebsites.net/api/v1";
+export const BASE_URL = "https://evian-backend.onrender.com/api/v1";
 export const AUTH_URL = `${BASE_URL}/auth`;
 export const STATION_URL = `${BASE_URL}/station`;
 export const BOOKING_URL = `${BASE_URL}/booking`;
